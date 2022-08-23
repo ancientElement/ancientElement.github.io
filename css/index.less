@@ -173,12 +173,12 @@ body {
     }
 }
 
-.swiper-button-next:after,
+#swiper1 .swiper-button-next:after,
 .swiper-button-prev:after {
     font-size: .25rem !important;
 }
 
-.swiper-pagination-bullet-active {
+#swiper1 .swiper-pagination-bullet-active {
     width: .5rem !important;
     border-radius: .4rem !important;
     transition: all 0.5s;
@@ -192,17 +192,15 @@ body {
    background-color: #2dd48a!important;
 }
 .mainnr {
-    position: relative;
-    left: 0;
-    right: 0;
+    margin-top: 20px;
     display: flex;
+    justify-content: space-around;
     .itemner {
         padding: 10px;
-        flex: 1;
         height: 200px;
         background-color: #fff;
         border-radius: 10px;
-        margin: 10px;
+        width: 3rem;
         .itemner-hd{
         width: 50px;
         height: 50px;
@@ -219,7 +217,7 @@ body {
         .click-mp {
             float: right;
             height: 30px;
-            width: 100px;
+            width: 2rem;
             border-radius: 15px;
             color: #fff;
             background-color: #007acc;
@@ -229,8 +227,17 @@ body {
         }
     }
 }
+
+//滑动模块 
+#swiper2 {
+   height: 100px;
+   .swiper-slide {
+        background-color: #007acc;
+   }
+}
 // 倒计时
 .main-item2{
+    margin-top: 20px;
     width: 7rem;
     background-color: #fff;
     border-radius: 25px;

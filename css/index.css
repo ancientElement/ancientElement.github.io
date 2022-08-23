@@ -145,11 +145,11 @@ body {
   height: 100%;
   width: 100%;
 }
-.swiper-button-next:after,
+#swiper1 .swiper-button-next:after,
 .swiper-button-prev:after {
   font-size: 0.25rem !important;
 }
-.swiper-pagination-bullet-active {
+#swiper1 .swiper-pagination-bullet-active {
   width: 0.5rem !important;
   border-radius: 0.4rem !important;
   transition: all 0.5s;
@@ -161,18 +161,16 @@ body {
   background-color: #2dd48a !important;
 }
 .mainnr {
-  position: relative;
-  left: 0;
-  right: 0;
+  margin-top: 20px;
   display: flex;
+  justify-content: space-around;
 }
 .mainnr .itemner {
   padding: 10px;
-  flex: 1;
   height: 200px;
   background-color: #fff;
   border-radius: 10px;
-  margin: 10px;
+  width: 3rem;
 }
 .mainnr .itemner .itemner-hd {
   width: 50px;
@@ -190,7 +188,7 @@ body {
 .mainnr .itemner .click-mp {
   float: right;
   height: 30px;
-  width: 100px;
+  width: 2rem;
   border-radius: 15px;
   color: #fff;
   background-color: #007acc;
@@ -198,7 +196,14 @@ body {
   text-align: center;
   line-height: 30px;
 }
+#swiper2 {
+  height: 100px;
+}
+#swiper2 .swiper-slide {
+  background-color: #007acc;
+}
 .main-item2 {
+  margin-top: 20px;
   width: 7rem;
   background-color: #fff;
   border-radius: 25px;

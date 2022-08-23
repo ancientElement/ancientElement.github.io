@@ -36,16 +36,16 @@ $(function () {
         }
     });
      //滑动小item
-     var starX = 0;
-     var moveX = 0;
-     $('.manerout').on('touchstart',function(e) {
-        starX = e.targetTouches[0].pageX;
-     })
-     $('.manerout').on('touchmove',function(e) {
-        moveX = e.targetTouches[0].pageX - starX;
-        if(moveX > 0) return;
-        $('.mainnr')[0].style.transform = 'translate(' + moveX + 'px)'
-     })
+    //  var starX = 0;
+    //  var moveX = 0;
+    //  $('.manerout').on('touchstart',function(e) {
+    //     starX = e.targetTouches[0].pageX;
+    //  })
+    //  $('.manerout').on('touchmove',function(e) {
+    //     moveX = e.targetTouches[0].pageX - starX;
+    //     if(moveX > 0) return;
+    //     $('.mainnr')[0].style.transform = 'translate(' + moveX + 'px)'
+    //  })
      //倒计时
      function countDown(time) {
         var nowTime = +new Date();

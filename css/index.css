@@ -37,14 +37,14 @@ body {
   }
 }
 @media screen and (min-width: 760px) {
-  .swiper.mySwiper {
+  .swiper#swiper1 {
     margin-top: 57px;
     margin-left: 1.7rem !important;
     height: 3rem !important;
     width: 5rem;
     border-radius: 10px;
   }
-  .swiper.mySwiper .swiper-slide img {
+  .swiper#swiper1 .swiper-slide img {
     height: 100%;
     width: 100%;
   }
@@ -134,14 +134,14 @@ body {
   font-size: 20px;
   padding-left: 20px;
 }
-.swiper.mySwiper {
+.swiper#swiper1 {
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 57px;
   height: 5rem;
   border-radius: 10px;
 }
-.swiper.mySwiper .swiper-slide img {
+.swiper#swiper1 .swiper-slide img {
   height: 100%;
   width: 100%;
 }

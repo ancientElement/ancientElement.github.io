@@ -9,16 +9,16 @@ $(function () {
     $('.swiper-button-next').on('click', function (e) {
         e.stopPropagation();
     })
-    $('.mySwiper').on('mouseleave touchend', function () {
+    $('#swiper1').on('mouseleave touchend', function () {
         console.log(22);
         timer = setInterval(function () {
             $('.swiper-button-next').click();
         }, 4000)
     })
-    $('.mySwiper').on('mouseover touchstart', function () {
+    $('#swiper1').on('mouseover touchstart', function () {
         clearInterval(timer);
     })
-    var swiper = new Swiper(".mySwiper", {
+    var swiper = new Swiper("#swiper1", {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
@@ -43,9 +43,9 @@ $(function () {
      })
      $('.manerout').on('touchmove',function(e) {
         moveX = e.targetTouches[0].pageX - starX;
+        if(moveX > 0) return;
         $('.mainnr')[0].style.transform = 'translate(' + moveX + 'px)'
      })
-
      //倒计时
      function countDown(time) {
         var nowTime = +new Date();

@@ -25,16 +25,38 @@ body {
         transform: translate(-50%, -50%);
     }
 }
-
+@media screen and (max-width: 469px){
+    .mymessagesbig {
+        display: none;
+    }
+}
 @media screen and (min-width: 470px) {
     .search-me {
         display: none;
     }
 
-    .mymessages {
+    .mymessagessmall {
         display: none;
     }
 }
+
+// <!-- Swiper --> 相应式面板
+@media screen and (min-width: 760px) {
+    .swiper.mySwiper {
+        margin-top: 57px;
+        margin-left: 1.7rem!important;
+        height: 3rem !important;
+        width: 5rem;
+        border-radius: 10px;
+        .swiper-slide {
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
 
 .mymessages {
     margin-top: 10px;
@@ -135,22 +157,6 @@ body {
         padding-left: 20px;
     }
 }
-// <!-- Swiper --> 相应式面板
-@media screen and (min-width: 760px) {
-    .swiper.mySwiper {
-        margin-top: 57px;
-        margin-left: 1.7rem!important;
-        height: 3rem !important;
-        width: 5rem;
-        border-radius: 10px;
-        .swiper-slide {
-            img {
-                height: 100%;
-                width: 100%;
-            }
-        }
-    }
-}
 
 .swiper.mySwiper {
     margin-left: 10px;
@@ -187,14 +193,16 @@ body {
 }
 .mainnr {
     position: relative;
+    left: 0;
+    right: 0;
     display: flex;
     .itemner {
         padding: 10px;
         flex: 1;
         height: 200px;
         background-color: #fff;
-        margin: 10px;
         border-radius: 10px;
+        margin: 10px;
         .itemner-hd{
         width: 50px;
         height: 50px;
@@ -220,4 +228,23 @@ body {
             line-height: 30px;
         }
     }
+}
+// 倒计时
+.main-item2{
+    width: 7rem;
+    background-color: #fff;
+    border-radius: 25px;
+    margin-left: 20px;
+    padding: 20px;
+}
+.bbl {
+    font-weight: 700;
+}
+.timedown1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.timedown2 {
+    font-size: 0.5rem;
+    font-weight: 700;
 }

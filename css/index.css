@@ -41,8 +41,42 @@ body {
   .search-me {
     display: none;
   }
+  .main-item2 {
+    display: none;
+  }
   .mymessagessmall {
     display: none;
+  }
+  .swiper-right {
+    width: 2.5rem;
+    height: 3.18rem;
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    background-color: #fff;
+    border-radius: 7px;
+  }
+  .swiper-right .mymessagesbig .mymedia {
+    z-index: 99;
+    padding: 0 5px;
+    transition: all 0.3s;
+    font-size: 0.2rem;
+    width: 100%;
+    height: 1rem;
+    background-color: #fff;
+    border-radius: 7px;
+  }
+  .swiper-right .mymessagesbig .mymedia:hover {
+    transform: translateX(-30px);
+    transition: all 0.3s;
+  }
+  .swiper-right .mymessagesbig .mymedia i {
+    line-height: 1rem;
+  }
+  .swiper-right .mymessagesbig .fgx {
+    height: 5px;
+    background-color: #522da826;
+    border-radius: 2.5px;
   }
 }
 @media screen and (min-width: 600px) {
@@ -146,13 +180,14 @@ body {
 .swiper#swiper1 {
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 57px;
+  margin-top: 70px;
   height: 5rem;
   border-radius: 10px;
 }
 .swiper#swiper1 .swiper-slide img {
   height: 100%;
   width: 100%;
+  border: 5px solid #fff;
 }
 #swiper1 .swiper-button-next:after,
 .swiper-button-prev:after {

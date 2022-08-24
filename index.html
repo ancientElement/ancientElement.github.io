@@ -44,31 +44,22 @@
                     我的分享
                 </span>
                 <ul class="menu-items">
-                    <li> <a href="#1"> Item one</a></li>
+                    <li> <a href="#1"> <strong> Hello </strong></a></li>
                     <li class="has-child">
-                        <span class="parent">Item two </span>
+                        <span class="parent">资源菜单</span>
                         <ul>
                             <li> <a href="#11"> sub item one</a></li>
                             <li> <a href="#11"> sub item two</a></li>
                             <li> <a href="#11"> sub item two</a></li>
                         </ul>
                     </li>
-                    <li> <a href="#1">Item three </a></li>
-                    <li> <a href="#1"> Item four</a></li>
-                    <li> <a href="#1">Item five </a></li>
                     <li class="has-child">
-                        <span class="parent">Item last </span>
+                        <span class="parent">学习心得 </span>
                         <ul>
                             <li> <a href="#11"> sub item one</a></li>
                             <li> <a href="#11"> sub item two</a></li>
                             <li> <a href="#11"> sub item two</a></li>
                             <li class="has-child">
-                                <span class="parent">Item two </span>
-                                <ul>
-                                    <li> <a href="#11"> sub item one</a></li>
-                                    <li> <a href="#11"> sub item two</a></li>
-                                    <li> <a href="#11"> sub item two</a></li>
-                                </ul>
                             </li>
                         </ul>
                     </li>
@@ -135,7 +126,7 @@
                 <img src="images/wallhaven-n62dex.jpg" alt="">
             </div>
             <div class="swiper-slide">
-                <img src="images/wallhaven-nrm6q0.png" alt="">
+                <img src="images/wallhaven-yjrox7.png" alt="">
             </div>
         </div>
         <div class="swiper-button-next"></div>
@@ -143,37 +134,23 @@
         <div class="swiper-pagination"></div>
     </div>
     <div class="swiper-right">
-        <div class="mymessages mymessagesbig">
-            <div class="msg-hd">
-                <div class="mytoxian">
-                    <img src="images/logo.png" alt="">
-                </div>
-                <div class="mynamech">
-                    上古元素
-                </div>
+        <div class="mymessagesbig">
+         
+            <div class="mymedia">
+                <i class="fa fa-github"></i>
+                <i>GitHub</i>
             </div>
-            <div class="myname">
-                ——————————————————
+            <div class="fgx"></div>
+            <div class="mymedia">
+                <i class="fa fa-youtube-play"></i>
+                <i>Bilibili</i>
             </div>
-            <div class="mydetailes">
-                <div class="mymedia">
-                    <i class="fa fa-github"></i>
-                    <i>GitHub</i>
-                </div>
-                <div class="mymedia">
-                    <i class="fa fa-youtube-play"></i>
-                    <i>Bilibili</i>
-                </div>
-                <div class="mymedia">
-                    <i class="fa fa-git"></i>
-                    <i>Gitee</i>
-                </div>
+            <div class="fgx"></div>
+            <div class="mymedia">
+                <i class="fa fa-git"></i>
+                <i>Gitee</i>
             </div>
-            <a href="javascript:;">
-                <div class="linkme">
-                    <i class="fa fa-external-link"></i>
-                </div>
-            </a>
+      
         </div>
     </div>
     <!-- main -->
@@ -232,8 +209,8 @@
         <div class="timedown2">
         </div>
     </div>
-    <div class="mubiao">
-
+    <div class="running">
+     
     </div>
     <!-- 弹出框 -->
     <div class="comeout">
@@ -316,7 +293,15 @@
 
         dragMoveX(".mainnr");
     </script>
-
+    <script>
+        $('.search-me').on('keyup',function(e) {
+            console.log(e.keyCode);
+            if(e.keyCode === 13) {
+               
+                alert('对不起资源尚未完善')
+            }
+        })
+    </script>
 </body>
 
 </html>

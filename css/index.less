@@ -7,16 +7,18 @@ body {
     background-color: #eee;
     background: url();
 }
+
 //禁止复制
-.no_copy{
+.no_copy {
     // moz-user-select: -moz-none;
     -moz-user-select: none;
-    -o-user-select:none;
-    -khtml-user-select:none;
-    -webkit-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
+
 // <!-- 侧边导航  -->
 .me {
     position: absolute;
@@ -49,8 +51,46 @@ body {
         display: none;
     }
 
+    .main-item2 {
+        display: none;
+    }
+
     .mymessagessmall {
         display: none;
+    }
+
+    .swiper-right {
+        width: 2.5rem;
+        height: 3.18rem;;
+        position: absolute;
+        right: 20px;
+        top: 70px;
+        background-color: #fff;
+        border-radius: 7px;
+        .mymessagesbig {
+            .mymedia {
+                z-index: 99;
+                padding: 0 5px;
+                transition: all 0.3s;
+                &:hover {
+                    transform: translateX(-30px);
+                    transition: all 0.3s;
+                }
+                font-size: 0.2rem;
+                width: 100%;
+                height: 1rem;
+                background-color: #fff;
+                border-radius: 7px;
+                i {
+                    line-height: 1rem;
+                }
+            }
+            .fgx {
+                height: 5px;
+                background-color: #522da826;
+                border-radius: 2.5px;
+            }
+        }
     }
 }
 
@@ -176,7 +216,7 @@ body {
 .swiper#swiper1 {
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 57px;
+    margin-top: 70px;
     height: 5rem;
     border-radius: 10px;
 
@@ -184,6 +224,7 @@ body {
         img {
             height: 100%;
             width: 100%;
+            border: 5px solid #fff;
         }
     }
 }
@@ -208,22 +249,28 @@ body {
 .color2 {
     background-color: #2dd48a !important;
 }
+
 .color3 {
     background-color: #fcc526 !important;
 }
+
 .color4 {
     background-color: #e54c41 !important;
 }
+
 .color5 {
     background-color: #2d7cee !important;
 }
+
 .mainnr {
     display: -webkit-box;
     overflow-x: auto;
     margin-top: 20px;
+
     &::-webkit-scrollbar {
-		display: none;
-	}
+        display: none;
+    }
+
     .itemner {
         float: left;
         margin: 20px;
@@ -232,6 +279,7 @@ body {
         background-color: #fff;
         border-radius: 10px;
         width: 4.3rem;
+
         &:hover {
             transform: translateY(9px);
             transition: all 0.3s;
@@ -275,6 +323,7 @@ body {
     margin-left: 20px;
     padding: 20px;
     transition: all .3s;
+
     &:hover {
         width: 8.2rem;
         transition: all .3s;
@@ -296,6 +345,7 @@ body {
     font-size: 0.5rem;
     font-weight: 700;
 }
+
 // 底部
 .footer {
     display: flex;
@@ -305,6 +355,7 @@ body {
     background-color: #512da8;
     list-style: none;
     font-weight: 700;
+
     .copright1 {
         width: 30%;
         background-color: #512da8;
@@ -312,15 +363,18 @@ body {
         color: #cbc0e5;
         transition: all .3s;
         font-size: 5px;
+
         &:hover {
             transform: translateY(-18px);
             background-color: #fff;
             color: #000;
             transition: all .3s;
         }
+
         &:hover a {
             color: #000;
         }
+
         a {
             color: #cbc0e5;
             text-decoration: none;

@@ -49,7 +49,8 @@ body {
     .swiper-rightdown {
         display: none;
     }
-    .swiper-left{
+
+    .swiper-left {
         display: none;
     }
 }
@@ -70,14 +71,30 @@ body {
     .aboutme {
         display: none !important;
     }
+
     .swiper-left {
         position: absolute;
-       height: 3.24rem;
-       width: 19%;
-       background-color: #007acc;
-       border-radius: 7px;
-       border: 5px solid #eeeeee;
+        height: 3.24rem;
+        width: 19%;
+        //    background-color: #007acc;
+        background: linear-gradient(72deg, rgba(81, 45, 168) 0%, rgb(109, 89, 158) 50%, rgb(157, 130, 219) 100%);
+        border-radius: 7px;
+        border: 5px solid #eeeeee;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            height: 100%;
+            padding: 5px;
+
+            li {
+                flex: 1;
+                color: #fff;
+            }
+        }
     }
+
     .swiper-right {
         width: 2.5rem;
         position: absolute;
@@ -211,17 +228,51 @@ body {
     }
 
     .swiper-rightdown {
+        position: relative;
         width: 100%;
-        height: 1.88888rem;;
-        background-color: #007acc;
+        height: 1.88888rem;
+        ;
+        background-color: #fff;  
         margin-top: 0.09rem;
         border-radius: 7px;
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h4 {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        input {
+            padding-left: 10px;
+            width: 70%;  
+            height: 15%;
+            margin-top: 3px;
+            outline: none;
+            border-radius: 10px;
+            border: 3px solid #512da8;
+            font-size: 15px;
+            color: rgb(110, 106, 106);
+            background-color: transparent;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 50%;
+            height: 20%;    
+            background-color: #512da8;
+            color: #fff;
+            border-radius: 10px;
+            border: 0;   
+        }
     }
-    
-
-
 }
-
+.welcome {
+    background: url(../images/123_r2_c2.jpg);
+    background-size: 100% 100%;
+}
 // <!-- Swiper --> 相应式面板
 @media screen and (min-width: 600px) {
     .swiper#swiper1 {

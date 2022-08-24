@@ -108,7 +108,13 @@
     </nav>
     <!-- Swiper -->
     <div class="swiper-left">
-        
+        <ul>
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
     </div>
     <div class="swiper mySwiper" id="swiper1">
         <div class="swiper-wrapper">
@@ -126,7 +132,7 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
     </div>
-        <div class="swiper-right">
+        <div class="swiper-right" id="swiper-right">
             <div class="our-team">
                 <div class="pic">
                     <img src="images/logoa_r1_c5.jpg">
@@ -142,8 +148,11 @@
                     <li><a href="#" class="fa fa-github" style="font-size: 23px;"></a></li>
                 </ul>
             </div>
-            <div class="swiper-rightdown">
-               
+            <div class="swiper-rightdown" id="swiper-rightdown">
+               <h4>管理员登录</h4>
+               <input type="text" value="Welcome">
+               <input type="password">
+               <button>登录</button>
             </div>
         </div>
         
@@ -295,9 +304,16 @@
         $('.search-me').on('keyup', function (e) {
             console.log(e.keyCode);
             if (e.keyCode === 13) {
-
                 alert('对不起资源尚未完善')
             }
+        })
+        $('.swiper-rightdown input').on('click',function() {
+            $('#swiper-rightdown').addClass('welcome')
+            $('.swiper-rightdown input')[0].style.color = '#fff';
+            $('.swiper-rightdown input')[0].style.border = '3px solid #fff';
+            $('.swiper-rightdown input')[1].style.border = '3px solid #fff';
+            $('.swiper-rightdown h4')[0].style.color = '#fff';
+            console.log(11);
         })
     </script>
 </body>

@@ -150,9 +150,9 @@
             </div>
             <div class="swiper-rightdown" id="swiper-rightdown">
                <h4>管理员登录</h4>
-               <input type="text" value="Welcome">
+               <input type="text" value="">
                <input type="password">
-               <button>登录</button>
+               <button>login</button>
             </div>
         </div>
         
@@ -310,10 +310,19 @@
         $('.swiper-rightdown input').on('click',function() {
             $('#swiper-rightdown').addClass('welcome')
             $('.swiper-rightdown input')[0].style.color = '#fff';
-            $('.swiper-rightdown input')[0].style.border = '3px solid #fff';
-            $('.swiper-rightdown input')[1].style.border = '3px solid #fff';
-            $('.swiper-rightdown h4')[0].style.color = '#fff';
+            $('.swiper-rightdown input')[0].style.border = 'none';
+            $('.swiper-rightdown input')[1].style.border = 'none';
+            $('.swiper-rightdown h4')[0].style.color = '#07a50e';
+            $('.swiper-rightdown button')[0].style.backgroundColor = 'transparent';
+            $('.swiper-rightdown button')[0].style.color = '#07a50e';
             console.log(11);
+        })
+        $('.swiper-rightdown input').on('blur',function() {
+            $('#swiper-rightdown').removeClass('welcome')
+            $('.swiper-rightdown input')[0].style = '';
+            $('.swiper-rightdown input')[1].style = '';
+            $('.swiper-rightdown h4')[0].style = '';
+            $('.swiper-rightdown button')[0].style = '';
         })
     </script>
 </body>

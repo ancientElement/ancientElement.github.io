@@ -37,6 +37,12 @@ body {
   .swiper-right {
     display: none;
   }
+  .swiper-rightdown {
+    display: none;
+  }
+  .swiper-left {
+    display: none;
+  }
 }
 @media screen and (min-width: 600px) {
   .search-me {
@@ -49,7 +55,15 @@ body {
     display: none;
   }
   .aboutme {
-    display: none!important;
+    display: none !important;
+  }
+  .swiper-left {
+    position: absolute;
+    height: 3.24rem;
+    width: 19%;
+    background-color: #007acc;
+    border-radius: 7px;
+    border: 5px solid #eeeeee;
   }
   .swiper-right {
     width: 2.5rem;
@@ -161,6 +175,13 @@ body {
     color: #eb1768;
     background: #f7f5ec;
   }
+  .swiper-rightdown {
+    width: 100%;
+    height: 1.88888rem;
+    background-color: #007acc;
+    margin-top: 0.09rem;
+    border-radius: 7px;
+  }
 }
 @media screen and (min-width: 600px) and only screen and (max-width: 990px) {
   .swiper-right .our-team {
@@ -170,7 +191,7 @@ body {
 @media screen and (min-width: 600px) {
   .swiper#swiper1 {
     margin-top: 57px;
-    margin-left: 1.9rem !important;
+    margin-left: 1.99rem !important;
     height: 3rem !important;
     width: 5rem;
     border-radius: 10px;
@@ -309,7 +330,7 @@ body {
 .mainnr {
   display: -webkit-box;
   overflow-x: auto;
-  margin-top: 20px;
+  margin-top: 0.1rem;
 }
 .mainnr::-webkit-scrollbar {
   display: none;

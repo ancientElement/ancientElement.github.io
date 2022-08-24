@@ -65,12 +65,13 @@ body {
     overflow: hidden;
     position: relative;
     border-radius: 7px;
-    height: 3rem;
+    height: 1.2121rem;
+    border: 5px solid #512da8;
   }
   .swiper-right .our-team .pic {
     display: inline-block;
-    width: 130px;
-    height: 130px;
+    width: 0.4848rem;
+    height: 0.4848rem;
     margin-bottom: 20;
     z-index: 1;
     position: relative;
@@ -124,6 +125,7 @@ body {
     letter-spacing: 1px;
     text-transform: capitalize;
     margin-bottom: 5px;
+    margin-top: 5px;
   }
   .swiper-right .our-team .post {
     display: block;
@@ -168,7 +170,7 @@ body {
 @media screen and (min-width: 600px) {
   .swiper#swiper1 {
     margin-top: 57px;
-    margin-left: 1.7rem !important;
+    margin-left: 1.9rem !important;
     height: 3rem !important;
     width: 5rem;
     border-radius: 10px;

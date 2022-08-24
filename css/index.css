@@ -1,4 +1,4 @@
-/*去掉IE11的叉叉*/
+/* 去掉IE11的叉叉 */
 input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }

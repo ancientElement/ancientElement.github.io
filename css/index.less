@@ -316,19 +316,28 @@ body {
 
 // 倒计时
 .main-item2 {
+    position: relative;
     margin-top: 20px;
     width: 7rem;
     background-color: #fff;
     border-radius: 25px;
     margin-left: 20px;
     padding: 20px;
-    transition: all .3s;
+    transition: all .9s;
 
     &:hover {
-        width: 8.2rem;
-        transition: all .3s;
+        width: 9.35rem;
+        transition: all .9s;
         background-color: #000;
         color: #fff;
+    }
+    &:hover .running {
+        display: none;
+        transition: all 0.9s;
+    }
+    &:hover .gradulate {
+        display: block;
+        transition: all 0.9s;
     }
 }
 
@@ -345,7 +354,25 @@ body {
     font-size: 0.5rem;
     font-weight: 700;
 }
-
+.running {
+    position: absolute;
+    left: 263px;
+    top: 25px;
+    transition: all 0.9s;
+    img {
+        height: 100px;
+    }
+}
+.gradulate {
+    display: none;
+    position: absolute;
+    left: 237px;
+    top: 25px;
+    transition: all 0.9s;
+    img {
+        width: 100px;
+    }
+}
 // 底部
 .footer {
     display: flex;

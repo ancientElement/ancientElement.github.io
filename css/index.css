@@ -259,19 +259,28 @@ body {
   line-height: 30px;
 }
 .main-item2 {
+  position: relative;
   margin-top: 20px;
   width: 7rem;
   background-color: #fff;
   border-radius: 25px;
   margin-left: 20px;
   padding: 20px;
-  transition: all 0.3s;
+  transition: all 0.9s;
 }
 .main-item2:hover {
-  width: 8.2rem;
-  transition: all 0.3s;
+  width: 9.35rem;
+  transition: all 0.9s;
   background-color: #000;
   color: #fff;
+}
+.main-item2:hover .running {
+  display: none;
+  transition: all 0.9s;
+}
+.main-item2:hover .gradulate {
+  display: block;
+  transition: all 0.9s;
 }
 .bbl {
   font-weight: 700;
@@ -283,6 +292,25 @@ body {
 .timedown2 {
   font-size: 0.5rem;
   font-weight: 700;
+}
+.running {
+  position: absolute;
+  left: 263px;
+  top: 25px;
+  transition: all 0.9s;
+}
+.running img {
+  height: 100px;
+}
+.gradulate {
+  display: none;
+  position: absolute;
+  left: 237px;
+  top: 25px;
+  transition: all 0.9s;
+}
+.gradulate img {
+  width: 100px;
 }
 .footer {
   display: flex;

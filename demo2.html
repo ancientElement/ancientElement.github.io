@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:400px;
+            overflow: auto;
+            white-space: nowrap;
+            background: #eee;
+            border:5px solid #aaa;
+        }
+        .box>span{
+            display: inline-block;
+            height:100px;
+        }
+         /* H5的时候，隐藏滚动条 */
+        ::-webkit-scrollbar {
+            display: none;  
+            width: 0 !important;  
+            height: 0 !important;  
+            -webkit-appearance: none;  
+            background: transparent;  
+        }
+        /*禁止复制*/
+        .no_copy{
+            moz-user-select: -moz-none;
+            -moz-user-select: none;
+            -o-user-select:none;
+            -khtml-user-select:none;
+            -webkit-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+ 
+    </style>
+</head>
+<body>
+    <h1>按住拖动时，移出元素依然可以再拖动</h1>
+    <div class="box no_copy">
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+        <span>我是横向滚动内容</span>
+    </div>
+</body>
+</html>
+<script src="js/jquery.min.js"></script>
+<script>
+    /**
+ * 拖动内容，滚动条滚动，横向
+ * @param {string} container 需要拖动的面板
+ */
+function dragMoveX(container) {
+    var flag;
+    var downX;
+    var scrollLeft;
+    //鼠标按下
+    $(document.body).on("mousedown", container, function (event) {
+        console.log('mousedown')
+        flag = true;
+        downX = event.clientX;
+        scrollLeft = $(this).scrollLeft();
+    });
+    //鼠标移动
+    $(document).on("mousemove", function (event) {
+        console.log('mousemove',flag,event.clientX)
+        if (flag) {
+            var moveX = event.clientX;
+            var scrollX = moveX - downX;
+            // console.log("moveX" + moveX);
+            // console.log("scrollX" + scrollX);
+            if (scrollX < 0 && scrollLeft > 0) {
+                $(container).scrollLeft(scrollLeft - scrollX)
+            }
+            else {
+                $(container).scrollLeft(scrollLeft - scrollX)
+            }
+        }
+    });
+    //鼠标释放
+    $(document).on("mouseup", function () {
+        console.log('mouseup')
+        flag = false;
+    });
+    /**
+     * 注意：与 mouseout 事件不同，mouseleave 事件只有在鼠标指针离开被选元素时被触发，mouseout 事件在鼠标指针离开任意子元素时也会被触发。参见页面底部演示实例。
+     * 所以：如果mouseout的子元素存在溢出，并添加了超出加滚动，那么刚进入也会触发该事件，所以这里就不能使用。
+     * */
+    //鼠标移出元素
+    $(container).on("mouseleave", function (event) {
+        console.log('mouseleave',event.pageX,document.body.offsetWidth)
+        // flag = false;
+        if (event.pageX < 0 || event.pageX > document.body.offsetWidth) {
+            console.log('在元素上移出')
+            flag = false;
+        }         
+    });
+}
+ 
+dragMoveX(".box");
+</script>

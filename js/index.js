@@ -36,7 +36,7 @@ $(function () {
             crossFade: true,
         }
     });
-     //滑动小item
+    //滑动小item
     //  var starX = 0;
     //  var moveX = 0;
     //  $('.manerout').on('touchstart',function(e) {
@@ -47,30 +47,30 @@ $(function () {
     //     if(moveX > 0) return;
     //     $('.mainnr')[0].style.transform = 'translate(' + moveX + 'px)'
     //  })
-     //倒计时
-     function countDown(time) {
-        var nowTime = +new Date();
-        var inputTime = +new Date(time);
-        var times = (inputTime - nowTime) / 1000;
-        d = parseInt(times / 60 / 60 / 24);
-        d = d < 10 ? '0' + d : d;
-        h = parseInt(times / 60 / 60 % 24);
-        h = h < 10 ? '0' + h : h;
-        m = parseInt(times / 60 % 60);
-        m = m < 10 ? '0' + m : m;
-        s = parseInt(times % 60);
-        s = s < 10 ? '0' + s : s;
-        return d + '天' + h + '小时' + m + '分钟' + s + '秒';
-    }
-    function countSecond(time) {
-        var nowTime = +new Date();
-        var inputTime = +new Date(time);
-        var times = (inputTime - nowTime) / 1000;
-        return parseInt(times);
-    }
-    console.log(countDown('2025-8-4 24:00:00'));
-    setInterval(function () {
-        $('.timedown2').html(countDown('2025-8-4 24:00:00'));
-        $('.timedown1').html(countSecond('2025-8-4 24:00:00')+'S');
-    }, 1000)
 })
+//倒计时
+function countDown(time) {
+    var nowTime = +new Date();
+    var inputTime = +new Date(time);
+    var times = (inputTime - nowTime) / 1000;
+    d = parseInt(times / 60 / 60 / 24);
+    d = d < 10 ? '0' + d : d;
+    h = parseInt(times / 60 / 60 % 24);
+    h = h < 10 ? '0' + h : h;
+    m = parseInt(times / 60 % 60);
+    m = m < 10 ? '0' + m : m;
+    s = parseInt(times % 60);
+    s = s < 10 ? '0' + s : s;
+    return d + '天' + h + '小时' + m + '分钟' + s + '秒';
+}
+function countSecond(time) {
+    var nowTime = +new Date();
+    var inputTime = +new Date(time);
+    var times = (inputTime - nowTime) / 1000;
+    return parseInt(times);
+}
+console.log(countDown('2025-8-4 24:00:00'));
+setInterval(function () {
+    $('.timedown2').html(countDown('2025-8-4 24:00:00'));
+    $('.timedown1').html(countSecond('2025-8-4 24:00:00') + 'S');
+}, 1000)

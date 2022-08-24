@@ -2,6 +2,7 @@
 <html lang="en">
 <!-- cn吗 -->
 <!-- 测试 -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +30,7 @@
     <script src="js/flexible.js"></script>
 </head>
 
-<body>
+<body style="background-color: #eee">
     <!-- 侧边导航  -->
     <nav class="codehim-dropdown">
         <ul class="dropdown-items">
@@ -177,37 +178,52 @@
     </div>
     <!-- main -->
     <!-- main-item1 -->
-        <div class="mainnr">
-            <div class="itemner">
-                <div class="itemner-hd fa  fa-cubes">
-                </div>
-                <h4>我的项目</h4>
-                <p>个人开发设计的项目包含源码，问题总结....</p>
-                <div class="click-mp fa fa-external-link-square">
-                </div>
+    <div class="mainnr no_copy">
+        <div class="itemner">
+            <div class="itemner-hd fa  fa-cubes">
             </div>
-            <div class="itemner">
-                <div class="itemner-hd fa fa-commenting color1"></div>
-                <h4>技术交流</h4>
-                <p>个人开发设计的项目包含源码，问题总结....</p>
-                <div class="click-mp fa fa-external-link-square">
-                </div>
-            </div>
-            <div class="itemner">
-                <div class="itemner-hd fa fa-share-alt-square color2"></div>
-                <h4>资源分享</h4>
-                <p>个人开发设计的项目包含源码，问题总结....</p>
-                <div class="click-mp fa fa-external-link-square ">
-                </div>
-            </div>
-            <div class="itemner">
-                <div class="itemner-hd fa fa-share-alt-square color2"></div>
-                <h4>资源分享</h4>
-                <p>个人开发设计的项目包含源码，问题总结....</p>
-                <div class="click-mp fa fa-external-link-square ">
-                </div>
+            <h4>我的项目</h4>
+            <p>个人开发设计的项目包含源码，问题总结....</p>
+            <div class="click-mp fa fa-external-link-square">
             </div>
         </div>
+        <div class="itemner">
+            <div class="itemner-hd fa fa-commenting color1"></div>
+            <h4>技术交流</h4>
+            <p>个人开发设计的项目包含源码，问题总结....</p>
+            <div class="click-mp fa fa-external-link-square">
+            </div>
+        </div>
+        <div class="itemner">
+            <div class="itemner-hd fa fa-share-alt-square color2"></div>
+            <h4>资源分享</h4>
+            <p>个人开发设计的项目包含源码，问题总结....</p>
+            <div class="click-mp fa fa-external-link-square ">
+            </div>
+        </div>
+        <div class="itemner">
+            <div class="itemner-hd fa fa-share-alt-square color3"></div>
+            <h4>资源分享</h4>
+            <p>个人开发设计的项目包含源码，问题总结....</p>
+            <div class="click-mp fa fa-external-link-square ">
+            </div>
+        </div>
+        <div class="itemner">
+            <div class="itemner-hd fa  fa-cubes color4">
+            </div>
+            <h4>我的项目</h4>
+            <p>个人开发设计的项目包含源码，问题总结....</p>
+            <div class="click-mp fa fa-external-link-square">
+            </div>
+        </div>
+        <div class="itemner">
+            <div class="itemner-hd fa fa-share-alt-square color5"></div>
+            <h4>资源分享</h4>
+            <p>个人开发设计的项目包含源码，问题总结....</p>
+            <div class="click-mp fa fa-external-link-square ">
+            </div>
+        </div>
+    </div>
     <!-- main-item2 倒计时-->
     <div class="main-item2">
         <div class="bbl">毕业还有</div>
@@ -216,14 +232,88 @@
         <div class="timedown2">
         </div>
     </div>
-     <!-- 弹出框 -->
+    <div class="mubiao">
 
-    
+    </div>
+    <!-- 弹出框 -->
+    <div class="comeout">
+
+    </div>
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="copright1">
+            <li>
+                <h2>最新博客</h2>
+            </li>
+            <li><a href="">用户故事</a></li>
+            <li><a href="">关于我的学习</a></li>
+        </div>
+        <div class="copright1">
+            <li>
+                <h2>联系我</h2>
+            </li>
+            <li>E-mile :ancientElement</li>
+            <li>GITHUB :ancientElement</li>
+        </div>
+        <div class="copright1">
+            <li>
+                <h2>上古元素</h2>
+            </li>
+            <li>这是我的个人博客</li>
+            <li>分享关于我的</li>
+            <li>代码 学习 动漫 游戏 ...</li>
+        </div>
+    </div>
     <!-- Initialize Swiper -->
     <script>
-        $('.search-me').on('keyUp',function() {
+        function dragMoveX(container) {
+            var flag;
+            var downX;
+            var scrollLeft;
+            //鼠标按下
+            $(document.body).on("mousedown", container, function (event) {
+                console.log('mousedown')
+                flag = true;
+                downX = event.clientX;
+                scrollLeft = $(this).scrollLeft();
+            });
+            //鼠标移动
+            $(document).on("mousemove", function (event) {
+                // console.log('mousemove', flag, event.clientX)
+                if (flag) {
+                    var moveX = event.clientX;
+                    var scrollX = moveX - downX;
+                    // console.log("moveX" + moveX);
+                    // console.log("scrollX" + scrollX);
+                    if (scrollX < 0 && scrollLeft > 0) {
+                        $(container).scrollLeft(scrollLeft - scrollX)
+                    }
+                    else {
+                        $(container).scrollLeft(scrollLeft - scrollX)
+                    }
+                }
+            });
+            //鼠标释放
+            $(document).on("mouseup", function () {
+                // console.log('mouseup')
+                flag = false;
+            });
+            /**
+             * 注意：与 mouseout 事件不同，mouseleave 事件只有在鼠标指针离开被选元素时被触发，mouseout 事件在鼠标指针离开任意子元素时也会被触发。参见页面底部演示实例。
+             * 所以：如果mouseout的子元素存在溢出，并添加了超出加滚动，那么刚进入也会触发该事件，所以这里就不能使用。
+             * */
+            //鼠标移出元素
+            $(container).on("mouseleave", function (event) {
+                // console.log('mouseleave', event.pageX, document.body.offsetWidth)
+                // flag = false;
+                if (event.pageX < 0 || event.pageX > document.body.offsetWidth) {
+                    console.log('在元素上移出')
+                    flag = false;
+                }
+            });
+        }
 
-        })
+        dragMoveX(".mainnr");
     </script>
 
 </body>

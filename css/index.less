@@ -4,10 +4,19 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 body {
-    background-color: #eee !important;
+    background-color: #eee;
     background: url();
 }
-
+//禁止复制
+.no_copy{
+    // moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
 // <!-- 侧边导航  -->
 .me {
     position: absolute;
@@ -29,7 +38,7 @@ body {
     }
 }
 
-@media screen and (max-width: 469px) {
+@media screen and (max-width: 600px) {
     .mymessagesbig {
         display: none;
     }
@@ -199,7 +208,15 @@ body {
 .color2 {
     background-color: #2dd48a !important;
 }
-
+.color3 {
+    background-color: #fcc526 !important;
+}
+.color4 {
+    background-color: #e54c41 !important;
+}
+.color5 {
+    background-color: #2d7cee !important;
+}
 .mainnr {
     display: -webkit-box;
     overflow-x: auto;
@@ -215,6 +232,11 @@ body {
         background-color: #fff;
         border-radius: 10px;
         width: 3rem;
+        
+        &:hover {
+            transform: translateY(9px);
+            transition: all 0.3s;
+        }
 
         .itemner-hd {
             width: 50px;
@@ -245,15 +267,6 @@ body {
     }
 }
 
-//滑动模块 
-#swiper2 {
-    height: 100px;
-
-    .swiper-slide {
-        background-color: #007acc;
-    }
-}
-
 // 倒计时
 .main-item2 {
     margin-top: 20px;
@@ -262,6 +275,13 @@ body {
     border-radius: 25px;
     margin-left: 20px;
     padding: 20px;
+    transition: all .3s;
+    &:hover {
+        width: 8.2rem;
+        transition: all .3s;
+        background-color: #000;
+        color: #fff;
+    }
 }
 
 .bbl {
@@ -276,4 +296,35 @@ body {
 .timedown2 {
     font-size: 0.5rem;
     font-weight: 700;
+}
+// 底部
+.footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 200px;
+    background-color: #512da8;
+    list-style: none;
+    font-weight: 700;
+    .copright1 {
+        width: 30%;
+        background-color: #512da8;
+        padding: 10px;
+        color: #cbc0e5;
+        transition: all .3s;
+        font-size: 12px;
+        &:hover {
+            transform: translateY(-18px);
+            background-color: #fff;
+            color: #000;
+            transition: all .3s;
+        }
+        &:hover a {
+            color: #000;
+        }
+        a {
+            color: #cbc0e5;
+            text-decoration: none;
+        }
+    }
 }

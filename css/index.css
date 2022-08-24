@@ -37,7 +37,7 @@ body {
     display: none;
   }
 }
-@media screen and (min-width: 470px) {
+@media screen and (min-width: 600px) {
   .search-me {
     display: none;
   }
@@ -45,7 +45,7 @@ body {
     display: none;
   }
 }
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 600px) {
   .swiper#swiper1 {
     margin-top: 57px;
     margin-left: 1.7rem !important;
@@ -193,7 +193,7 @@ body {
   height: 200px;
   background-color: #fff;
   border-radius: 10px;
-  width: 3rem;
+  width: 4.3rem;
 }
 .mainnr .itemner:hover {
   transform: translateY(9px);
@@ -242,7 +242,7 @@ body {
   font-weight: 700;
 }
 .timedown1 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 .timedown2 {
@@ -264,7 +264,7 @@ body {
   padding: 10px;
   color: #cbc0e5;
   transition: all 0.3s;
-  font-size: 12px;
+  font-size: 5px;
 }
 .footer .copright1:hover {
   transform: translateY(-18px);

@@ -222,8 +222,12 @@ li.home-link a {
 
 
 /* Codehim Dropdowns Mobile View */
-
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) and (min-width:500px) {
+	#guandiao{
+		display: none!important;
+	}
+}
+@media only screen and (max-width: 600px) {
 	.codehim-dropdown {
 		position: relative;
 		font-size: 14px;
@@ -329,7 +333,7 @@ li.home-link a {
 
 /* Codehim Dropdown Tab and ipad View */
 
-@media screen and (max-width: 719px) and (min-width: 480px) {
+@media screen and (max-width: 719px) and (min-width: 600px) {
 	.codehim-dropdown {
 		/* Working on it */
 		/*The tab view is coming soon */
@@ -339,7 +343,7 @@ li.home-link a {
 
 /* Codehim Dropdowns PC View */
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 600px) {
 	.menu-items {
 		box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 		width: 150px;

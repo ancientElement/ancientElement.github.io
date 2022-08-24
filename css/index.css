@@ -34,7 +34,7 @@ body {
   transform: translate(-50%, -50%);
 }
 @media screen and (max-width: 600px) {
-  .mymessagesbig {
+  .swiper-right {
     display: none;
   }
 }
@@ -54,30 +54,111 @@ body {
     position: absolute;
     right: 20px;
     top: 70px;
-    background-color: #fff;
     border-radius: 7px;
   }
-  .swiper-right .mymessagesbig .mymedia {
-    z-index: 99;
-    padding: 0 5px;
-    transition: all 0.3s;
-    font-size: 0.2rem;
+  .swiper-right .our-team {
+    padding: 10px 0 10px;
+    background: #fff;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    border-radius: 7px;
+  }
+  .swiper-right .our-team .pic {
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 20;
+    z-index: 1;
+    position: relative;
+  }
+  .swiper-right .our-team .pic:before {
+    content: "";
     width: 100%;
-    height: 1rem;
-    background-color: #fff;
-    border-radius: 7px;
+    height: 0;
+    border-radius: 50%;
+    background: #ee4266;
+    position: absolute;
+    bottom: 135%;
+    right: 0;
+    left: 0;
+    opacity: 0.2;
+    transform: scale(3);
+    transition: all 0.3s linear 0s;
   }
-  .swiper-right .mymessagesbig .mymedia:hover {
-    transform: translateX(-30px);
-    transition: all 0.3s;
+  .swiper-right .our-team:hover .pic:before {
+    height: 100%;
   }
-  .swiper-right .mymessagesbig .mymedia i {
-    line-height: 1rem;
+  .swiper-right .our-team .pic:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #ee4266;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
-  .swiper-right .mymessagesbig .fgx {
-    height: 5px;
-    background-color: #522da826;
-    border-radius: 2.5px;
+  .swiper-right .our-team .pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
+  }
+  .swiper-right .our-team:hover .pic img {
+    box-shadow: 0 0 0 14px #f7f5ec;
+    transform: scale(0.7);
+  }
+  .swiper-right .our-team .team-content {
+    margin-bottom: 30px;
+  }
+  .swiper-right .our-team .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4e5052;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+  }
+  .swiper-right .our-team .post {
+    display: block;
+    font-size: 15px;
+    color: #4e5052;
+    text-transform: capitalize;
+  }
+  .swiper-right .our-team .social {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #512da8;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    transition: all 0.5s ease 0s;
+  }
+  .swiper-right .our-team:hover .social {
+    bottom: 0;
+  }
+  .swiper-right .our-team .social li {
+    display: inline-block;
+  }
+  .swiper-right .our-team .social li a {
+    display: block;
+    padding: 10px;
+    font-size: 17px;
+    color: #fff;
+    transition: all 0.3s ease 0s;
+  }
+  .swiper-right .our-team .social li a:hover {
+    color: #eb1768;
+    background: #f7f5ec;
+  }
+}
+@media screen and (min-width: 600px) and only screen and (max-width: 990px) {
+  .swiper-right .our-team {
+    margin-bottom: 30px;
   }
 }
 @media screen and (min-width: 600px) {
@@ -91,6 +172,11 @@ body {
   .swiper#swiper1 .swiper-slide img {
     height: 100%;
     width: 100%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .mainnr .itemner {
+    width: 2.5rem !important;
   }
 }
 .mymessages {
@@ -251,7 +337,7 @@ body {
 .mainnr .itemner .click-mp {
   float: right;
   height: 30px;
-  width: 2rem;
+  width: 50%;
   border-radius: 15px;
   color: #fff;
   background-color: #007acc;

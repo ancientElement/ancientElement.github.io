@@ -287,7 +287,7 @@
 				devWidth = $(window).width();
 				devHeight = $(window).height();
 
-				if (devWidth > 480) {
+				if (devWidth > 600) {
 					$(offCanvas).width('100%');
 
 				} else {
@@ -302,7 +302,7 @@
 
 					menuItemsWidth += $(mainLink).eq(w).width();
 
-					if (menuItemsWidth >= devWidth && devWidth > 480) {
+					if (menuItemsWidth >= devWidth && devWidth > 600) {
 						$(mainLink).eq(w).css({
 							'display': 'none',
 

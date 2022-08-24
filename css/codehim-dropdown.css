@@ -224,7 +224,7 @@ li.home-link a {
 /* Codehim Dropdowns Mobile View */
 @media only screen and (max-width: 600px) and (min-width:500px) {
 	#guandiao{
-		display: none!important;
+		/* display: none!important; */
 	}
 }
 @media only screen and (max-width: 600px) {

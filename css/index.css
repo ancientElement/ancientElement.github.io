@@ -4,6 +4,7 @@ input[type=search]::-webkit-search-cancel-button {
 }
 body {
   background-color: #eee !important;
+  background: url();
 }
 .me {
   position: absolute;
@@ -161,11 +162,16 @@ body {
   background-color: #2dd48a !important;
 }
 .mainnr {
+  display: -webkit-box;
+  overflow-x: auto;
   margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
+}
+.mainnr::-webkit-scrollbar {
+  display: none;
 }
 .mainnr .itemner {
+  float: left;
+  margin: 20px;
   padding: 10px;
   height: 200px;
   background-color: #fff;

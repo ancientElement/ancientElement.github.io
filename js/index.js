@@ -2,6 +2,7 @@ $(function () {
     $(".codehim-dropdown").CodehimDropdown({
         skin: "deep-purple"
     });
+    // <!-- Swiper JS -->
     timer = setInterval(function () {
         $('.swiper-button-next').click();
     }, 4000)

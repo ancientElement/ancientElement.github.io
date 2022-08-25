@@ -404,6 +404,7 @@ body {
   border-radius: 10px;
   width: 4.3rem;
   z-index: 99999;
+  transform: translateZ(1000px);
 }
 .mainnr .itemner:hover {
   transform: translateY(9px);

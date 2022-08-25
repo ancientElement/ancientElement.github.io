@@ -392,9 +392,6 @@ body {
   overflow-x: auto;
   margin-top: 0.1rem;
 }
-.mainnr::-webkit-scrollbar {
-  display: none;
-}
 .mainnr .itemner {
   float: left;
   margin: 20px;

@@ -391,6 +391,7 @@ body {
   display: -webkit-box;
   overflow-x: auto;
   margin-top: 0.1rem;
+  -webkit-overflow-scrolling: touch;
 }
 .mainnr::-webkit-scrollbar {
   display: none;
@@ -404,7 +405,6 @@ body {
   border-radius: 10px;
   width: 4.3rem;
   transform: translateZ(1000px);
-  -webkit-overflow-scrolling: touch;
 }
 .mainnr .itemner:hover {
   transform: translateY(9px);

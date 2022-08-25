@@ -392,6 +392,9 @@ body {
   overflow-x: auto;
   margin-top: 0.1rem;
 }
+.mainnr::-webkit-scrollbar {
+  display: none;
+}
 .mainnr .itemner {
   float: left;
   margin: 20px;
@@ -400,6 +403,7 @@ body {
   background-color: #fff;
   border-radius: 10px;
   width: 4.3rem;
+  z-index: 99999;
 }
 .mainnr .itemner:hover {
   transform: translateY(9px);

@@ -470,11 +470,10 @@ body {
     display: -webkit-box;  
     overflow-x: auto;
     margin-top: 0.1rem;
-
+    // transform: translate3d(0, 0, 0);
     &::-webkit-scrollbar {
-        // display: none;
+        display: none;
     }
-
     .itemner {
         float: left;
         margin: 20px;
@@ -483,7 +482,7 @@ body {
         background-color: #fff;
         border-radius: 10px;
         width: 4.3rem;
-
+        z-index: 99999;
         &:hover {
             transform: translateY(9px);
             transition: all 0.3s;

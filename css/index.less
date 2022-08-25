@@ -474,7 +474,6 @@ body {
     &::-webkit-scrollbar {
         display: none;
     }
-    -webkit-overflow-scrolling: touch;
     .itemner {
         float: left;
         margin: 20px;
@@ -483,8 +482,9 @@ body {
         background-color: #fff;
         border-radius: 10px;
         width: 4.3rem;
-        z-index: 99999;
+        // z-index: 99999;
         transform: translateZ(1000px);
+        -webkit-overflow-scrolling: touch;
         &:hover {
             transform: translateY(9px);
             transition: all 0.3s;

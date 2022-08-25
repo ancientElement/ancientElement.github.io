@@ -391,6 +391,7 @@ body {
   display: -webkit-box;
   overflow-x: auto;
   margin-top: 0.1rem;
+  -webkit-overflow-scrolling: touch;
 }
 .mainnr::-webkit-scrollbar {
   display: none;

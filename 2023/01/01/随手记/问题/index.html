@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>问题 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>问题</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2022-12-31T16:00:00.000Z" id="date"> 2023-01-01</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.939Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">808</div></span></div></div><hr><div id="post-content"><h1 id="找不同"><a href="#找不同" class="headerlink" title="找不同"></a>找不同</h1><ol>
+<li>射线检测层级:</li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230503130407613.png'><img src="/2002/01/01/images/image-20230503130407613.png" alt="image-20230503130407613"></p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230503130412408.png'><img src="/2002/01/01/images/image-20230503130412408.png" alt="image-20230503130412408"></p>
+<ol start="2">
+<li>记录一下怎么计算中心点 和长宽高</li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230503130807976.png'><img src="/2002/01/01/images/image-20230503130807976.png" alt="image-20230503130807976"></p>
+<ol start="3">
+<li><p>排序学一下</p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230503161105825.png'><img src="/2002/01/01/images/image-20230503161105825.png" alt="image-20230503161105825"></p>
+</li>
+<li><p>旋转和位移之后不是标准的数差了那么几个小数怎么办?</p>
+</li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230505134253922.png'><img src="/2002/01/01/images/image-20230505134253922.png" alt="image-20230505134253922"></p>
+<ol start="5">
+<li>上一个是回答错误的  transform.Rotate 还需要传入以世界坐标还是自身坐标,否则默认自身坐标 <img src="/2002/01/01/images/image-20230505142022763.png" alt="image-20230505142022763"></li>
+</ol>
+<h1 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h1><ol>
+<li>二维平面点的旋转</li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230511172414202.png'><img src="/2002/01/01/images/image-20230511172414202.png" alt="image-20230511172414202"></p>
+<ol start="2">
+<li><p>波动方程</p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230511172522400.png'><img src="/2002/01/01/images/image-20230511172522400.png" alt="image-20230511172522400"></p>
+</li>
+</ol>
+<h1 id="基础框架的问题"><a href="#基础框架的问题" class="headerlink" title="基础框架的问题"></a>基础框架的问题</h1><ol>
+<li><p>转换场景要清空的东西</p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230527221514775.png'><img src="/2002/01/01/images/image-20230527221514775.png" alt="image-20230527221514775"></p>
+<ol>
+<li><p>SceneMgr里暂时只要清理缓存池就行了;</p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230527221140264.png'><img src="/2002/01/01/images/image-20230527221140264.png" alt="image-20230527221140264"></p>
+</li>
+<li><p>不能直接清理EventCenter事件监听可能会有单例监听事件清理掉会使得单例无法监听事件;</p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230527221025428.png'><img src="/2002/01/01/images/image-20230527221025428.png" alt="image-20230527221025428"></p>
+</li>
+<li><p>没有弄清除不要轻易清除MonoController的UpdateEvent,因为会清除InputMgr的事件 最好用RemoveUpdateEventListener</p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230527221048957.png'><img src="/2002/01/01/images/image-20230527221048957.png" alt="image-20230527221048957"></p>
+</li>
+</ol>
+</li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230527220717074.png'><img src="/2002/01/01/images/image-20230527220717074.png" alt="image-20230527220717074"></p>
+<h1 id="编辑器的问题"><a href="#编辑器的问题" class="headerlink" title="编辑器的问题"></a>编辑器的问题</h1><p class='item-img' data-src='/2002/01/01/images/image-20230527221847370.png'><img src="/2002/01/01/images/image-20230527221847370.png" alt="image-20230527221847370"></p>
+<p>不要打开这个,会使得运行前不编译,使得单例丢失和DontDestoryOnLoad的GameObject丢失;</p>
+<p>以下为官方解释:</p>
+<h2 id="修改脚本以确保在禁用域重新加载时正确执行："><a href="#修改脚本以确保在禁用域重新加载时正确执行：" class="headerlink" title="修改脚本以确保在禁用域重新加载时正确执行："></a>修改脚本以确保在禁用域重新加载时正确执行：</h2><p>To ensure your scripting states correctly reset at Play Mode, you need to make adjustments to static fields and static event handlers in your scripts.</p>
+<h3 id="静态字段"><a href="#静态字段" class="headerlink" title="静态字段"></a>静态字段</h3><p>禁用域重新加载后，代码中的&#x3D;&#x3D;<strong>静态字段</strong>的值不会自动重置为其原始值&#x3D;&#x3D;。需要添加用于明确执行此操作的代码。</p>
+<p>下面的代码示例具有一个静态计数器字段，在用户按下 Jump 按钮时该计数器会递增。启用域重新加载后，在进入运行模式时，计数器自动重置为零。禁用域重新加载后，计数器不会重置，而是会在进入和退出运行模式时保持其值不变。这意味着在 Editor 中第二次运行项目时，如果计数器在上一次运行中发生了变化，则计数器可能不会为零。</p>
+<h1 id="关于Animation-Clip-ReadOnly与添加曲线"><a href="#关于Animation-Clip-ReadOnly与添加曲线" class="headerlink" title="关于Animation Clip ReadOnly与添加曲线"></a>关于Animation Clip ReadOnly与添加曲线</h1><ol>
+<li>**非FBX包里的Animation Clip必须添加进入Animator才可以编辑 **</li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230701132245259.png'><img src="/2002/01/01/images/image-20230701132245259.png" alt="image-20230701132245259"></p>
+<p>2.<strong>非FBX中的Animation Clip添加Curve</strong></p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230701132552730.png'><img src="/2002/01/01/images/image-20230701132552730.png" alt="image-20230701132552730"></p>
+<h1 id="如何用InputSystem制作单击、双击、长按？"><a href="#如何用InputSystem制作单击、双击、长按？" class="headerlink" title="如何用InputSystem制作单击、双击、长按？"></a>如何用InputSystem制作单击、双击、长按？</h1><ol>
+<li>设置不同的Interaction得到用户的不同输入阶段</li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230701172125355.png'><img src="/2002/01/01/images/image-20230701172125355.png" alt="image-20230701172125355"></p>
+<p>2.<img src="/2002/01/01/images/image-20230701164715110.png" alt="image-20230701164715110"></p>
+<p>如图两个Action绑定相同的按键，但他们的交互设置不同，一个是单机一个是长按，</p>
+<ol start="3">
+<li><p>InputActionAssest</p>
+<p>自动类,接口,InputAction</p>
+</li>
+<li><p>代码</p>
+</li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230701165523034.png'><img src="/2002/01/01/images/image-20230701165523034.png" alt="image-20230701165523034"></p>
+<p>如图是两个 Action 的对应输入，可以看到Run是一个长按所以是一个状态，而Roll是触发所以仅仅是Roll单击执行那一帧。</p>
+<p>&#x3D;&#x3D; 注意不要将 <code>WasPerformedThisFrame</code>和 <code>WasPressedThisFrame</code> 写混淆了 &#x3D;&#x3D; 一个是执行的那一帧、一个是按键按下那一帧 </p>
+<h1 id="敬而远之的Layer"><a href="#敬而远之的Layer" class="headerlink" title="敬而远之的Layer"></a>敬而远之的Layer</h1><p>引言 :</p>
+<p>&lt;&lt; : 左移运算符</p>
+<p>~   : 取反运算符(除符号位)</p>
+<p>1 &lt;&lt; 7 : 1左移7位,在二进制中左移几位就是乘以2的多少次方 </p>
+<p>1 &lt;&lt; 7  &#x3D; 1*2^7 &#x3D; 128D  、1000 0000B </p>
+<p>所以由二进制我们可以清楚的看到第7位为1，</p>
+<p>所以每一个layer在&lt;&lt;后可以对应一个唯一的二进制数且只有相应位数为1,</p>
+<p>当我们用&lt;&lt;后的layer进行与或非等逻辑运算时就可以清楚的看到哪一个层级,方便多选操作 </p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/04/05/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shadre%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/03.SubShader%E5%AD%90%E7%9D%80%E8%89%B2%E5%99%A8/">← 下一篇 03.SubShader子着色器</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/11/20/csharp/cs%E5%9F%BA%E7%A1%80/2048/">2048 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%BE%E4%B8%8D%E5%90%8C"><span class="toc-number">1.</span> <span class="toc-text">找不同</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">数学公式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">基础框架的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">编辑器的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%84%9A%E6%9C%AC%E4%BB%A5%E7%A1%AE%E4%BF%9D%E5%9C%A8%E7%A6%81%E7%94%A8%E5%9F%9F%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%97%B6%E6%AD%A3%E7%A1%AE%E6%89%A7%E8%A1%8C%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">修改脚本以确保在禁用域重新加载时正确执行：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%AD%97%E6%AE%B5"><span class="toc-number">4.1.1.</span> <span class="toc-text">静态字段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EAnimation-Clip-ReadOnly%E4%B8%8E%E6%B7%BB%E5%8A%A0%E6%9B%B2%E7%BA%BF"><span class="toc-number">5.</span> <span class="toc-text">关于Animation Clip ReadOnly与添加曲线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%94%A8InputSystem%E5%88%B6%E4%BD%9C%E5%8D%95%E5%87%BB%E3%80%81%E5%8F%8C%E5%87%BB%E3%80%81%E9%95%BF%E6%8C%89%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">如何用InputSystem制作单击、双击、长按？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%AC%E8%80%8C%E8%BF%9C%E4%B9%8B%E7%9A%84Layer"><span class="toc-number">7.</span> <span class="toc-text">敬而远之的Layer</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

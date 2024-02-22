@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课时11：No.11模拟面试题 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>课时11：No.11模拟面试题</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-10-12T16:00:00.000Z" id="date"> 2023-10-13</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.943Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">2.6k</div></span></div></div><hr><div id="post-content"><p><strong>C#</strong></p>
+<p><strong>1. 文件中保存了文本信息，但是打开后却是乱码，一般是什么原因造成的？</strong></p>
+<p>我的回答:</p>
+<p>编码解码方式不一致</p>
+<p>答案：</p>
+<p>序列化和反序列化字符串时使用的编码格式不统一</p>
+<p><strong>2. C#中new关键字的作用（至少说出3种）</strong></p>
+<p>我的回答:</p>
+<p>创建一个对象,在堆中开辟空间</p>
+<p>答案：</p>
+<ol>
+<li>创建新对象</li>
+<li>子类函数声明时加上new关键字，可以隐藏掉父类方法</li>
+<li>泛型约束中使用new关键词，表示需要无参构造</li>
+</ol>
+<p><strong>3. 同步方法和异步方法的区别是什么？<br>    异步编程是什么意思？<br>    对于我们来说，什么时候需要使用异步编程？（至少说出3种）</strong></p>
+<p>我的回答:</p>
+<p>异步程序不会卡住主线程,</p>
+<p>当需要加载大型文件,进行网络传输,加载场景时</p>
+<p>答案：</p>
+<p>同步方法：</p>
+<p>当一个方法被调用时，调用者需要等待该方法执行完毕后返回才能继续执行</p>
+<p>异步方法：</p>
+<p>当一个方法被调用时立即返回，并获取一个线程执行该方法内部的逻辑，调用者不用等待该方法执行完毕</p>
+<p>异步编程：</p>
+<p>在日常开发时把一些不需要立即得到结果且耗时的逻辑设置为异步执行，这样可以提高程序的运行效率，避免由于复杂逻辑带来的的线程阻塞</p>
+<p>什么时候需要使用异步编程：</p>
+<ol>
+<li>复杂逻辑计算时，比如寻路算法等</li>
+<li>网络下载、网路通讯</li>
+<li>资源加载时</li>
+</ol>
+<p>等</p>
+<p><strong>4. 回调函数指什么？一般在什么时候使用？（至少说出3种使用场景）</strong></p>
+<p>我的回答:</p>
+<p>一段代码执行完毕,调用的函数</p>
+<p>异步加载</p>
+<p>答案：</p>
+<p>回调函数指在程序设计中，将一个函数作为参数传递给另一个函数，并在另一个函数执行完毕后被调用的函数，在C#中，一般以委托形式出现</p>
+<p>什么时候使用：</p>
+<ol>
+<li>异步编程：异步逻辑执行完毕后，再执行回调函数</li>
+<li>事件中心</li>
+<li>UI界面中的空间逻辑回调，比如按钮点击<br>等等</li>
+</ol>
+<p><strong>5. 如何用一个int变量，记录32种状态？（注意：状态可以并存）</strong></p>
+<p>转换成位,一个int是4字节,32位,每一位记录一个状态</p>
+<p>答案：</p>
+<p>int在C#中占4个字节，共32位<br>我们可以按位记录状态，每一位代表一个状态，1为存在，0为不存在</p>
+<p><strong>Unity</strong></p>
+<p><strong>1. 请解释Unity中的Prefab是什么，以及它在游戏开发中的作用是什么？</strong></p>
+<p>我的回答:</p>
+<p>持久化的游戏对象，可以在游戏中加载</p>
+<p>答案:</p>
+<p>在Unity中，Prefab是一种游戏对象的预制件或者模板。它允许你在编辑器中创建一个游戏对象，并将其保存为Prefab，以便在需要时可以实例化多个相同的对象。当你在场景中使用一个Prefab实例时，它将保留与原始Prefab相同的组件、属性和位置，使得你可以轻松地创建和管理大量相似的游戏对象。</p>
+<p>Prefab在游戏开发中的作用非常重要，因为它们允许你创建可重用的游戏对象，并且可以在开发过程中快速迭代和修改。例如，当你需要在游戏中生成大量相似的敌人时，使用一个敌人Prefab可以使得你仅需创建和修改一个敌人对象，而不必重复编写和调整代码。此外，Prefab还允许你在编辑器中预览和调整游戏对象的属性和组件，使得你可以快速地进行修改和测试，从而加快开发进程。</p>
+<p><strong>2. 在Unity中，什么是Shader？它有什么作用，以及如何编写一个基本的Shader？</strong></p>
+<p>我的回答：</p>
+<p>着色器，可以将图形渲染成不同效果，可以改变在渲染管线中，顶点处理和片元处理的部分内容，使得图形展现不同效果</p>
+<p><strong>3. 在Unity中，什么是常见的性能优化技巧？请举例说明。</strong></p>
+<p>我的回答：</p>
+<p>图集，变量重复利用，mipmap，lod，遮挡剔除</p>
+<p>答案:</p>
+<p>尽量要占用少:</p>
+<p>使用对象池：对象池是一种常见的技术，用于缓存和重复使用游戏对象，而不是频繁地创建和销毁它们。使用对象池可以减少内存分配和垃圾回收的开销，从而提高游戏性能。</p>
+<p>减少资源占用：在开发过程中，应该尽量避免使用过多的高分辨率纹理和复杂的模型。可以使用纹理压缩、减少纹理尺寸、使用轻量级的模型等方式来减小资源占用。</p>
+<p>及时销毁不再使用的对象：当游戏中不再需要使用某些对象时，应该及时销毁它们，以释放它们占用的内存。尤其是一些长时间存在的对象，如粒子系统、音频和视频资源等，都应该及时销毁。</p>
+<p>使用异步加载：如果游戏中需要加载大量的资源，可以使用异步加载技术。异步加载可以减少游戏卡顿和内存占用，从而提高游戏性能。可以使用Unity提供的异步加载API或者自定义异步加载方式来实现异步加载。</p>
+<p>使用资源打包：在打包游戏时，可以使用资源打包技术来减少游戏的内存占用。资源打包可以将多个资源打包成一个单独的文件，从而减小游戏的内存占用。可以使用Unity提供的Asset Bundle功能或者自定义打包方式来实现资源打包。</p>
+<p>尽量要减少GC</p>
+<p>cpu&#x2F;gpu性能:</p>
+<p>减少Draw Call：在Unity中，每次渲染一个物体都会使用一个Draw Call。过多的Draw Call会导致渲染性能下降，因此应该尽量减少它们的数量。可以通过合并网格、使用物体批处理和减少物体数量等方式来减少Draw Call。</p>
+<p>使用级别LOD：如果场景中有大量的物体，可以使用级别LOD技术来优化性能。通过在远离玩家的位置使用低分辨率的网格，可以降低渲染开销，提高性能。</p>
+<p>合理使用资源：在开发过程中，应该尽量避免使用过多的高分辨率纹理和复杂的模型。可以使用纹理压缩、减少纹理尺寸、使用轻量级的模型等方式来减小资源占用。</p>
+<p>使用光照贴图：在游戏中，光照是非常重要的，但是使用动态光照会带来很大的渲染开销。因此，可以使用光照贴图来减少动态光照的数量。光照贴图可以在编辑器中生成，并且可以有效地提高游戏的性能。</p>
+<p>使用对象池：对象池是一种常见的技术，用于缓存和重复使用游戏对象，而不是频繁地创建和销毁它们。使用对象池可以减少内存分配和垃圾回收的开销，从而提高游戏性能。</p>
+<p><strong>4. 在Unity中，什么是协程（Coroutine）？它有什么作用，以及如何使用它？</strong></p>
+<p>我的回答：</p>
+<p>协同程序，可以在不阻挡主线程的情况下运行程序，使用startcoroutine 函数开启协程，协程函数的返回值为 IEnumerator</p>
+<p>答案:</p>
+<p>协程（Coroutine）是一种在Unity中常用的编程技术，用于在运行时控制代码的执行顺序。协程可以将代码执行分为多个阶段，可以在其中暂停和恢复代码执行，从而实现异步执行和任务管理等功能。</p>
+<p>协程的主要作用包括：</p>
+<p>延迟执行：协程可以延迟执行某个任务，从而在指定时间后执行相应的操作。</p>
+<p>异步执行：协程可以在后台执行任务，从而避免卡顿和阻塞主线程。</p>
+<p>任务管理：协程可以管理多个任务，从而实现更灵活和可控的代码执行顺序。</p>
+<p>在Unity中，协程的使用非常简单，可以使用C#的yield语句来实现协程。以下是一个使用协程延迟执行某个操作的示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function">Copy code</span><br><span class="hljs-function">IEnumerator <span class="hljs-title">DelayCoroutine</span>(<span class="hljs-params"><span class="hljs-built_in">float</span> delayTime</span>)</span><br>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">yield</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title">WaitForSeconds</span>(<span class="hljs-params">delayTime</span>)</span>;<br>    Debug.Log(<span class="hljs-string">&quot;Delayed log after &quot;</span> + delayTime + <span class="hljs-string">&quot; seconds&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在上面的示例中，使用了yield return new WaitForSeconds(delayTime)来等待一段时间，然后再执行后续的代码。可以在其他的代码中使用StartCoroutine来启动协程。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">StartCoroutine(DelayCoroutine(<span class="hljs-number">3.0f</span>));<br></code></pre></td></tr></table></figure>
+
+<p>以上代码将会在3秒后输出一条日志信息。通过使用协程，我们可以方便地控制代码执行顺序和实现异步执行等功能</p>
+<p><strong>5. 解释一下Unity中的渲染管线（Rendering Pipeline）是什么，如何使用它，并举例说明它在游戏开发中的应用场景。</strong></p>
+<p>我的回答：</p>
+<p>unity有内置渲染管线，urp渲染管线，可以通过替换渲染管线的方式升级画面</p>
+<p>答案:</p>
+<p>几何图形的准备：将场景中的几何图形转换为渲染引擎可以理解的形式，例如将3D模型转换为网格数据（Mesh）和材质信息。</p>
+<p>光照计算：计算场景中每个几何图形的光照效果，包括直接光照和间接光照。</p>
+<p>视点变换：根据摄像机的位置和方向将场景中的几何图形转换为摄像机的视图空间（View Space）坐标系下的形式。</p>
+<p>投影变换：将摄像机的视图空间坐标系下的几何图形转换为投影坐标系下的形式。</p>
+<p>图像空间计算：将投影坐标系下的几何图形转换为屏幕上的像素坐标。</p>
+<p>着色：根据材质信息和光照信息对几何图形进行着色，计算每个像素的颜色值。</p>
+<p>合成：将所有的像素颜色值按照一定的顺序合成为最终的图像，输出到屏幕上。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/10/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/24%E6%95%A3%E5%88%97%E8%A1%A8(%E5%93%88%E5%B8%8C%E8%A1%A8)%E7%9A%84%E6%9F%A5%E6%89%BE/">← 下一篇 24散列表(哈希表)的查找</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/19%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/">19图的遍历 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

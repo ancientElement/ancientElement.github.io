@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第6节、STL编程 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>第6节、STL编程</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-08-12T16:00:00.000Z" id="date"> 2023-08-13</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.802Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">3.1k</div></span></div></div><hr><div id="post-content"><h2 id="6-1-函数模板"><a href="#6-1-函数模板" class="headerlink" title="6.1 函数模板"></a>6.1 函数模板</h2><h3 id="6-1-1-函数模板语法"><a href="#6-1-1-函数模板语法" class="headerlink" title="6.1.1 函数模板语法"></a>6.1.1 函数模板语法</h3><p>函数模板作用：</p>
+<p>建立一个通用函数，其函数返回值类型和形参类型可以不具体制定，用一个<strong>虚拟的类型</strong>来代表。</p>
+<p><strong>语法：</strong> </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;<br>函数声明或定义<br></code></pre></td></tr></table></figure>
+
+<p><strong>解释：</strong></p>
+<p>template  —  声明创建模板</p>
+<p>typename  — 表面其后面的符号是一种数据类型，可以用class代替</p>
+<p>T    —   通用的数据类型，名称可以替换，通常为大写字母</p>
+<h3 id="6-1-2-函数模板注意事项"><a href="#6-1-2-函数模板注意事项" class="headerlink" title="6.1.2 函数模板注意事项"></a>6.1.2 函数模板注意事项</h3><p>注意事项：</p>
+<ul>
+<li><p>自动类型推导，必须推导出一致的数据类型T,才可以使用</p>
+</li>
+<li><p>模板必须要确定出T的数据类型，才可以使用</p>
+</li>
+</ul>
+<h3 id="6-1-4-普通函数与函数模板的区别"><a href="#6-1-4-普通函数与函数模板的区别" class="headerlink" title="6.1.4 普通函数与函数模板的区别"></a>6.1.4 普通函数与函数模板的区别</h3><p><strong>普通函数与函数模板区别：</strong></p>
+<ul>
+<li>普通函数调用时可以发生自动类型转换（隐式类型转换）</li>
+<li>函数模板调用时，如果利用自动类型推导，不会发生隐式类型转换</li>
+<li>如果利用显示指定类型的方式，可以发生隐式类型转换</li>
+</ul>
+<h3 id="6-1-5-普通函数与函数模板的调用规则"><a href="#6-1-5-普通函数与函数模板的调用规则" class="headerlink" title="6.1.5 普通函数与函数模板的调用规则"></a>6.1.5 普通函数与函数模板的调用规则</h3><p>调用规则如下：</p>
+<ol>
+<li>如果函数模板和普通函数都可以实现，优先调用普通函数</li>
+<li>可以通过空模板参数列表来强制调用函数模板</li>
+<li>函数模板也可以发生重载</li>
+<li>如果函数模板可以产生更好的匹配,优先调用函数模板</li>
+</ol>
+<h3 id="6-1-6-模板的局限性"><a href="#6-1-6-模板的局限性" class="headerlink" title="6.1.6 模板的局限性"></a>6.1.6 模板的局限性</h3><p><strong>局限性：</strong></p>
+<ul>
+<li>模板的通用性并不是万能的</li>
+</ul>
+<p><strong>例如：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">(T a, T b)</span></span><br><span class="hljs-function"></span>&#123; <br>   	a = b;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p>在上述代码中提供的赋值操作，如果传入的a和b是一个数组，就无法实现了</p>
+<p>再例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">(T a, T b)</span></span><br><span class="hljs-function"></span>&#123; <br>   	<span class="hljs-keyword">if</span>(a &gt; b) &#123; ... &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p>在上述代码中，如果T的数据类型传入的是像Person这样的自定义数据类型，也无法正常运行</p>
+<p>因此C++为了解决这种问题，提供模板的重载，可以为这些<strong>特定的类型</strong>提供<strong>具体化的模板</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//具体化，显示具体化的原型和定意思以template&lt;&gt;开头，并通过名称来指出类型</span><br><span class="hljs-comment">//具体化优先于常规模板</span><br><span class="hljs-keyword">template</span>&lt;&gt; <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">myCompare</span><span class="hljs-params">(Person &amp;p1, Person &amp;p2)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">if</span> ( p1.m_Name  == p2.m_Name &amp;&amp; p1.m_Age == p2.m_Age)<br>	&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-2-类模板"><a href="#6-2-类模板" class="headerlink" title="6.2 类模板"></a>6.2 类模板</h2><h4 id="6-2-1-类模板语法"><a href="#6-2-1-类模板语法" class="headerlink" title="6.2.1 类模板语法"></a>6.2.1 类模板语法</h4><p>类模板作用：</p>
+<ul>
+<li>建立一个通用类，类中的成员 数据类型可以不具体制定，用一个<strong>虚拟的类型</strong>来代表。</li>
+</ul>
+<p><strong>语法：</strong> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;<br>类<br></code></pre></td></tr></table></figure>
+
+<p><strong>解释：</strong></p>
+<p>template  —  声明创建模板</p>
+<p>typename  — 表面其后面的符号是一种数据类型，可以用class代替</p>
+<p>T    —   通用的数据类型，名称可以替换，通常为大写字母</p>
+<h4 id="6-2-2-类模板与函数模板区别"><a href="#6-2-2-类模板与函数模板区别" class="headerlink" title="6.2.2 类模板与函数模板区别"></a>6.2.2 类模板与函数模板区别</h4><p>类模板与函数模板区别主要有两点：</p>
+<ol>
+<li>类模板没有自动类型推导的使用方式</li>
+<li>类模板在模板参数列表中可以有默认参数</li>
+</ol>
+<h4 id="6-2-3-类模板中成员函数创建时机"><a href="#6-2-3-类模板中成员函数创建时机" class="headerlink" title="6.2.3 类模板中成员函数创建时机"></a>6.2.3 类模板中成员函数创建时机</h4><p>类模板中成员函数和普通类中成员函数创建时机是有区别的：</p>
+<ul>
+<li>普通类中的成员函数一开始就可以创建</li>
+<li>类模板中的成员函数在调用时才创建</li>
+</ul>
+<h4 id="6-2-4-类模板对象做函数参数"><a href="#6-2-4-类模板对象做函数参数" class="headerlink" title="6.2.4 类模板对象做函数参数"></a>6.2.4 类模板对象做函数参数</h4><p>学习目标：</p>
+<ul>
+<li>类模板实例化出的对象，向函数传参的方式</li>
+</ul>
+<p>一共有三种传入方式：</p>
+<ol>
+<li>指定传入的类型   — 直接显示对象的数据类型</li>
+<li>参数模板化           — 将对象中的参数变为模板进行传递</li>
+<li>整个类模板化       — 将这个对象类型 模板化进行传递</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//1、指定传入的类型</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printPerson1</span><span class="hljs-params">(Person&lt;string, <span class="hljs-type">int</span>&gt; &amp;p)</span> </span><br><span class="hljs-function"></span>&#123;<br>	p.<span class="hljs-built_in">showPerson</span>();<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test01</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	Person &lt;string, <span class="hljs-type">int</span> &gt;<span class="hljs-built_in">p</span>(<span class="hljs-string">&quot;孙悟空&quot;</span>, <span class="hljs-number">100</span>);<br>	<span class="hljs-built_in">printPerson1</span>(p);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//2、参数模板化</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printPerson2</span><span class="hljs-params">(Person&lt;T1, T2&gt;&amp;p)</span></span><br><span class="hljs-function"></span>&#123;<br>	p.<span class="hljs-built_in">showPerson</span>();<br>	cout &lt;&lt; <span class="hljs-string">&quot;T1的类型为： &quot;</span> &lt;&lt; <span class="hljs-built_in">typeid</span>(T1).<span class="hljs-built_in">name</span>() &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;T2的类型为： &quot;</span> &lt;&lt; <span class="hljs-built_in">typeid</span>(T2).<span class="hljs-built_in">name</span>() &lt;&lt; endl;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test02</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	Person &lt;string, <span class="hljs-type">int</span> &gt;<span class="hljs-built_in">p</span>(<span class="hljs-string">&quot;猪八戒&quot;</span>, <span class="hljs-number">90</span>);<br>	<span class="hljs-built_in">printPerson2</span>(p);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//3、整个类模板化</span><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printPerson3</span><span class="hljs-params">(T &amp; p)</span></span><br><span class="hljs-function"></span>&#123;<br>	cout &lt;&lt; <span class="hljs-string">&quot;T的类型为： &quot;</span> &lt;&lt; <span class="hljs-built_in">typeid</span>(T).<span class="hljs-built_in">name</span>() &lt;&lt; endl;<br>	p.<span class="hljs-built_in">showPerson</span>();<br><br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test03</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	Person &lt;string, <span class="hljs-type">int</span> &gt;<span class="hljs-built_in">p</span>(<span class="hljs-string">&quot;唐僧&quot;</span>, <span class="hljs-number">30</span>);<br>	<span class="hljs-built_in">printPerson3</span>(p);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<ul>
+<li>通过类模板创建的对象，可以有三种方式向函数中进行传参</li>
+<li>使用比较广泛是第一种：指定传入的类型</li>
+</ul>
+<h4 id="6-2-5-类模板与继承"><a href="#6-2-5-类模板与继承" class="headerlink" title="6.2.5 类模板与继承"></a>6.2.5 类模板与继承</h4><p>当类模板碰到继承时，需要注意一下几点：</p>
+<ul>
+<li>当子类继承的父类是一个类模板时，子类在声明的时候，要指定出父类中T的类型</li>
+<li>如果不指定，编译器无法给子类分配内存</li>
+<li>如果想灵活指定出父类中T的类型，子类也需变为类模板</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Base</span><br>&#123;<br>	T m;<br>&#125;;<br><br><span class="hljs-comment">//class Son:public Base  //错误，c++编译需要给子类分配内存，必须知道父类中T的类型才可以向下继承</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Son</span> :<span class="hljs-keyword">public</span> Base&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-comment">//必须指定一个类型</span><br>&#123;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="6-2-6-类模板成员函数类外实现"><a href="#6-2-6-类模板成员函数类外实现" class="headerlink" title="6.2.6 类模板成员函数类外实现"></a>6.2.6 类模板成员函数类外实现</h4><p>学习目标：能够掌握类模板中的成员函数类外实现</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-comment">//类模板中成员函数类外实现</span><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-comment">//成员函数类内声明</span><br>	<span class="hljs-built_in">Person</span>(T1 name, T2 age);<br>	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showPerson</span><span class="hljs-params">()</span></span>;<br><br><span class="hljs-keyword">public</span>:<br>	T1 m_Name;<br>	T2 m_Age;<br>&#125;;<br><br><span class="hljs-comment">//构造函数 类外实现</span><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt;<br>Person&lt;T1, T2&gt;::<span class="hljs-built_in">Person</span>(T1 name, T2 age) &#123;<br>	<span class="hljs-keyword">this</span>-&gt;m_Name = name;<br>	<span class="hljs-keyword">this</span>-&gt;m_Age = age;<br>&#125;<br><br><span class="hljs-comment">//成员函数 类外实现</span><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt;<br><span class="hljs-type">void</span> Person&lt;T1, T2&gt;::<span class="hljs-built_in">showPerson</span>() &#123;<br>	cout &lt;&lt; <span class="hljs-string">&quot;姓名: &quot;</span> &lt;&lt; <span class="hljs-keyword">this</span>-&gt;m_Name &lt;&lt; <span class="hljs-string">&quot; 年龄:&quot;</span> &lt;&lt; <span class="hljs-keyword">this</span>-&gt;m_Age &lt;&lt; endl;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>总结：类模板中成员函数类外实现时，需要加上模板参数列表</p>
+<h4 id="6-2-7-类模板分文件编写"><a href="#6-2-7-类模板分文件编写" class="headerlink" title="6.2.7 类模板分文件编写"></a>6.2.7 类模板分文件编写</h4><p>学习目标：</p>
+<ul>
+<li>掌握类模板成员函数分文件编写产生的问题以及解决方式</li>
+</ul>
+<p>问题：</p>
+<ul>
+<li>类模板中成员函数创建时机是在调用阶段，导致分文件编写时链接不到</li>
+</ul>
+<p>解决：</p>
+<ul>
+<li>解决方式1：直接包含.cpp源文件</li>
+<li>解决方式2：将声明和实现写到同一个文件中，并更改后缀名为.hpp，hpp是约定的名称，并不是强制</li>
+</ul>
+<p><strong>实例：</strong></p>
+<p>person.hpp中代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">Person</span>(T1 name, T2 age);<br>	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showPerson</span><span class="hljs-params">()</span></span>;<br><span class="hljs-keyword">public</span>:<br>	T1 m_Name;<br>	T2 m_Age;<br>&#125;;<br><br><span class="hljs-comment">//构造函数 类外实现</span><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt;<br>Person&lt;T1, T2&gt;::<span class="hljs-built_in">Person</span>(T1 name, T2 age) &#123;<br>	<span class="hljs-keyword">this</span>-&gt;m_Name = name;<br>	<span class="hljs-keyword">this</span>-&gt;m_Age = age;<br>&#125;<br><br><span class="hljs-comment">//成员函数 类外实现</span><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt;<br><span class="hljs-type">void</span> Person&lt;T1, T2&gt;::<span class="hljs-built_in">showPerson</span>() &#123;<br>	cout &lt;&lt; <span class="hljs-string">&quot;姓名: &quot;</span> &lt;&lt; <span class="hljs-keyword">this</span>-&gt;m_Name &lt;&lt; <span class="hljs-string">&quot; 年龄:&quot;</span> &lt;&lt; <span class="hljs-keyword">this</span>-&gt;m_Age &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>总结：主流的解决方式是第二种，将类模板成员函数写到一起，并将后缀名改为.hpp</p>
+<h4 id="6-2-8-类模板与友元"><a href="#6-2-8-类模板与友元" class="headerlink" title="6.2.8 类模板与友元"></a>6.2.8 类模板与友元</h4><p>学习目标：</p>
+<ul>
+<li>掌握类模板配合友元函数的类内和类外实现</li>
+</ul>
+<p>全局函数类内实现 - 直接在类内声明友元即可</p>
+<p>全局函数类外实现 - 需要提前让编译器知道全局函数的存在</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-comment">//2、全局函数配合友元  类外实现 - 先做函数模板声明，下方在做函数模板定义，在做友元</span><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt; <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span>;<br><br><span class="hljs-comment">//如果声明了函数模板，可以将实现写到后面，否则需要将实现体写到类的前面让编译器提前看到</span><br><span class="hljs-comment">//template&lt;class T1, class T2&gt; void printPerson2(Person&lt;T1, T2&gt; &amp; p); </span><br><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> T1, <span class="hljs-keyword">class</span> T2&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printPerson2</span><span class="hljs-params">(Person&lt;T1, T2&gt; &amp; p)</span></span><br><span class="hljs-function"></span>&#123;<br>	cout &lt;&lt; <span class="hljs-string">&quot;类外实现 ---- 姓名： &quot;</span> &lt;&lt; p.m_Name &lt;&lt; <span class="hljs-string">&quot; 年龄：&quot;</span> &lt;&lt; p.m_Age &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>&#123;<br>	<span class="hljs-comment">//1、全局函数配合友元   类内实现</span><br>	<span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-type">void</span> <span class="hljs-title">printPerson</span><span class="hljs-params">(Person&lt;T1, T2&gt; &amp; p)</span></span><br><span class="hljs-function">	</span>&#123;<br>		cout &lt;&lt; <span class="hljs-string">&quot;姓名： &quot;</span> &lt;&lt; p.m_Name &lt;&lt; <span class="hljs-string">&quot; 年龄：&quot;</span> &lt;&lt; p.m_Age &lt;&lt; endl;<br>	&#125;<br><br><br>	<span class="hljs-comment">//全局函数配合友元  类外实现</span><br>	<span class="hljs-keyword">friend</span> <span class="hljs-type">void</span> printPerson2&lt;&gt;(Person&lt;T1, T2&gt; &amp; p);<br><br><span class="hljs-keyword">public</span>:<br><br>	<span class="hljs-built_in">Person</span>(T1 name, T2 age)<br>	&#123;<br>		<span class="hljs-keyword">this</span>-&gt;m_Name = name;<br>		<span class="hljs-keyword">this</span>-&gt;m_Age = age;<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-3-STL初识"><a href="#6-3-STL初识" class="headerlink" title="6.3 STL初识"></a>6.3 STL初识</h2><h3 id="6-32-1-STL的诞生"><a href="#6-32-1-STL的诞生" class="headerlink" title="6.32.1 STL的诞生"></a>6.32.1 STL的诞生</h3><ul>
+<li><p>长久以来，软件界一直希望建立一种可重复利用的东西</p>
+</li>
+<li><p>C++的<strong>面向对象</strong>和<strong>泛型编程</strong>思想，目的就是<strong>复用性的提升</strong></p>
+</li>
+<li><p>大多情况下，数据结构和算法都未能有一套标准,导致被迫从事大量重复工作</p>
+</li>
+<li><p>为了建立数据结构和算法的一套标准,诞生了<strong>STL</strong></p>
+</li>
+</ul>
+<h3 id="2-2-STL基本概念"><a href="#2-2-STL基本概念" class="headerlink" title="2.2 STL基本概念"></a>2.2 STL基本概念</h3><ul>
+<li>STL(Standard Template Library,<strong>标准模板库</strong>)</li>
+<li>STL 从广义上分为: <strong>容器(container) 算法(algorithm) 迭代器(iterator)</strong></li>
+<li><strong>容器</strong>和<strong>算法</strong>之间通过<strong>迭代器</strong>进行无缝连接。</li>
+<li>STL 几乎所有的代码都采用了模板类或者模板函数</li>
+</ul>
+<h3 id="2-3-STL六大组件"><a href="#2-3-STL六大组件" class="headerlink" title="2.3 STL六大组件"></a>2.3 STL六大组件</h3><p>STL大体分为六大组件，分别是:<strong>容器、算法、迭代器、仿函数、适配器（配接器）、空间配置器</strong></p>
+<ol>
+<li>容器：各种数据结构，如vector、list、deque、set、map等,用来存放数据。</li>
+<li>算法：各种常用的算法，如sort、find、copy、for_each等</li>
+<li>迭代器：扮演了容器与算法之间的胶合剂。</li>
+<li>仿函数：行为类似函数，可作为算法的某种策略。</li>
+<li>适配器：一种用来修饰容器或者仿函数或迭代器接口的东西。</li>
+<li>空间配置器：负责空间的配置与管理。</li>
+</ol>
+<h3 id="2-4-STL中容器、算法、迭代器"><a href="#2-4-STL中容器、算法、迭代器" class="headerlink" title="2.4  STL中容器、算法、迭代器"></a>2.4  STL中容器、算法、迭代器</h3><p><strong>容器：</strong>置物之所也</p>
+<p>STL<strong>容器</strong>就是将运用<strong>最广泛的一些数据结构</strong>实现出来</p>
+<p>常用的数据结构：数组, 链表,树, 栈, 队列, 集合, 映射表 等</p>
+<p>这些容器分为<strong>序列式容器</strong>和<strong>关联式容器</strong>两种:</p>
+<p>​	<strong>序列式容器</strong>:强调值的排序，序列式容器中的每个元素均有固定的位置。<br>​	<strong>关联式容器</strong>:二叉树结构，各元素之间没有严格的物理上的顺序关系</p>
+<p><strong>算法：</strong>问题之解法也</p>
+<p>有限的步骤，解决逻辑或数学上的问题，这一门学科我们叫做算法(Algorithms)</p>
+<p>算法分为:<strong>质变算法</strong>和<strong>非质变算法</strong>。</p>
+<p>质变算法：是指运算过程中会更改区间内的元素的内容。例如拷贝，替换，删除等等</p>
+<p>非质变算法：是指运算过程中不会更改区间内的元素内容，例如查找、计数、遍历、寻找极值等等</p>
+<p><strong>迭代器：</strong>容器和算法之间粘合剂</p>
+<p>提供一种方法，使之能够依序寻访某个容器所含的各个元素，而又无需暴露该容器的内部表示方式。</p>
+<p>每个容器都有自己专属的迭代器</p>
+<p>迭代器使用非常类似于指针，初学阶段我们可以先理解迭代器为指针</p>
+<p>迭代器种类：</p>
+<table>
+<thead>
+<tr>
+<th>种类</th>
+<th>功能</th>
+<th>支持运算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入迭代器</td>
+<td>对数据的只读访问</td>
+<td>只读，支持++、&#x3D;&#x3D;、！&#x3D;</td>
+</tr>
+<tr>
+<td>输出迭代器</td>
+<td>对数据的只写访问</td>
+<td>只写，支持++</td>
+</tr>
+<tr>
+<td>前向迭代器</td>
+<td>读写操作，并能向前推进迭代器</td>
+<td>读写，支持++、&#x3D;&#x3D;、！&#x3D;</td>
+</tr>
+<tr>
+<td>双向迭代器</td>
+<td>读写操作，并能向前和向后操作</td>
+<td>读写，支持++、–，</td>
+</tr>
+<tr>
+<td>随机访问迭代器</td>
+<td>读写操作，可以以跳跃的方式访问任意数据，功能最强的迭代器</td>
+<td>读写，支持++、–、[n]、-n、&lt;、&lt;&#x3D;、&gt;、&gt;&#x3D;</td>
+</tr>
+</tbody></table>
+<p>常用的容器中迭代器种类为双向迭代器，和随机访问迭代器</p>
+<h3 id="2-5-容器算法迭代器初识"><a href="#2-5-容器算法迭代器初识" class="headerlink" title="2.5 容器算法迭代器初识"></a>2.5 容器算法迭代器初识</h3><p>了解STL中容器、算法、迭代器概念之后，我们利用代码感受STL的魅力</p>
+<p>STL中最常用的容器为Vector，可以理解为数组，下面我们将学习如何向这个容器中插入数据、并遍历这个容器</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/08/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E5%B7%A6%E7%A8%8B%E4%BA%91/1.%20%E8%AE%A4%E8%AF%86%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%AE%80%E5%8D%95%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E3%80%82/">← 下一篇 1. 认识复杂度和简单排序算法。</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/08/13/cpp/cpp%E5%9F%BA%E7%A1%80/%E7%AC%AC7%E8%8A%82%E3%80%81STL-%20%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8/">第7节、STL- 常用容器 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.</span> <span class="toc-text">6.1 函数模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-1-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">6.1.1 函数模板语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-2-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.</span> <span class="toc-text">6.1.2 函数模板注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-4-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text">6.1.4 普通函数与函数模板的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-5-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E7%9A%84%E8%B0%83%E7%94%A8%E8%A7%84%E5%88%99"><span class="toc-number">1.4.</span> <span class="toc-text">6.1.5 普通函数与函数模板的调用规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-6-%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">1.5.</span> <span class="toc-text">6.1.6 模板的局限性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%B1%BB%E6%A8%A1%E6%9D%BF"><span class="toc-number">2.</span> <span class="toc-text">6.2 类模板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="toc-number">2.0.1.</span> <span class="toc-text">6.2.1 类模板语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-2-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%8E%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%8C%BA%E5%88%AB"><span class="toc-number">2.0.2.</span> <span class="toc-text">6.2.2 类模板与函数模板区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-3-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%AD%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%88%9B%E5%BB%BA%E6%97%B6%E6%9C%BA"><span class="toc-number">2.0.3.</span> <span class="toc-text">6.2.3 类模板中成员函数创建时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-4-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%AF%B9%E8%B1%A1%E5%81%9A%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-number">2.0.4.</span> <span class="toc-text">6.2.4 类模板对象做函数参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-5-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="toc-number">2.0.5.</span> <span class="toc-text">6.2.5 类模板与继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-6-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%B1%BB%E5%A4%96%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.0.6.</span> <span class="toc-text">6.2.6 类模板成员函数类外实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-7-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%88%86%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="toc-number">2.0.7.</span> <span class="toc-text">6.2.7 类模板分文件编写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-8-%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%8E%E5%8F%8B%E5%85%83"><span class="toc-number">2.0.8.</span> <span class="toc-text">6.2.8 类模板与友元</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-STL%E5%88%9D%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">6.3 STL初识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-32-1-STL%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="toc-number">3.1.</span> <span class="toc-text">6.32.1 STL的诞生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-STL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 STL基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-STL%E5%85%AD%E5%A4%A7%E7%BB%84%E4%BB%B6"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 STL六大组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-STL%E4%B8%AD%E5%AE%B9%E5%99%A8%E3%80%81%E7%AE%97%E6%B3%95%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">3.4.</span> <span class="toc-text">2.4  STL中容器、算法、迭代器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%AE%B9%E5%99%A8%E7%AE%97%E6%B3%95%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%88%9D%E8%AF%86"><span class="toc-number">3.5.</span> <span class="toc-text">2.5 容器算法迭代器初识</span></a></li></ol></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

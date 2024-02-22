@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>数据持久化：JSON | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>数据持久化：JSON</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-05-23T16:00:00.000Z" id="date"> 2023-05-24</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.823Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">543</div></span></div></div><hr><div id="post-content"><h2 id="1-存储读取数据"><a href="#1-存储读取数据" class="headerlink" title="1.存储读取数据"></a>1.存储读取数据</h2><p><strong>储存文本文件到本地</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs">File.WriteAllText(Application.persistentDataPath + <span class="hljs-string">&quot;/Test.json&quot;</span>,<span class="hljs-string">&quot;保存的字符串&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ol>
+<li>File: 属于System.IO命名空间</li>
+<li>Application.persistentDataPath: 可读写的路径</li>
+</ol>
+<p><strong>读取文本文件</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-built_in">string</span> srt = File.ReadAllText(Application.persistentDataPath + <span class="hljs-string">&quot;/Test.json&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-序列化JsonUlity"><a href="#2-序列化JsonUlity" class="headerlink" title="2.序列化JsonUlity"></a>2.序列化JsonUlity</h2><p><strong>转化成JSON</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-built_in">string</span> str = JsonUlity.ToJson(t);<span class="hljs-comment">//传入对象</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ol>
+<li>&#x3D;&#x3D;自定义的类&#x3D;&#x3D;需要加上[Systm.Serializable]</li>
+<li>序列化私有变量需要加上[Serializfiled]</li>
+<li>JsonUtlity不支持&#x3D;&#x3D;字典&#x3D;&#x3D;的序列化</li>
+<li>JsonUtlity储存null时不会是null而是&#x3D;&#x3D;默认数据&#x3D;&#x3D;</li>
+</ol>
+<h2 id="3-反序列化JsonUlity"><a href="#3-反序列化JsonUlity" class="headerlink" title="3.反序列化JsonUlity"></a>3.反序列化JsonUlity</h2><p><strong>JSON转化成类对象</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs">T temp =  JsonUlity.FromJson&lt;T&gt;();<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ol>
+<li><p>无法直接读取&#x3D;&#x3D;数据集合&#x3D;&#x3D;</p>
+</li>
+<li><p>需要用一个对象包裹才行</p>
+</li>
+<li><p>必须用&#x3D;&#x3D;UTF-8&#x3D;&#x3D;才行</p>
+<p class='item-img' data-src='/image-20230502175022681.png'><img src="/image-20230502175022681.png" alt="image-20230502175022681"><img src="/image-20230502175030142.png" alt="image-20230502175030142">0502175030142.png)</p>
+</li>
+</ol>
+<h2 id="4-LitJson序列化"><a href="#4-LitJson序列化" class="headerlink" title="4. LitJson序列化"></a>4. LitJson序列化</h2><p><strong>转化成JSON</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-built_in">string</span> str = JsonMapper.ToJson(t);<span class="hljs-comment">//传入对象</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ol>
+<li>支持字典</li>
+<li>不需要加serialziable</li>
+<li>支持null</li>
+<li>&#x3D;&#x3D;不支持私有变量&#x3D;&#x3D;</li>
+<li>序列化时有坑 字典如果&#x3D;&#x3D;键&#x3D;&#x3D;&#x3D;&#x3D;是数字类型 会转化成字符串类型&#x3D;&#x3D;</li>
+</ol>
+<h2 id="5-LitJson反序列化"><a href="#5-LitJson反序列化" class="headerlink" title="5. LitJson反序列化"></a>5. LitJson反序列化</h2><p><strong>JSON转化成类对象</strong></p>
+<ol>
+<li>JsonData类型接受数据</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs">JsonData jsonData = JsonMapper.ToObject(jsonStr); <br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>泛型接受数据</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs">T jsonData = JsonMapper.ToObject&lt;T&gt;(jsonStr);<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ol>
+<li><p>序列化时类结构需要&#x3D;&#x3D;有无参构造&#x3D;&#x3D;函数否则会报错,写有参构造行数会顶掉无参构造函数,因为反序列化时会用的无参构造函数</p>
+</li>
+<li><p>序列化时有坑 字典如果&#x3D;&#x3D;键是数字类型&#x3D;&#x3D; 会转化成字符串类型,反序列化时对应不上会报错</p>
+</li>
+<li><p>可以直接读取数据集合</p>
+</li>
+<li><p>JOSN最后&#x3D;&#x3D;不要加逗号&#x3D;&#x3D;</p>
+</li>
+<li><p>UTF-8</p>
+</li>
+<li><p>可以读取&#x3D;&#x3D;数据集合&#x3D;&#x3D;</p>
+</li>
+</ol>
+<h2 id="6-对比JsonUtilty和LitJson"><a href="#6-对比JsonUtilty和LitJson" class="headerlink" title="6.对比JsonUtilty和LitJson"></a>6.对比JsonUtilty和LitJson</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>LitJson</th>
+<th>JsonUtilty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自定义类</td>
+<td>不需要加特性</td>
+<td>需要加特性</td>
+</tr>
+<tr>
+<td>私有变量</td>
+<td>不支持</td>
+<td>支特（加特性）</td>
+</tr>
+<tr>
+<td>字典</td>
+<td>支持</td>
+<td>不支特</td>
+</tr>
+<tr>
+<td>数据反序列化为数据集合</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>自定义类构造函数</td>
+<td>&#x3D;&#x3D;要求有无参构造&#x3D;&#x3D;</td>
+<td>不要求</td>
+</tr>
+<tr>
+<td>nu11</td>
+<td>&#x3D;&#x3D;存 nu11&#x3D;&#x3D;</td>
+<td>存储默认值</td>
+</tr>
+</tbody></table>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/06/04/unity/%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6/02.%E7%BC%93%E5%AD%98%E6%B1%A0/">← 下一篇 02.缓存池</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/05/24/unity/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6/">数据持久化：二进制 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AD%98%E5%82%A8%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text">1.存储读取数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BA%8F%E5%88%97%E5%8C%96JsonUlity"><span class="toc-number">2.</span> <span class="toc-text">2.序列化JsonUlity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96JsonUlity"><span class="toc-number">3.</span> <span class="toc-text">3.反序列化JsonUlity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-LitJson%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">4. LitJson序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-LitJson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">5. LitJson反序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%AF%B9%E6%AF%94JsonUtilty%E5%92%8CLitJson"><span class="toc-number">6.</span> <span class="toc-text">6.对比JsonUtilty和LitJson</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

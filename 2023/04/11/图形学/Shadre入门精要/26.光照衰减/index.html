@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>26.光照衰减 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>26.光照衰减</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-04-10T16:00:00.000Z" id="date"> 2023-04-11</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.883Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">862</div></span></div></div><hr><div id="post-content"><h2 id="Unity中的光照衰减"><a href="#Unity中的光照衰减" class="headerlink" title="Unity中的光照衰减"></a><strong>Unity中的光照衰减</strong></h2><p>Unity在内部使用一张名为<code>_LightTexture0</code>的纹理来计算光源衰减，好处在于计算衰减不依赖于复杂的数学公式。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-keyword">fixed</span> atten = tex2D(_LightTexture0, dot(lightCoord, lightCoord).rr).UNITY_ATTEN_CHANNEL;   <br></code></pre></td></tr></table></figure>
+
+<p>在对光照纹理进行采样得到光照衰减值之前，先得到&#x3D;&#x3D;光照空间的坐标信息&#x3D;&#x3D;<code>lightCoord</code>，是通过将世界空间中的坐标信息转换到光照空间实现的</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">float3 lightCoord=mul(_LightMatrix0,float4(i.worldPos,1)).xyz; <br></code></pre></td></tr></table></figure>
+
+<h2 id="Unity中的阴影"><a href="#Unity中的阴影" class="headerlink" title="Unity中的阴影"></a><strong>Unity中的阴影</strong></h2><p>Unity中可以使一个物体向其他物体投射阴影，以及让一个物体接收其他物体的阴影，从而使场景看起来更加真实。</p>
+<p><strong>不透明物体的阴影</strong><br>Unity中通过设置物体<strong>MeshRenderer</strong>中的 <strong>Cast Shadows</strong>和 <strong>Receive Shadows</strong>可以使物体投射或接收阴影。</p>
+<h2 id="让物体投射阴影"><a href="#让物体投射阴影" class="headerlink" title="让物体投射阴影"></a><strong>让物体投射阴影</strong></h2><p>设置Mesh Renderer的<code>Cast Shadows</code>为On，Unity会将该物体加入到光源的阴影映射纹理的计算中，使其他物体在对阴影映射纹理采样时得到该物体的信息。例如该场景中：</p>
+<p class='item-img' data-src='/2002/01/01/images/v2-eaa7fa651bae33d56120346de7b950e6_720w.webp'><img src="/2002/01/01/images/v2-eaa7fa651bae33d56120346de7b950e6_720w.webp" alt="img"></p>
+<p>设置Cube的Cast Shadows为On，勾选Plane的<code>Receive Shadows</code></p>
+<p class='item-img' data-src='/2002/01/01/images/v2-6e21e7febcde67d2cf34cafe88f8c0d7_720w.png'><img src="/2002/01/01/images/v2-6e21e7febcde67d2cf34cafe88f8c0d7_720w.png" alt="img"></p>
+<p>Cube所应用的材质挂载的Shader为上述”Custom&#x2F;Specular-Fragment-BlinnPhong”，该Shader中并没有一个专门的Pass为 “LightMode”&#x3D;”ShadowCaster”来实现阴影的处理，而能投射的阴影的原因在于 **FallBack “Specular”**语义，Specular本身也没有这样的Pass，而Specular的 **Fallback “VertexLit”**包含对应的Pass。在开启Cast Shadows后Unity会在Shader和回调的Shader中一直寻找对应Pass并处理阴影映射纹理计算。<br>物体的Mesh Renderer中的Cast Shadows还可以设置为 <strong>Two Sided</strong>,允许对物体所有的面都加入到阴影映射纹理的计算中。</p>
+<h2 id="让物体接收阴影"><a href="#让物体接收阴影" class="headerlink" title="让物体接收阴影"></a><strong>让物体接收阴影</strong></h2><p>物体接受阴影，需要对阴影纹理进行采样和相应的计算，需要用到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">#include&quot;AutoLight.cginc&quot;<br>SHADOW_COORDS()<br>TRTANSFER_SHADOW<br>SHADOW_ATTENUATION()//该宏的作用是声明一个用于对阴影纹理采样的坐标,这个宏的参数是下一个可用的插值寄存器的索引值，上述中为2<br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/2002/01/01/images/image-20230430170103335.png'><img src="/2002/01/01/images/image-20230430170103335.png" alt="image-20230430170103335"></p>
+<h2 id="透明度物体的阴影"><a href="#透明度物体的阴影" class="headerlink" title="透明度物体的阴影"></a><strong>透明度物体的阴影</strong></h2><p>Unity中物体想要投射阴影，必须在其Shader中提供<strong>ShadowCaster</strong>的Pass。对于大部分不透明的物体来说， &#x3D;&#x3D;<strong>FallBack</strong>设置为 <strong>VertexLit</strong>&#x3D;&#x3D;就可以得到正确的阴影。对于透明物体来说，其透明效果的实现使用透明度测试和透明度混合得到，需要小心设置这些物体的FallBack。</p>
+<ol>
+<li><p>引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 传送\">#include &quot;Lighting.cginc&quot; //一定要引入<br>#include &quot;AutoLight.cginc&quot;//一定要引入<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>struct v2f</code> 申明阴影坐标</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs">SHADOW_COORDS(<span class="hljs-number">3</span>) <span class="hljs-comment">//阴影纹理坐标 3是因为我们已经占用了 TEXCOORD TEXCOORD1 TEXCOORD2 这意味阴影纹理坐标占用了 TEXCOORD4</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>v2f vert(a2v v)</code><em>计算并传递阴影纹理给片元着色器</em></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//计算并传递阴影纹理给片元着色器</span><br>TRANSFER_SHADOW(o);<br><span class="hljs-keyword">return</span> f;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>fixed4 frag(v2f i) :SV_Target</code></p>
+<p>atten不要申明 是输出值</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//计算阴影和衰减</span><br>UNITY_LIGHT_ATTENUATION(atten, i, i.worldPos);<br><span class="hljs-keyword">return</span> fixed4(ambient + diffuse * atten, <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>更改Fallback “VertexLit”</p>
+</li>
+<li><p>得到左边物体</p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230430170744996.png'><img src="/2002/01/01/images/image-20230430170744996.png" alt="image-20230430170744996"></p>
+</li>
+</ol>
+<p>可以看到，透明镂空部分的阴影仍然完整，看起来CUBE和普通CUBE一样。这是由于 <strong>VertexLit</strong>中提供的 <strong>ShadowCaster</strong>Pass中并没有处理透明度测试的计算。<br>Unity中提供了对应的Pass，具有透明度测试功能的 <strong>ShadowCaster</strong> ,若将FallBack改为 <strong>“Transparent&#x2F;Cutout&#x2F;VertexLit”</strong> ，得到效果右边物体</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/04/11/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shadre%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/25.%E5%A4%8D%E6%9D%82%E5%85%89%E7%85%A7/">← 下一篇 25.复杂光照</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/04/11/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shadre%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/27.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86/">27.高级纹理 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity%E4%B8%AD%E7%9A%84%E5%85%89%E7%85%A7%E8%A1%B0%E5%87%8F"><span class="toc-number">1.</span> <span class="toc-text">Unity中的光照衰减</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity%E4%B8%AD%E7%9A%84%E9%98%B4%E5%BD%B1"><span class="toc-number">2.</span> <span class="toc-text">Unity中的阴影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A9%E7%89%A9%E4%BD%93%E6%8A%95%E5%B0%84%E9%98%B4%E5%BD%B1"><span class="toc-number">3.</span> <span class="toc-text">让物体投射阴影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A9%E7%89%A9%E4%BD%93%E6%8E%A5%E6%94%B6%E9%98%B4%E5%BD%B1"><span class="toc-number">4.</span> <span class="toc-text">让物体接收阴影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%8F%E6%98%8E%E5%BA%A6%E7%89%A9%E4%BD%93%E7%9A%84%E9%98%B4%E5%BD%B1"><span class="toc-number">5.</span> <span class="toc-text">透明度物体的阴影</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

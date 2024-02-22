@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>API</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2022-11-14T16:00:00.000Z" id="date"> 2022-11-15</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.817Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">2k</div></span></div></div><hr><div id="post-content"><h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><p>获取组件</p>
+<ul>
+<li><p><code>this.GetComponent&lt;组件名&gt;() </code>获取单个组件</p>
+<blockquote>
+<p>有些组件可直接获取如 <code>transform</code> <code>tag</code> <code>gameObject</code></p>
+</blockquote>
+</li>
+<li><p><code>this.GetComponents&lt;Components&gt;() </code>获取所有Components组件</p>
+</li>
+<li><p><code>this.GetComponentsInChildren&lt;MeshRenderer&gt;()</code></p>
+<p> 加s  从自身开始查找组件找到所有子代<code>MeshRenderer</code>组件</p>
+</li>
+<li><p><code>this.GetComponentInChildren&lt;MeshRenderer&gt;()</code></p>
+<p> 不加s  从自身开始查找组件只找一个距离最近的<code>MeshRenderer</code>组件</p>
+</li>
+<li><p>还有<code>this.GetParent&lt;组件名&gt;()</code>等…</p>
+</li>
+</ul>
+<h2 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h2><p>变换 位置 旋转 缩放 设置查找 父、子物体</p>
+<ul>
+<li><p><code>this.transform </code>获取子组件Transform 不包括孙子代</p>
+</li>
+<li><p><code>this.transform.position </code>获取相对于世界坐标系的位置</p>
+</li>
+<li><p><code>this.transform.localPosition </code>获取相对于父物体的位置</p>
+</li>
+<li><p><code>this.transform.parent</code></p>
+<p> 获取父物体</p>
+</li>
+<li><p>绕着一点旋转</p>
+<p> <code>  this.transform.RotateAround(Vector3.zero, Vector3.forward, 1);</code></p>
+</li>
+</ul>
+<ul>
+<li><p>setParent</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//设置父物体  position视为世界坐标</span><br><span class="hljs-keyword">this</span>.transform.SetParent(tf, <span class="hljs-literal">true</span>);<br><span class="hljs-comment">//设置父物体 position视为localPosition</span><br><span class="hljs-keyword">this</span>.transform.SetParent(tf, <span class="hljs-literal">false</span>);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>find</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#">Transform childTF = <span class="hljs-keyword">this</span>.transform.Find(<span class="hljs-string">&quot;Cube&quot;</span>);<span class="hljs-comment">//查找一个亲儿子</span><br>            Transform childTF2 = <span class="hljs-keyword">this</span>.transform.Find(<span class="hljs-string">&quot;Cube/aa/bb&quot;</span>);<span class="hljs-comment">//查找一个很孙子的物体</span><br>            Transform childTF3 = <span class="hljs-keyword">this</span>.transform.GetChild(<span class="hljs-number">0</span>);<span class="hljs-comment">//</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="GameObject"><a href="#GameObject" class="headerlink" title="GameObject"></a>GameObject</h2><p>有 <code>GameObject</code></p>
+<blockquote>
+<p><code>GameObject</code> 游戏对象</p>
+<p><code>Object</code> 所有对象包括 GameObject Component</p>
+</blockquote>
+<ul>
+<li><p><code>this.gameObject.activeInHierarchy</code>物体实际激活状态</p>
+</li>
+<li><p><code>this.gameObject.activeSelf </code>物体自身激活状态面板里的勾</p>
+</li>
+<li><p>创建一个游戏对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//创建游戏对象</span><br>GameObject gameLight = <span class="hljs-keyword">new</span> GameObject();<br><span class="hljs-comment">//创建Light组件</span><br>Light light = gameLight.AddComponent&lt;Light&gt;();<br><span class="hljs-comment">//给Light组件加属性</span><br>light.color = Color.white;<br>light.type = LightType.Directional;<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查找</p>
+</li>
+<li><p>根据标签寻找物体多个</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">GameObject[] enemy = GameObject.FindGameObjectsWithTag(<span class="hljs-string">&quot;Enemy&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>根据标签寻找物体(单个)</p>
+ <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">GameObject player = GameObject.FindWithTag(<span class="hljs-string">&quot;player&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>根据类型 查找 对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Object.FindObjectOfType&lt;MeshRenderer&gt;();<br>FindObjectsOfType&lt;MeshRenderer&gt;();<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>销毁 传入的对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">Object.Destroy(enemy[<span class="hljs-number">0</span>]);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
+<li><p><code>DontDestroyOnLoad(this)</code>加载另一个场景时不要销毁</p>
+</li>
+<li><p><code>Destroy(this.gameObject,5); </code>销毁对象 可以延时</p>
+</li>
+<li><p>寻找一个游戏对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">FindObjectOfType()<br>FindObjectsOfType()<br></code></pre></td></tr></table></figure>
+
+
+
+
+</li>
+<li><p>实例化一个游戏对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">Instantiate(gameObject, <span class="hljs-keyword">this</span>.transform.position, <span class="hljs-keyword">this</span>.transform.rotation);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h2><ul>
+<li><p><code>Time.timeScale</code> 时间缩放</p>
+</li>
+<li><p><code>Time.deltaTime; </code>每帧的间隔时间 </p>
+</li>
+<li><p><code>Time.time </code>从游戏运行到现在的时间</p>
+</li>
+<li><p><code>Time.timeScale</code> 时间缩放的影响</p>
+<ul>
+<li>Update 不受到 timeScale 的影响 Time.timeScale &#x3D; 0;后 Update 的所有代码停止</li>
+<li>但是 update 里与 Time 有关的 代码受到影响 比如 <code>Tiem.time</code> <code>Time.deltaTime</code></li>
+<li>注意 Time.unscaledDeltaTime 不会受到影响</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#">Time.time; <span class="hljs-comment">//受到scale影响的游戏时间</span><br>Time.unscaledTime;<span class="hljs-comment">//不受到scale影响的游戏时间</span><br>Time.realtimeSinceStartup;<span class="hljs-comment">//实际游戏时间   不受scale影响</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>FixedUpdate 受到 timeScale 的影响 Time.timeScale &#x3D; 0;后 FixUpdete 的所有代码停止</li>
+</ul>
+</li>
+<li><p>要求到达一定时间进行一些操作</p>
+<ul>
+<li><p>用 delayTime 累加 时间</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"> <span class="hljs-keyword">this</span>.totalTime += Time.deltaTime;<br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.totalTime &gt;= <span class="hljs-number">1</span>)<br>&#123;<br>    <span class="hljs-keyword">this</span>.secend -= <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">this</span>.totalTime = <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>如果到达 用 Time.time 作比较</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Time.time &gt; <span class="hljs-keyword">this</span>.nextTime)<br>&#123;<br>    secend -= <span class="hljs-number">1</span>;<br>    nextTime = Time.time + <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>定时器</p>
+<ul>
+<li><p>开启定时器</p>
+<p><code>void Invoke(string methodName 方法名,float time 等待time之后执行 ,float delayTime 每隔delayTime 再去调用methodName方法)</code> </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span> <br>&#123;<br>    InvokeRepeating(<span class="hljs-string">&quot;Timer3&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);<br>&#125;<br> <br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Timer3</span>()</span><br>&#123;<br>    <span class="hljs-keyword">this</span>.secend--;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.secend &lt;= <span class="hljs-number">0</span>)<br>    &#123;<br>        CancelInvoke(<span class="hljs-string">&quot;Timer3&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>关闭定时器</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">CancelInvoke(<span class="hljs-string">&quot;Timer3&quot;</span>);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>Invoke(执行方法,开始调用时间)</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
+<li><p><code>animationComponent[animationDoor].time;</code> 动画开始时间</p>
+</li>
+<li><p><code>animationComponent[animationDoor].length  </code>动画时长</p>
+</li>
+<li><p><code>animationComponent[animationDoor].speed </code>动画速度 设为-1就是倒着播放</p>
+</li>
+<li><p><code>animationComponent.Play(animationDoor);</code> 播放动画</p>
+</li>
+<li></li>
+</ul>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><ul>
+<li><p>输入写在Update中</p>
+</li>
+<li><p><code>Input.mousePosition; </code>鼠标位置 ,以屏幕左下角为原点只有x,y坐标有值 屏幕没有z轴</p>
+</li>
+<li><p>按下的一瞬间 鼠标输入</p>
+</li>
+<li><p>0 2 1 左键 中键 右键</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Input.GetMouseButtonDown(<span class="hljs-number">0</span>))<br>       &#123;<br>           print(<span class="hljs-string">&quot;鼠标左键按下了&quot;</span>);<br>       &#125;<br>       <span class="hljs-keyword">if</span> (Input.GetMouseButtonDown(<span class="hljs-number">2</span>))<br>       &#123;<br>           print(<span class="hljs-string">&quot;鼠标中键按下了&quot;</span>);<br>       &#125;<br>       <span class="hljs-keyword">if</span> (Input.GetMouseButtonDown(<span class="hljs-number">1</span>))<br>       &#123;<br>           print(<span class="hljs-string">&quot;鼠标右键按下了&quot;</span>);<br>       &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+<li><p>鼠标输入抬起的的一瞬间</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Input.GetMouseButtonUp(<span class="hljs-number">0</span>))<br>       &#123;<br>           print(<span class="hljs-string">&quot;鼠标左键抬起了&quot;</span>);<br>       &#125;<br><br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>鼠标输入抬起的的一瞬间</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Input.GetMouseButtonUp(<span class="hljs-number">0</span>))<br>       &#123;<br>           print(<span class="hljs-string">&quot;鼠标左键抬起了&quot;</span>);<br>       &#125;<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>鼠标输入长按</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Input.GetMouseButton(<span class="hljs-number">0</span>))<br>        &#123;<br>            print(<span class="hljs-string">&quot;鼠标左键按下了未抬起&quot;</span>);<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+</li>
+<li><p>鼠标输入滚轮 </p>
+</li>
+<li><ul>
+<li>输出一个 Verctor3值 只改变Y值</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">print(Input.mouseScrollDelta);<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>键盘按下</p>
+</li>
+<li><p>可传入枚举 或者字符串 小写</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Input.GetKeyDown(KeyCode.W))<br>        &#123;<br>            print(<span class="hljs-string">&quot;WDown&quot;</span>);<br>        &#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>键盘抬起</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Input.GetKeyUp(KeyCode.W))<br>       &#123;<br>           print(<span class="hljs-string">&quot;WUP&quot;</span>);<br>       &#125;<br>       <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.W))<br>       &#123;<br>           print(<span class="hljs-string">&quot;Wcontinue&quot;</span>);<br>       &#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>默认轴输入</p>
+</li>
+<li><p>键盘 A D 按下 返回-1 到 1的值 水平</p>
+</li>
+<li><p>键盘 S W 按下 返回-1 到 1的值 垂直</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">print(Input.GetAxis(<span class="hljs-string">&quot;Horizontal&quot;</span>));<br>print(Input.GetAxis(<span class="hljs-string">&quot;Vertical&quot;</span>));<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>鼠标移动</p>
+<ul>
+<li><p>横向移动 左右 -1 1</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">print(Input.GetAxis(<span class="hljs-string">&quot;Mouse X&quot;</span>));<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>上下移动 下上 -1 1</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">print(Input.GetAxis(<span class="hljs-string">&quot;Mouse Y&quot;</span>));<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Input.GetAxisRaw() 与 Input.GetAxis() 使用相同 但是 他只输出三个值 -1 0 1</p>
+</li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li><p>任意键持续按下</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Input.anyKey)<br>&#123;<br>    print(Input.inputString);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>任意键按下</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (Input.anyKeyDown)<br>&#123;<br>	print(Input.inputString);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>其他</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//得到手柄输入相关</span><br>    <span class="hljs-comment">//得到按键名字</span><br>    <span class="hljs-built_in">string</span>[] keyName = Input.GetJoystickNames();<br>    <span class="hljs-keyword">if</span> (Input.GetButtonDown(<span class="hljs-string">&quot;jump&quot;</span>))<br>    &#123;<br><br>    &#125;<br>    <span class="hljs-keyword">if</span> (Input.GetButtonUp(<span class="hljs-string">&quot;jump&quot;</span>))<br>    &#123;<br><br>    &#125;<br>    <span class="hljs-keyword">if</span> (Input.GetButton(<span class="hljs-string">&quot;jump&quot;</span>))<br>    &#123;<br><br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (Input.touchCount &gt; <span class="hljs-number">0</span>)<br>    &#123;<br>        Touch t1 = Input.touches[<span class="hljs-number">0</span>];<br><br>        <span class="hljs-comment">//当前触摸的位置</span><br>        print(t1.position);<br>        <span class="hljs-comment">//先对于上次触摸的位置变化</span><br>        print(t1.deltaPosition);<br><br>    &#125;<br><br>    <span class="hljs-comment">//启用多点触控</span><br>    Input.multiTouchEnabled = <span class="hljs-literal">true</span>;<br><br>    <span class="hljs-comment">//陀螺仪</span><br>    Input.gyro.enabled = <span class="hljs-literal">true</span>;<br><br>    <span class="hljs-comment">//重力加速度</span><br>    print(Input.gyro.gravity);<br><br>    <span class="hljs-comment">//旋转速度</span><br>    print(Input.gyro.rotationRate);<br><br>    <span class="hljs-comment">//当前旋转四元数</span><br>    print(Input.gyro.attitude);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h2><ul>
+<li><p>硬件设备的分辨率</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#">Resolution screen = Screen.currentResolution;<br>print(screen.height);<br>print(screen.width);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>游戏窗口的宽高</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">print(Screen.width);<br>print(Screen.height);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>屏幕休眠</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Screen.sleepTimeout = SleepTimeout.NeverSleep;<br>  <br></code></pre></td></tr></table></figure>
+
+</li>
+<li><p>窗口模式</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Screen.fullScreenMode = FullScreenMode.Windowed;<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>指定屏幕显示方向</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Screen.orientation = ScreenOrientation.Landscape;<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>&#x2F;&#x2F;屏幕休眠</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Screen.sleepTimeout = SleepTimeout.NeverSleep;<br>  <br></code></pre></td></tr></table></figure>
+
+</li>
+<li><p>设置分辨率</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">Screen.SetResolution(Screen.width, Screen.height,<span class="hljs-literal">false</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a>Camera</h2><ul>
+<li><p>获取摄像机</p>
+</li>
+<li><p>获取主摄像机 必须有mainCamera 的 Tag</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">print(Camera.main.name);<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>摄像机数量<br>摄像机剔除前的委托函数</p>
+</li>
+<li><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">print(Camera.allCameras);<br></code></pre></td></tr></table></figure>
+
+</li>
+<li><p>硬件设备的分辨率</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#">Resolution screen = Screen.currentResolution;<br>print(screen.height);<br>print(screen.width);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>渲染委托相关</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#">Camera.onPreCull += (c) =&gt;<br>      &#123;<br><br>      &#125;;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>摄像机渲染前的委托函数</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Camera.onPreRender += (c) =&gt; &#123; &#125;;<br>  <br></code></pre></td></tr></table></figure>
+
+</li>
+<li><p>摄像机渲染后的委托函数</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Camera.onPostRender += (c) =&gt; &#123; &#125;;<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>获取摄像机的参数</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">  Camera.main.depth = <span class="hljs-number">10</span><br>...<br></code></pre></td></tr></table></figure>
+
+</li>
+<li><p><strong>世界坐标转化为屏幕坐标x,y表示屏幕坐标  z 表示 与摄像机的距离</strong></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Vector3 v = Camera.main.WorldToScreenPoint(<span class="hljs-keyword">this</span>.transform.position);<br>        print(v);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>屏幕坐标转化为世界坐标</strong></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>()</span><br>&#123;<br>    <span class="hljs-comment">//屏幕坐标转化为世界坐标</span><br>    Vector3 v = Input.mousePosition;<br>    <span class="hljs-comment">//z 表示 与摄像机的距离</span><br>    v.z = <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">if</span> (Input.GetMouseButtonDown(<span class="hljs-number">0</span>))<br>    &#123;<br>        <span class="hljs-keyword">var</span> newobj = Instantiate(obj);<br>        newobj.transform.position = Camera.main.ScreenToWorldPoint(v);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Rigdbody"><a href="#Rigdbody" class="headerlink" title="Rigdbody"></a>Rigdbody</h2><ul>
+<li>只要能和其他对象 发生碰撞就可以触发下列函数</li>
+</ul>
+<ul>
+<li><p>也就是至少一方有刚体</p>
+</li>
+<li><p>碰到的对象的碰撞器信息</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">collision.collider.gameObject <br></code></pre></td></tr></table></figure>
+</li>
+<li><p>碰撞到的对象的依附对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">collision.gameObject<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>碰撞对象的依附对象的位置</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">ContactPoint[] point = collision.contacts;<br></code></pre></td></tr></table></figure>
+
+</li>
+<li><p>接触点</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#">Resolution screen = Screen.currentResolution;<br>print(screen.height);<br>print(screen.width);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>物理碰撞检测函数</p>
+<ul>
+<li><p>碰撞触发时</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnCollisionEnter</span>(<span class="hljs-params">Collision collision</span>)</span><br>&#123;&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>碰撞结束时</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnCollisionExit</span>(<span class="hljs-params">Collision collision</span>)</span><br>&#123;<br>    print(collision.gameObject.name + <span class="hljs-string">&quot;碰撞结束&quot;</span>);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>碰撞持续时</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnCollisionStay</span>(<span class="hljs-params">Collision collision</span>)</span><br>&#123;<br>  print(collision.gameObject.name + <span class="hljs-string">&quot;碰撞持续&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>打开isTigger后上面的碰撞函数不再触发</p>
+</li>
+<li><p>转而触发Tigger函数</p>
+</li>
+<li><ul>
+<li><pre><code class="c#">private void OnTriggerEnter(Collider other)
+    &#123;
+        print(&quot;开始碰撞&quot; + other.gameObject + &quot;OnTriggerEnter被碰撞了&quot;);
+    &#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>* ```c#<br>  private void OnTriggerExit(Collider other)<br>      &#123;<br>          print(other.gameObject.name + &quot;OnTriggerEnter碰撞结束&quot;);<br>      &#125;<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code class="c#">private void OnTriggerExit(Collider other)
+    &#123;
+        print(other.gameObject.name + &quot;OnTriggerEnter碰撞结束&quot;);
+    &#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br><br>## 刚体加力<br><br>- 添加力<br><br>  * 相对世界坐标系<br><br>  * 给z轴加了10N的力<br><br>    * ```c#<br>      rigbody.AddForce(Vector3.forward* 10);<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>相对本地坐标系</p>
+</li>
+<li><p>给z轴加了10N的力</p>
+<ul>
+<li><pre><code class="c#">rigbody.AddRelativeForce(Vector3.forward* 1);
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>  * 同意语句 `rigbody.AddForce(this.transform.forward* 10);   `<br><br>* 添加扭矩力<br><br>  * 世界坐标<br><br>    ```c#<br>    rigbody.AddTorque(Vector3.up * 10);<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>相对本地坐标系</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">rigbody.AddRelativeTorque(Vector3.forward * <span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>添加速度</p>
+<ul>
+<li><p>相对世界坐标系</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">rigbody.velocity= Vector3.forward * <span class="hljs-number">5</span>;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>相对世界坐标系</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">rigbody.velocity= Vector3.forward * <span class="hljs-number">5</span>;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>爆炸产生的力</p>
+<ul>
+<li><p>只影响挂载了脚本的对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">rigbody.AddExplosionForce(<span class="hljs-number">100</span>, Vector3.zero, <span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>持续的力</p>
+<ul>
+<li><p>写在<code>Update</code> 里</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#">rigbody.AddForce(Vector3.forward * <span class="hljs-number">10</span>);<br>rigbody.AddRelativeForce(Vector3.forward * <span class="hljs-number">10</span>);<br>rigbody.AddForce(<span class="hljs-keyword">this</span>.transform.forward* <span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>刚体休眠</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (rigbody.IsSleeping())<br>&#123;<br>    rigbody.WakeUp();<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="刚体移动"><a href="#刚体移动" class="headerlink" title="刚体移动"></a>刚体移动</h2><ul>
+<li><code> rigidbody.MovePosition(Verctor3())</code></li>
+<li><code> rigidbody.MoverRotation(Verctor3())</code></li>
+</ul>
+<h2 id="resource资源加载"><a href="#resource资源加载" class="headerlink" title="resource资源加载"></a>resource资源加载</h2><p>Resources.Load<Material>(“Matieral&#x2F;ball”);</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/11/18/csharp/cs%E5%9F%BA%E7%A1%80/%E6%9E%9A%E4%B8%BE/">← 下一篇 枚举</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/11/15/unity/unity%E5%9F%BA%E7%A1%80/Scripts/">Scripts 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Component"><span class="toc-number">1.</span> <span class="toc-text">Component</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transform"><span class="toc-number">2.</span> <span class="toc-text">Transform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GameObject"><span class="toc-number">3.</span> <span class="toc-text">GameObject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object"><span class="toc-number">4.</span> <span class="toc-text">Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Time"><span class="toc-number">5.</span> <span class="toc-text">Time</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Animation"><span class="toc-number">6.</span> <span class="toc-text">Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Input"><span class="toc-number">7.</span> <span class="toc-text">Input</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Screen"><span class="toc-number">8.</span> <span class="toc-text">Screen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Camera"><span class="toc-number">9.</span> <span class="toc-text">Camera</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rigdbody"><span class="toc-number">10.</span> <span class="toc-text">Rigdbody</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9A%E4%BD%93%E7%A7%BB%E5%8A%A8"><span class="toc-number">11.</span> <span class="toc-text">刚体移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resource%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD"><span class="toc-number">12.</span> <span class="toc-text">resource资源加载</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

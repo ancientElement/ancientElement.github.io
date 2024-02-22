@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课时3：No.3模拟面试题 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>课时3：No.3模拟面试题</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-09-03T16:00:00.000Z" id="date"> 2023-09-04</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.944Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">1.5k</div></span></div></div><hr><div id="post-content"><h2 id="C"><a href="#C" class="headerlink" title="C#"></a><strong>C#</strong></h2><h3 id="1-泛型的约束有哪几种？"><a href="#1-泛型的约束有哪几种？" class="headerlink" title="1. 泛型的约束有哪几种？"></a><strong>1. 泛型的约束有哪几种？</strong></h3><p>我的回答：</p>
+<p>​	where T : class ,new(), 其他类</p>
+<p>答案：</p>
+<p>1.值类型约束 T:struct</p>
+<p>2.引用类型约束 T:class</p>
+<p>3.公共无参构造约束 T:new()</p>
+<p>4.类约束 T:类名</p>
+<p>5.接口约束 T:接口名</p>
+<p>6.另一个泛型约束 T:U</p>
+<h3 id="2-什么是闭包？可以举例说明"><a href="#2-什么是闭包？可以举例说明" class="headerlink" title="2. 什么是闭包？可以举例说明"></a><strong>2.</strong> <strong>什么是闭包？可以举例说明</strong></h3><p>​	将变量局限在一个作用域中</p>
+<p>whiel(true) {<br>    int i &#x3D; 0;<br>    debug.log(i);<br>    i++;<br>}</p>
+<p>答案：</p>
+<p>闭包是指有权访问另一个函数作用域中的变量的函数<br>所以闭包一般都是指的一个函数<br>创建这种特殊闭包函数的方式往往是在一个函数中创建另一个函数</p>
+<h3 id="3-内存泄漏指什么？常见的内存泄漏有哪些？"><a href="#3-内存泄漏指什么？常见的内存泄漏有哪些？" class="headerlink" title="3. 内存泄漏指什么？常见的内存泄漏有哪些？"></a><strong>3. 内存泄漏指什么？常见的内存泄漏有哪些？</strong></h3><p>我的回答：</p>
+<p>​	储存内容超出,容器范围</p>
+<p>答案：</p>
+<p>内存泄漏指的就是对象超过生命周期后而不能被GC回收，一般指不会再使用的引用对象由于某些操作而不能被GC垃圾回收，而一直占用着内存</p>
+<p>更风趣通俗一点的说就是：没用的家伙没有被当成垃圾回收</p>
+<p>常见的内存泄漏有：</p>
+<p>1.静态引用</p>
+<p>2.不使用的引用对象没有置null，一直被引用、</p>
+<p>3.文件操作时，没有使用using或者没有进行Dispose()</p>
+<p>4.委托或事件注册后没有解除注册（有加就有减）</p>
+<p>等等</p>
+<h3 id="4-序列化是什么？常见的序列化方式有哪些？什么时候我们会用到序列化？"><a href="#4-序列化是什么？常见的序列化方式有哪些？什么时候我们会用到序列化？" class="headerlink" title="4. 序列化是什么？常见的序列化方式有哪些？什么时候我们会用到序列化？"></a><strong>4.</strong> <strong>序列化是什么？常见的序列化方式有哪些？什么时候我们会用到序列化？</strong></h3><p>​	1.将对象转换成可以储存的文件;</p>
+<p>​	2.json,二进制,xml</p>
+<p>​	3.当我们需要保存数据时,将一个对象要序列化,如保存游戏存档</p>
+<p>注意: unity的Vector3和Dictionary不能直接用自带的bianry序列化</p>
+<p>答案：<br>序列化是将程序中数据对象转换为可以存储或传输的形式 的过程。<br>举例：</p>
+<p>比如我们常见的序列化方式 xml、Json、2进制等。就是将内存中的数据按照我们自己定义的规则进行序列化，序列化之后就可以用于存储和传输，当读取和接受数据时，只需要按照对应规则进行反序列化便可得到原始数据</p>
+<p>所谓的存储读取和传输接受，其实一般指的就是数据持久化和网络通讯<br>所以我们经常会在这两块知识点看到序列化反序列化这两个关键词</p>
+<h3 id="5-请问A、B、C-三处打印结果分别为多少？为什么？"><a href="#5-请问A、B、C-三处打印结果分别为多少？为什么？" class="headerlink" title="5. 请问A、B、C 三处打印结果分别为多少？为什么？"></a><strong>5.</strong> <strong>请问A、B、C 三处打印结果分别为多少？为什么？</strong></h3><p class='item-img' data-src='/2002/01/01/images/122433197650192447.png'><img src="/2002/01/01/images/122433197650192447.png"></p>
+<p>我的回答：</p>
+<ol>
+<li>10 没有改变原来的变量,只是对形参进行改变</li>
+<li>100 转递了变量的引用,通过地址改变了变量的值</li>
+<li>100 使用ref关键字改变了真实的值</li>
+</ol>
+<p>答案：</p>
+<p>A是10，B和C为100</p>
+<p>Test1处参数传递进去后，函数内部的形参value是在栈上重新开辟的空间，将传入参数的值拷贝到了该空间中，和传入参数没有关系</p>
+<p>Test2处参数是指针类型，指针是用于存储内存地址的变量，我们传入的是值得地址&amp;test2Value，在函数内部改变的是地址中存储的值，所以外部的test2Value会随之改变</p>
+<p>Test3处ref关键字，底层逻辑中是将value作为test3Value的一个别名，他们指向的空间一致，所以value改变后，外部的test3Value也会改变</p>
+<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a><strong>Unity</strong></h2><h3 id="1-transform-forward和Vector3-forword的区别"><a href="#1-transform-forward和Vector3-forword的区别" class="headerlink" title="1. transform.forward和Vector3.forword的区别"></a><strong>1.</strong> <strong>transform.forward和Vector3.forword的区别</strong></h3><p>​	transform.forward 是物体本地坐标系的z的正方向指向方向,</p>
+<p>​	vector3.forword 是世界坐标的z的正方向的指向方向</p>
+<p>答案：</p>
+<p>Vector3.forword始终时(0,0,1)<br>可以认为是世界坐标系的Z轴朝向</p>
+<p>transform.forword是当前物体的局部坐标系的Z轴在世界坐标系下的朝向<br>可以认为是物体自己的Z轴朝向</p>
+<h3 id="2-Unity中如何解决过多创建和删除对象带来的卡顿问题？"><a href="#2-Unity中如何解决过多创建和删除对象带来的卡顿问题？" class="headerlink" title="2. Unity中如何解决过多创建和删除对象带来的卡顿问题？"></a><strong>2. Unity中如何解决过多创建和删除对象带来的卡顿问题？</strong></h3><p>我的回答：</p>
+<p>​	对象池</p>
+<p>答案：</p>
+<p>可以通过协同程序，分时分步创建或删除<br>原理是避免一帧中处理太多对象	</p>
+<h3 id="3-游戏中的成就系统，我们一般会使用设计模式中的哪种模式来制作？为什么？"><a href="#3-游戏中的成就系统，我们一般会使用设计模式中的哪种模式来制作？为什么？" class="headerlink" title="3.游戏中的成就系统，我们一般会使用设计模式中的哪种模式来制作？为什么？"></a><strong>3.游戏中的成就系统，我们一般会使用设计模式中的哪种模式来制作？为什么？</strong></h3><p>​	观察者模式,当成就触发时,可能多个系统都需要更改某些数据,用观察者模式可以方便在多个模块中监听成就触发事件,及时处理事件</p>
+<p>答案：</p>
+<p>观察者模式<br>Unity基础小框架中讲解的 事件中心 就是基于观察者模式的<br>是一种订阅通知机制</p>
+<h3 id="4-请简述热更新的流程"><a href="#4-请简述热更新的流程" class="headerlink" title="4. 请简述热更新的流程"></a><strong>4. 请简述热更新的流程</strong></h3><p>答案：</p>
+<p>本地存在资源对比文件和已有资源<br>1.下载资源服务器中的对比文件<br>2.将下载下来的远端对比文件和本地的做对比<br>   记录需要更新的资源和要移除的资源<br>3.根据第二步中记录的信息，进行资源下载和移除<br>4.更新本地对比文件，其内容和刚才下载的远端对比文件一致</p>
+<h3 id="5-我们应该如何优化UI（基于UGUI）"><a href="#5-我们应该如何优化UI（基于UGUI）" class="headerlink" title="5. 我们应该如何优化UI（基于UGUI）"></a><strong>5. 我们应该如何优化UI（基于UGUI）</strong></h3><p>答案：<br>性能上</p>
+<ol>
+<li>打图集，将同一画面的图片放入一个图集中，目的是减少DrawCall</li>
+<li>面板中的图片和文字尽量不要交叉，因为这样会产生多余的DrawCall</li>
+<li>取消勾选不必要的射线检测，UI组件上的</li>
+<li>减少透明图片的重叠使用<br>等等</li>
+</ol>
+<p>内存上</p>
+<ol>
+<li>大图尽量使用9宫格缩放，让美术设计UI面板底图时不要过于复杂<br>尽量是有规律的纹理和颜色变化</li>
+<li>图片的RGBA通道分离<br>等等</li>
+</ol>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/09/05/%E9%9D%A2%E8%AF%95/unity%E5%92%8Ccs/%E8%AF%BE%E6%97%B64%EF%BC%9ANo.4%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95%E9%A2%98/">← 下一篇 课时4：No.4模拟面试题</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/09/03/%E9%9D%A2%E8%AF%95/unity%E5%92%8Ccs/%E8%AF%BE%E6%97%B62%EF%BC%9ANo.2%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95%E9%A2%98/">课时2：No.2模拟面试题 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">1.</span> <span class="toc-text">C#</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B3%9B%E5%9E%8B%E7%9A%84%E7%BA%A6%E6%9D%9F%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">1. 泛型的约束有哪几种？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%97%AD%E5%8C%85%EF%BC%9F%E5%8F%AF%E4%BB%A5%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.</span> <span class="toc-text">2. 什么是闭包？可以举例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8C%87%E4%BB%80%E4%B9%88%EF%BC%9F%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">3. 内存泄漏指什么？常见的内存泄漏有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%88%91%E4%BB%AC%E4%BC%9A%E7%94%A8%E5%88%B0%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">4. 序列化是什么？常见的序列化方式有哪些？什么时候我们会用到序列化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%AF%B7%E9%97%AEA%E3%80%81B%E3%80%81C-%E4%B8%89%E5%A4%84%E6%89%93%E5%8D%B0%E7%BB%93%E6%9E%9C%E5%88%86%E5%88%AB%E4%B8%BA%E5%A4%9A%E5%B0%91%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">5. 请问A、B、C 三处打印结果分别为多少？为什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity"><span class="toc-number">2.</span> <span class="toc-text">Unity</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-transform-forward%E5%92%8CVector3-forword%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.1.</span> <span class="toc-text">1. transform.forward和Vector3.forword的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Unity%E4%B8%AD%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%87%E5%A4%9A%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E5%AF%B9%E8%B1%A1%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%8D%A1%E9%A1%BF%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2. Unity中如何解决过多创建和删除对象带来的卡顿问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%88%90%E5%B0%B1%E7%B3%BB%E7%BB%9F%EF%BC%8C%E6%88%91%E4%BB%AC%E4%B8%80%E8%88%AC%E4%BC%9A%E4%BD%BF%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%AD%E7%9A%84%E5%93%AA%E7%A7%8D%E6%A8%A1%E5%BC%8F%E6%9D%A5%E5%88%B6%E4%BD%9C%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">3.游戏中的成就系统，我们一般会使用设计模式中的哪种模式来制作？为什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AF%B7%E7%AE%80%E8%BF%B0%E7%83%AD%E6%9B%B4%E6%96%B0%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-number">2.4.</span> <span class="toc-text">4. 请简述热更新的流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%88%91%E4%BB%AC%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96UI%EF%BC%88%E5%9F%BA%E4%BA%8EUGUI%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">5. 我们应该如何优化UI（基于UGUI）</span></a></li></ol></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

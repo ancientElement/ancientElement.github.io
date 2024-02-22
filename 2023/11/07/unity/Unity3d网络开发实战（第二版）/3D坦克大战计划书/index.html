@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>3D坦克大战计划书 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>3D坦克大战计划书</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-11-06T16:00:00.000Z" id="date"> 2023-11-07</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.815Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">941</div></span></div></div><hr><div id="post-content"><h1 id="35"><a href="#35" class="headerlink" title="35%===--------"></a><code>35%===--------</code></h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>开发一款多人联机的坦克世界大战游戏</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://3dtank.com/play/">3D坦克 (3dtank.com)</a></p>
+<p class='item-img' data-src='/2002/01/01/images/Snipaste_2023-11-06_22-57-52.jpg'><img src="/2002/01/01/images/Snipaste_2023-11-06_22-57-52.jpg"></p>
+<p class='item-img' data-src='/2002/01/01/images/Snipaste_2023-11-06_22-57-52%201.jpg'><img src="/2002/01/01/images/Snipaste_2023-11-06_22-57-52%201.jpg"></p>
+<h2 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h2><h3 id="🚧局域网联机模式"><a href="#🚧局域网联机模式" class="headerlink" title="🚧局域网联机模式"></a>🚧局域网联机模式</h3><ol>
+<li>计划对UnityNetWork进行包装,</li>
+</ol>
+<p>基于UnityNetWork实现局域网联机</p>
+<ol start="2">
+<li>一号计划废弃,重新计划为:<ol>
+<li>服务器使用UDP广播,客户端接收UDP后选择与其建立连接</li>
+<li>服务器关于数据库部分在局域网中不需要,可以根据是否是局域网联机而选择忽视这一部分</li>
+</ol>
+</li>
+</ol>
+<p>😱目前困境:  不会使用UDP广播,具体是指不会UDP接收广播,没有找到相关资料</p>
+<h3 id="🏆登录注册"><a href="#🏆登录注册" class="headerlink" title="🏆登录注册"></a>🏆登录注册</h3><ol>
+<li>🔗简单的在Mysql中建立用户表</li>
+</ol>
+<blockquote>
+<p>操傻逼Navcat过期了,图片稍后补上</p>
+</blockquote>
+<p>建立 <code>账户表</code> <code>玩家表</code> </p>
+<ul>
+<li>账户表仅仅记录玩家账号和密码</li>
+<li>玩家表记录玩家账号和游戏内的信息</li>
+</ul>
+<ol start="2">
+<li>🔗简单的登录注册</li>
+</ol>
+<p>使用SQL语句添加<code>账户</code>数据</p>
+<blockquote>
+<p>此处简单的防止SQL注入,使用敏感字符剔除的方式,对用户输入的字符中检测SQL命令,有SQL命令判断为敏感字符需要重写输入</p>
+</blockquote>
+<ol start="3">
+<li>🔗异地登录踢出到登录界面</li>
+</ol>
+<h3 id="🏆游戏大厅与游戏房间"><a href="#🏆游戏大厅与游戏房间" class="headerlink" title="🏆游戏大厅与游戏房间"></a>🏆游戏大厅与游戏房间</h3><p>游戏大厅里可以有很多房间</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107174741.png'><img src="/2002/01/01/images/Pasted%20image%2020231107174741.png"></p>
+<p>注意:客户端不包含任何逻辑!!</p>
+<p>客户端仅仅获取服务器的信息进行显示</p>
+<ol>
+<li>🔗计划展示拥有的坦克在此页面</li>
+</ol>
+<p>用户可以拖动该视图对坦克进行观看</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231108163732.png'><img src="/2002/01/01/images/Pasted%20image%2020231108163732.png"></p>
+<h3 id="🏆基本游戏逻辑"><a href="#🏆基本游戏逻辑" class="headerlink" title="🏆基本游戏逻辑"></a>🏆基本游戏逻辑</h3><p>游戏以击败所有敌方单位为目标,通过攻击方式摧毁地方单位,获得本局比赛胜利</p>
+<p>游戏所有运算均在服务端进行,比如炮弹命中后扣血</p>
+<h4 id="🏆物理"><a href="#🏆物理" class="headerlink" title="🏆物理"></a>🏆物理</h4><ol>
+<li>🔗😱 Unity的物理交互有点傻逼,通过挤压碰撞体可以使得物体弹飞</li>
+</ol>
+<p>方案:</p>
+<ul>
+<li>将墙壁摩擦设置为0</li>
+<li>不使用Unity的物理引擎<ul>
+<li>使用速度驱动+物理检测</li>
+<li>斜坡检测</li>
+<li>模拟重力+抛物线模型</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>🔗😱 坦克之间的碰撞同样如此</li>
+</ol>
+<h4 id="🏆移动逻辑"><a href="#🏆移动逻辑" class="headerlink" title="🏆移动逻辑"></a>🏆移动逻辑</h4><p>在当前的的移动逻辑中 前 后 坦克可以产生位移</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107181807.png'><img src="/2002/01/01/images/Pasted%20image%2020231107181807.png"></p>
+<p>左右均为旋转坦克,但是炮台也随坦克</p>
+<p>😱此操作太傻逼,不符合传统坦克移动违和感太强,计划左右旋转炮台不产生位移</p>
+<p>方案: </p>
+<ul>
+<li>炮台正面位置为摄相机正方向</li>
+<li>旋转坦克身时,炮台自动复位</li>
+</ul>
+<h4 id="🏆视角"><a href="#🏆视角" class="headerlink" title="🏆视角"></a>🏆视角</h4><p>目前视角注视坦克,相机只注视坦克前方</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107182431.png'><img src="/2002/01/01/images/Pasted%20image%2020231107182431.png"></p>
+<p>😱计划修改为视角随鼠标移动,相机注视屏幕中心</p>
+<ul>
+<li>视角可变</li>
+</ul>
+<p class='item-img' data-src='/_images/Pasted%20image%2020231108200037.png'><img src="/_images/Pasted%20image%2020231108200037.png"><br class='item-img' data-src='/_images/Pasted%20image%2020231108200042.png'><img src="/_images/Pasted%20image%2020231108200042.png"></p>
+<ul>
+<li>光标位置非常奇怪<ul>
+<li>不是固定在屏幕中心</li>
+<li>大概是在坦克炮台的正前方</li>
+</ul>
+</li>
+</ul>
+<h4 id="🏆攻击方式"><a href="#🏆攻击方式" class="headerlink" title="🏆攻击方式"></a>🏆攻击方式</h4><p>攻击详细方案见 <a href="https://ancientelement.gitee.io/2023/10/29/unity/Unity3d%E7%BD%91%E7%BB%9C%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/4-%E7%89%A9%E7%90%86%E6%A3%80%E6%B5%8B/">4-物理检测 | AncientElement (gitee.io)</a></p>
+<p>目前只有火炮攻击,通过火炮对敌方造成伤害</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107182750.png'><img src="/2002/01/01/images/Pasted%20image%2020231107182750.png"></p>
+<ol>
+<li>🔗😱攻击按键变化为鼠标左键</li>
+</ol>
+<h4 id="🏆特效"><a href="#🏆特效" class="headerlink" title="🏆特效"></a>🏆特效</h4><ol>
+<li>🔗爆炸效果</li>
+<li>🔗燃烧效果</li>
+</ol>
+<h3 id="😱游戏内UI"><a href="#😱游戏内UI" class="headerlink" title="😱游戏内UI"></a>😱游戏内UI</h3><p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107184948.png'><img src="/2002/01/01/images/Pasted%20image%2020231107184948.png"></p>
+<ol>
+<li>🔗用户单位信息</li>
+<li>🔗用户单位游戏内信息</li>
+<li>🔗敌我对抗信息</li>
+<li>🔗小地图信息</li>
+<li>🔗交战信息</li>
+<li>🔗资源道具信息</li>
+<li>🔗游戏系统帧率、延迟信息</li>
+</ol>
+<h3 id="UI优化"><a href="#UI优化" class="headerlink" title="UI优化"></a>UI优化</h3><p>😱目前UI皆为白板,非常难看</p>
+<p>说实话不想拼面板,没有好看的UI,拼UI是最低端最傻逼的事情</p>
+<p>尝试使用雷火UX简化流程</p>
+<h2 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h2><h3 id="登录注册模块"><a href="#登录注册模块" class="headerlink" title="登录注册模块"></a>登录注册模块</h3><p>使用MySql数据库,服务器使用C#语言编写</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107174731.png'><img src="/2002/01/01/images/Pasted%20image%2020231107174731.png"></p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107174721.png'><img src="/2002/01/01/images/Pasted%20image%2020231107174721.png"></p>
+<h3 id="游戏大厅"><a href="#游戏大厅" class="headerlink" title="游戏大厅"></a>游戏大厅</h3><p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107174741.png'><img src="/2002/01/01/images/Pasted%20image%2020231107174741.png"></p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107174745.png'><img src="/2002/01/01/images/Pasted%20image%2020231107174745.png"></p>
+<h3 id="游戏中"><a href="#游戏中" class="headerlink" title="游戏中"></a>游戏中</h3><p>–<br class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231107174754.png'><img src="/2002/01/01/images/Pasted%20image%2020231107174754.png"></p>
+<p>–</p>
+<h2 id="BUG"><a href="#BUG" class="headerlink" title="BUG"></a>BUG</h2><h3 id="😱登录挤出别人后房间列表出现异常"><a href="#😱登录挤出别人后房间列表出现异常" class="headerlink" title="😱登录挤出别人后房间列表出现异常"></a>😱登录挤出别人后房间列表出现异常</h3><h3 id="😱较高网络同步次数下炮弹拖尾出现异常"><a href="#😱较高网络同步次数下炮弹拖尾出现异常" class="headerlink" title="😱较高网络同步次数下炮弹拖尾出现异常"></a>😱较高网络同步次数下炮弹拖尾出现异常</h3><h3 id="😱Physical因为直接的Transform位移造成的奇怪物理效果"><a href="#😱Physical因为直接的Transform位移造成的奇怪物理效果" class="headerlink" title="😱Physical因为直接的Transform位移造成的奇怪物理效果"></a>😱Physical因为直接的Transform位移造成的奇怪物理效果</h3><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/11/07/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E5%88%9D%E5%BF%83/">← 下一篇 初心</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/11/07/unity/Unity3d%E7%BD%91%E7%BB%9C%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/6-%E6%AF%8F%E5%B8%A7%E6%9C%80%E5%A4%A7%E6%B6%88%E6%81%AF%E5%88%86%E5%8F%91%E6%95%B0/">6-每帧最大消息分发数 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#35"><span class="toc-number">1.</span> <span class="toc-text">35%&#x3D;&#x3D;&#x3D;--------</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.2.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E5%88%92"><span class="toc-number">1.3.</span> <span class="toc-text">计划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9A%A7%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text">🚧局域网联机模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8F%86%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text">🏆登录注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8F%86%E6%B8%B8%E6%88%8F%E5%A4%A7%E5%8E%85%E4%B8%8E%E6%B8%B8%E6%88%8F%E6%88%BF%E9%97%B4"><span class="toc-number">1.3.3.</span> <span class="toc-text">🏆游戏大厅与游戏房间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8F%86%E5%9F%BA%E6%9C%AC%E6%B8%B8%E6%88%8F%E9%80%BB%E8%BE%91"><span class="toc-number">1.3.4.</span> <span class="toc-text">🏆基本游戏逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%8F%86%E7%89%A9%E7%90%86"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">🏆物理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%8F%86%E7%A7%BB%E5%8A%A8%E9%80%BB%E8%BE%91"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">🏆移动逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%8F%86%E8%A7%86%E8%A7%92"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">🏆视角</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%8F%86%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.4.4.</span> <span class="toc-text">🏆攻击方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%8F%86%E7%89%B9%E6%95%88"><span class="toc-number">1.3.4.5.</span> <span class="toc-text">🏆特效</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%98%B1%E6%B8%B8%E6%88%8F%E5%86%85UI"><span class="toc-number">1.3.5.</span> <span class="toc-text">😱游戏内UI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UI%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.6.</span> <span class="toc-text">UI优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E8%BF%9B%E5%BA%A6"><span class="toc-number">1.4.</span> <span class="toc-text">目前进度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E6%A8%A1%E5%9D%97"><span class="toc-number">1.4.1.</span> <span class="toc-text">登录注册模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E5%A4%A7%E5%8E%85"><span class="toc-number">1.4.2.</span> <span class="toc-text">游戏大厅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E4%B8%AD"><span class="toc-number">1.4.3.</span> <span class="toc-text">游戏中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BUG"><span class="toc-number">1.5.</span> <span class="toc-text">BUG</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%98%B1%E7%99%BB%E5%BD%95%E6%8C%A4%E5%87%BA%E5%88%AB%E4%BA%BA%E5%90%8E%E6%88%BF%E9%97%B4%E5%88%97%E8%A1%A8%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8"><span class="toc-number">1.5.1.</span> <span class="toc-text">😱登录挤出别人后房间列表出现异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%98%B1%E8%BE%83%E9%AB%98%E7%BD%91%E7%BB%9C%E5%90%8C%E6%AD%A5%E6%AC%A1%E6%95%B0%E4%B8%8B%E7%82%AE%E5%BC%B9%E6%8B%96%E5%B0%BE%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8"><span class="toc-number">1.5.2.</span> <span class="toc-text">😱较高网络同步次数下炮弹拖尾出现异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%98%B1Physical%E5%9B%A0%E4%B8%BA%E7%9B%B4%E6%8E%A5%E7%9A%84Transform%E4%BD%8D%E7%A7%BB%E9%80%A0%E6%88%90%E7%9A%84%E5%A5%87%E6%80%AA%E7%89%A9%E7%90%86%E6%95%88%E6%9E%9C"><span class="toc-number">1.5.3.</span> <span class="toc-text">😱Physical因为直接的Transform位移造成的奇怪物理效果</span></a></li></ol></li></ol></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

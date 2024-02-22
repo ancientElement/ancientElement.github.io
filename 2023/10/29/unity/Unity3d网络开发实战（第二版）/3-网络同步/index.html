@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>3-网络同步 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>3-网络同步</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-10-28T16:00:00.000Z" id="date"> 2023-10-29</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.815Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">482</div></span></div></div><hr><div id="post-content"><h2 id="状态同步"><a href="#状态同步" class="headerlink" title="状态同步"></a>状态同步</h2><h3 id="跟随算法"><a href="#跟随算法" class="headerlink" title="跟随算法"></a>跟随算法</h3><p>使得物体以一定速度运动而不是直接同步位置</p>
+<h3 id="预测算法"><a href="#预测算法" class="headerlink" title="预测算法"></a>预测算法</h3><p>使得物体提前到达预测位置&#x3D;&#x3D;(这就是项目中坦克看起来会回退的原因)&#x3D;&#x3D;</p>
+<p>步骤: </p>
+<ol>
+<li>计算坦克下一个同步到达的位置<code>forecastPos</code></li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231031194940.png'><img src="/2002/01/01/images/Pasted%20image%2020231031194940.png"></p>
+<p>由于匀速运动,相同间隔走的路程是一样的 从a到c只要加上2倍的距离差就行了</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//移动同步</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SyncPos</span>(<span class="hljs-params">MsgSyncTank msg</span>)</span>&#123;<br>    <span class="hljs-comment">//预测位置</span><br>    Vector3 pos = <span class="hljs-keyword">new</span> Vector3(msg.x, msg.y, msg.z);<br>    Vector3 rot = <span class="hljs-keyword">new</span> Vector3(msg.ex, msg.ey, msg.ez);<br>    forecastPos = pos + <span class="hljs-number">2</span>*(pos - lastPos);<br>    forecastRot = rot + <span class="hljs-number">2</span>*(rot - lastRot);<br>    <span class="hljs-comment">//更新</span><br>    lastPos = pos;<br>    lastRot = rot;<br>    forecastTime = Time.time;<br>    <span class="hljs-comment">//炮塔</span><br>    Vector3 le = turret.localEulerAngles;<br>    le.y = msg.turretY;<br>    turret.localEulerAngles = le;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>使得坦克提前向<code>forecastPos</code>移动<ul>
+<li>移动方式使用线性插值匀速移动</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ForecastUpdate</span>()</span>&#123;<br>    <span class="hljs-comment">//时间</span><br>    <span class="hljs-built_in">float</span> t =  (Time.time - forecastTime)/CtrlTank.syncInterval;<br>    t = Mathf.Clamp(t, <span class="hljs-number">0f</span>, <span class="hljs-number">1f</span>);<br>    <span class="hljs-comment">//位置</span><br>    Vector3 pos = transform.position;<br>    pos = Vector3.Lerp(pos, forecastPos, t);<br>    transform.position = pos;<br>    <span class="hljs-comment">//旋转</span><br>    Quaternion quat = transform.rotation;<br>    Quaternion forcastQuat = Quaternion.Euler(forecastRot);<br>    quat = Quaternion.Lerp(quat, forcastQuat, t) ;<br>    transform.rotation = quat;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="现象与问题"><a href="#现象与问题" class="headerlink" title="现象与问题"></a>现象与问题</h3><p>在游戏画面中可以看到,经过预测算法的,对于每秒10次的同步有明显的抖动现象。为了去除这些抖动，我们可以提高同步的频率。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//同步帧率  </span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">float</span> syncInterval = <span class="hljs-number">0.1f</span>;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">float</span> syncInterval = <span class="hljs-number">0.03f</span>;<br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231031200045.png'><img src="/2002/01/01/images/Pasted%20image%2020231031200045.png"></p>
+<p>将同步拉高到每秒30次,虽然抖动现象不明显了,可是有的客户端延迟非常严重,现在还原因不明确。</p>
+<p>经过测试</p>
+<table>
+<thead>
+<tr>
+<th>同步次数</th>
+<th>现象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>每秒10次</td>
+<td>可以完美支持6人联机</td>
+</tr>
+<tr>
+<td>每秒30次</td>
+<td>在2人时 非常流畅</td>
+</tr>
+<tr>
+<td>每秒30次</td>
+<td>在3人时 打包好的客户端接收<code>syncTank</code>的同步消息延迟非常高 ,然而unity运行的客户端接收并不卡顿，目前原因不明确。</td>
+</tr>
+<tr>
+<td>每秒30次</td>
+<td>3人以上客户端与3人时现象一致</td>
+</tr>
+</tbody></table>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/11/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/leetcode%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/18.%20%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/">← 下一篇 18. 四数之和</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/10/29/unity/Unity3d%E7%BD%91%E7%BB%9C%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/4-%E7%89%A9%E7%90%86%E6%A3%80%E6%B5%8B/">4-物理检测 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5"><span class="toc-number">1.</span> <span class="toc-text">状态同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%9F%E9%9A%8F%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">跟随算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">预测算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E8%B1%A1%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">现象与问题</span></a></li></ol></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

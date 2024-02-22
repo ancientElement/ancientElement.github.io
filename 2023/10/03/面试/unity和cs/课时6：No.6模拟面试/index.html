@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课时6：No.6模拟面试 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>课时6：No.6模拟面试</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-10-02T16:00:00.000Z" id="date"> 2023-10-03</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.946Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">1k</div></span></div></div><hr><div id="post-content"><p><strong>C#</strong></p>
+<p><strong>1.C#中如何让自定义容器类能够使用for循环遍历？（通过 类对象[索引] 的形式遍历）</strong></p>
+<p>我的回答:</p>
+<p>实现索引器</p>
+<p>答案：</p>
+<p>通过在类中实现索引器实现</p>
+<p><strong>2.C#中如何让自定义容器类能够使用foreach循环遍历？</strong></p>
+<p>我的回答:</p>
+<p>实现迭代器</p>
+<p>答案：</p>
+<p>通过为该类实现迭代器可以让其使用foreach遍历<br>传统方式：<br>继承IEnumerator、IEnumerable两个接口<br>实现其中的 </p>
+<ol>
+<li>GetEnumerator方法</li>
+<li>Current属性</li>
+<li>MoveNext方法<br>语法糖方式：<br>利用yield return语法糖，实现GetEnumerator方法即可完成迭代器的实现</li>
+</ol>
+<p><strong>3.C#中接口的作用是什么？说说你的理解</strong></p>
+<p>我的回答:</p>
+<p>接口,用来实现多态,我说不明白,比如状态机的ISate接口,有Enter、Update、Exit接口，用来实现一个状态需要做的事情。</p>
+<p>答案：</p>
+<p>用于建立行为的继承关系，而不是对象<br>不同对象，有相同行为时，我们可以利用接口对不同对象的行为进行整合</p>
+<p><strong>4.Unity引擎中哪些功能使用了C#的反射功能？至少说出一点</strong></p>
+<p>我的回答：</p>
+<p>Inspection 面板的，特性的实现，生命周期函数调用</p>
+<p>答案：</p>
+<ol>
+<li>Inspector窗口中显示的内容</li>
+<li>预设体文件</li>
+<li>场景文件</li>
+<li>Unity中的各种特性</li>
+</ol>
+<p>等等</p>
+<p><strong>5.请问这三行代码，运行后，在堆上会分配几个“房间”</strong></p>
+<p class='item-img' data-src='/2002/01/01/images/ikro6.png'><img src="/2002/01/01/images/ikro6.png" alt="ikro6"></p>
+<p>我的回答：</p>
+<p>三个</p>
+<p>答案：</p>
+<p>![[&#x2F;2002&#x2F;01&#x2F;01&#x2F;images&#x2F;Pasted image 20231003145745.png]]</p>
+<p>2个房间</p>
+<p>“123”一个房间</p>
+<p>“1234”一个房间</p>
+<p><strong>Unity</strong></p>
+<p><strong>1.Unity中Awake和Start两个生命周期函数，分别在什么时候被调用？</strong></p>
+<p>我的回答：</p>
+<p>Awake在start前调用，都在Update前调用</p>
+<p>答案：</p>
+<p>Awake：运行时<br>当脚本被动态添加到对象上时立即被调用。</p>
+<p>当对象被实例化时，依附它的脚本会立即调用Awake<br>它类似构造函数</p>
+<p>Start：第一次Update之前被调用</p>
+<p><strong>2.Unity场景上有多个对象，都分别挂载了n个脚本。<br>我们如何控制不同脚本间生命周期函数Awake的执行先后顺序？</strong></p>
+<p>我的回答：</p>
+<p>可以在Project Setting中指定</p>
+<p>答案：</p>
+<p>![[&#x2F;2002&#x2F;01&#x2F;01&#x2F;images&#x2F;Pasted image 20231003145931.png]]</p>
+<ol>
+<li>可以通过选中脚本文件，点击Inspector窗口右上角的Execution Order（执行顺序）按钮 </li>
+<li>可以打开Project Setting窗口，选择Script Execution Order选项</li>
+</ol>
+<p>通过这两种方式我们可以打开脚本执行顺序窗口<br>在其中我们可以自己设置自定义脚本的执行顺序</p>
+<p><strong>3.想要在Unity中使用指针我们需要进行哪些操作？</strong></p>
+<p>我的回答：</p>
+<p>关闭安全模式</p>
+<p>答案：</p>
+<ol>
+<li><p>需要在PlayerSetting中的OtherSettings中勾选  Allow ‘unsafe’ code 选项</p>
+</li>
+<li><p>使用指针时必须在unsafe修饰的代码块中</p>
+</li>
+</ol>
+<p><strong>4.Unity中的协同程序中yield return不同的内容，代表的含义不同<br>请说明下面这些yield return的含义</strong></p>
+<p>1.yield return 数字;<br>2.yield return null;<br>3.yield return new WaitForSeconds(数字);<br>4.yield return new WaitForFixedUpdate();<br>5.yield return new WaitForEndOfFrame();<br>6.yield break;</p>
+<p>我的回答：</p>
+<ol>
+<li>等待一帧</li>
+<li>同上</li>
+<li>等待多少秒</li>
+<li>等待到下一次FixUpdate</li>
+<li>等待到这一帧的结束</li>
+<li>结束协程</li>
+</ol>
+<p>答案：</p>
+<ol>
+<li>yield return 数字; 下一帧执行</li>
+<li>yield return null;  下一帧执行</li>
+<li>yield return new WaitForSeconds(数字); 等待指定秒后执行</li>
+<li>yield return new WaitForFixedUpdate(); 等待下一个固定物理帧更新时执行</li>
+<li>yield return new WaitForEndOfFrame(); 等待摄像机和GUI渲染完成后执行</li>
+<li>yield break; 跳出协程</li>
+</ol>
+<p><strong>5.使用Unity协同程序进行异步加载时，底层是否会使用多线程？</strong></p>
+<p>我的回答：</p>
+<p>不会，Unity协程是由迭代器实现，统一管理迭代器，不同时刻调用不同方法达到异步执行的效果</p>
+<p>答案：</p>
+<p>可能会<br>协同程序的原理是分时分步完成指定逻辑<br>在其中的某一步骤中，是可以使用多线程来完成某些加载操作的，多线程加载完成后，再进入协同程序的下一步继续执行</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/10/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/02%E7%AE%97%E6%B3%95%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/">← 下一篇 02算法与算法分析</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/10/03/unity/%E7%83%AD%E6%9B%B4%E6%96%B0/%E5%AE%9E%E8%B7%B5%EF%BC%9AAB%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/01md5%E7%A0%81/">01md5码 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

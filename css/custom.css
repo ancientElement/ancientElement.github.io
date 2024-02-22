@@ -1,0 +1,39 @@
+.recent-post {
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.recent-post {
+    border: 0;
+}
+
+#navigation,
+#total {
+    background-color: rgb(0 0 0 / 30%);
+}
+
+#color-mode {
+    display: none;
+}
+
+#Categories,
+#Tags {
+    overflow-y: auto;
+    position: relative;
+}
+
+#Categories h1,
+#Tags h1 {
+    position: sticky;
+    top: 0;
+    width: 100%; /* 子元素宽度 */
+    z-index: 100;
+}
+
+
+#Archives {
+    height: 100%;
+}
+
+#Archives h1{
+
+}

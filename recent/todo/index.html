@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>待办事项 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">最近</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>待办事项</h1></div><hr><div id="post-content"><p><span style="margin:0">⭐: 重要程度</span><br><span style="margin:0">🖐: 未开始</span><br><span style="margin:0">🎬: 开始</span><br><span style="margin:0">🚧: 搁置</span><br><span style="margin:0">🛠️:进行中</span><br><span style="margin:0">☠️: 取消</span><br><span style="margin:0">🏆: 完成</span></p>
+<hr>
+<ul>
+<li>持续要做</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>重要程度</th>
+<th>状态</th>
+<th>项目</th>
+<th>起始</th>
+<th>完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>计算机基础⭐⭐⭐</td>
+<td>🛠️</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/youngyangyang04/leetcode-master">leetcode刷题</a></td>
+<td>2023/10/13</td>
+<td></td>
+</tr>
+<tr>
+<td>⭐</td>
+<td>🛠️</td>
+<td><a target="_blank" rel="noopener" href="https://www.taikr.com/my/course/1405">面试题</a></td>
+<td>2023/10/2</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<ul>
+<li>现在的目标</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>重要程度</th>
+<th>状态</th>
+<th>项目</th>
+<th>起始</th>
+<th>完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>想做的游戏⭐⭐⭐</td>
+<td>🖐</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/ancientElement/ACTNetGame">游戏项目-在线多人格斗平台对战游戏</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+<tr>
+<td>加强基础⭐⭐</td>
+<td>🛠️</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12Q4y1S73g">GAMES103-基于物理的计算机动画入门</a></td>
+<td>2023/9/10</td>
+<td></td>
+</tr>
+<tr>
+<td>加强基础⭐⭐</td>
+<td>🚧</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1X7411F744">GAMES101-现代计算机图形学入门(光线追踪卡住了)</a></td>
+<td>2023/9/10</td>
+<td></td>
+</tr>
+<tr>
+<td>知识整合⭐⭐</td>
+<td>🚧</td>
+<td><a href="https://ancientelement.gitee.io/2023/11/07/unity/Unity3d%E7%BD%91%E7%BB%9C%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89/3D%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98%E8%AE%A1%E5%88%92%E4%B9%A6/">联机游戏项目</a></td>
+<td>2023/11/01</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<ul>
+<li>已经完成</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>重要程度</th>
+<th>状态</th>
+<th>项目</th>
+<th>起始</th>
+<th>完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网络开发实战(以下所有的基础)⭐⭐⭐</td>
+<td>🏆</td>
+<td><a target="_blank" rel="noopener" href="https://yd.qq.com/web/reader/5c632a50716c1f555c67eafkc9f326d018c9f0f895fb5e4">Unity3D网络游戏实战（第2版）</a></td>
+<td>2023/10/14</td>
+<td>2023/10/28</td>
+</tr>
+<tr>
+<td>⭐⭐</td>
+<td>🏆</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nJ411V7bd">数据结构与算法基础</a></td>
+<td>2023/10/3</td>
+<td>2023/10/13</td>
+</tr>
+<tr>
+<td>unity基础⭐⭐</td>
+<td>🏆</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1VP411G7w2">AB包上传下载</a></td>
+<td>2023/10/1</td>
+<td>2023/10/2</td>
+</tr>
+<tr>
+<td>⭐</td>
+<td>☠️</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13g41157hK">左程云的算法课</a></td>
+<td>2023/10/3</td>
+<td>取消</td>
+</tr>
+<tr>
+<td>socket联机游戏制作教程⭐⭐⭐</td>
+<td>🏆</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kC4y1s73t">socket联机游戏制作教程（unity客户端）（c#服务端）</a></td>
+<td>2023/10/17</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<ul>
+<li>暂且放一放</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>重要程度</th>
+<th>状态</th>
+<th>项目</th>
+<th>起始</th>
+<th>完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>帧同步的应用</td>
+<td>🖐</td>
+<td><a target="_blank" rel="noopener" href="https://space.bilibili.com/27169314">参考荒野乱斗</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+<tr>
+<td>⭐⭐⭐</td>
+<td>🚧</td>
+<td><a href="">优化技能编辑器</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+<tr>
+<td>引擎基础⭐</td>
+<td>🚧</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oU4y1R7Km">GAMES104-现代游戏引擎：从入门到实践</a></td>
+<td>2023/10/2</td>
+<td></td>
+</tr>
+<tr>
+<td>理解ECS架构</td>
+<td>🚧</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14S4y157ff">守望先锋GDC讲座(烟雨讲解版本)</a><br>/<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1p4411k7N8">守望先锋GDC讲座(原版)</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+<tr>
+<td>简历加分⭐⭐</td>
+<td>🖐</td>
+<td><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ZK411H7Hc">GAMES201：高级物理引擎实战指南</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<ul>
+<li>还未开始</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>重要程度</th>
+<th>状态</th>
+<th>项目</th>
+<th>起始</th>
+<th>完成</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>退路⭐</td>
+<td>🖐</td>
+<td><a href="">Unreal引擎</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+<tr>
+<td>⭐</td>
+<td>🚧</td>
+<td><a href="">微信小游戏</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+<tr>
+<td>⭐</td>
+<td>🖐</td>
+<td><a href="">UI红点系统</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+<tr>
+<td>⭐⭐</td>
+<td>🖐</td>
+<td><a href="">网络同步</a></td>
+<td>2023/10/14</td>
+<td></td>
+</tr>
+</tbody></table>
+<div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><section id="total"><a id="total-archives" href="/archives"><span class="total-title">文章 总数:</span><span class="total-number">243</span></a><div id="total-tags"><span class="total-title">标签:</span><span class="total-number">102</span></div><div id="total-categories"><span class="total-title">分类:</span><span class="total-number">48</span></div></section></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

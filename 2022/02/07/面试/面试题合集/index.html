@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>面试题合集 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>面试题合集</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2022-02-06T16:00:00.000Z" id="date"> 2022-02-07</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.941Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">3.7k</div></span></div></div><hr><div id="post-content"><h2 id="C-篇"><a href="#C-篇" class="headerlink" title="C++篇"></a>C++篇</h2><h3 id="C-和C的区别"><a href="#C-和C的区别" class="headerlink" title="C++和C的区别"></a>C++和C的区别</h3><ol>
+<li>C++保留了C语言原有的所有优点，增加了<strong>面向对象的机制</strong></li>
+</ol>
+<p>虽然可以使用C实现面向对象，但是也是重复制造C++，虽然我没有在C++中实现过面向对象，但是在lua中实现面向对象，lua中有一个非常重要的概念<code>mateTable</code>因为lua中所有东西都是<code>table</code>，<code>table</code>中可以通过修改<code>mateTable</code>，在访问该<code>table</code>时所没有的方法和变量时指向他的<code>mateTable</code>，由此可以实现<code>new``extend``virtual</code>等。</p>
+<ol start="2">
+<li>在C++中，<strong>函数原型</strong>必不可少，但是在C中是可选的</li>
+</ol>
+<p><code>int (*pfunc)();</code>在C中，这玩意竟然可以代表所有返回值为int的pfunc函数无论他的参数是什么，我好像有一段时间在找这个玩意怎么在C#里实现，在C++中这个与<code>int (*pfunc)(void)</code>;没有区别。</p>
+<h3 id="联合体、结构体、类的区别"><a href="#联合体、结构体、类的区别" class="headerlink" title="联合体、结构体、类的区别"></a>联合体、结构体、类的区别</h3><h4 id="1-结构体和类"><a href="#1-结构体和类" class="headerlink" title="1. 结构体和类"></a>1. 结构体和类</h4><p>在C++中结构体和类没有很大的区别，结构体中默认成员是<code>public</code>而类中是<code>private</code>，结构体是值类型，类是引用类型，结构体存在栈中，类存在堆中。</p>
+<p>在C#中结构体默认是<code>private</code>，不允许定义无参构造函数。</p>
+<h3 id="说一说多态"><a href="#说一说多态" class="headerlink" title="说一说多态"></a>说一说多态</h3><h4 id="1-重载"><a href="#1-重载" class="headerlink" title="1. 重载"></a>1. 重载</h4><p>同一作用域下，同名函数不同参数，</p>
+<h4 id="2-重写"><a href="#2-重写" class="headerlink" title="2. 重写"></a>2. 重写</h4><p>派生类对基类作用域下同名(参数、返回值)虚函数函数进行覆盖</p>
+<h4 id="3-重定义"><a href="#3-重定义" class="headerlink" title="3. 重定义"></a>3. 重定义</h4><p>派生类对基类作用域下同名(参数、返回值)函数进行隐藏<br>在C#中用new关键字重定义</p>
+<h3 id="虚函数的用法"><a href="#虚函数的用法" class="headerlink" title="虚函数的用法"></a>虚函数的用法</h3><p>当一个类有一个以上虚函数时，那么这个类便会包含一张虚函数表。而当一个子类继承并重载了基类的虚函数时，它也会有自己的一张虚函数表，虚函数表中存的是函数指针。</p>
+<p class='item-img' data-src='/_images/v2-e2f479ca9b1c56ac33dfae896ce56f49_720w.webp'><img src="/_images/v2-e2f479ca9b1c56ac33dfae896ce56f49_720w.webp"></p>
+<p>函数重载后，会在自己的虚函数表中的指针指向重载过后的函数，而未重载的函数虚函数表中的指针与基类相同。</p>
+<p><strong>纯虚函数</strong>，（抽象函数）在C#中有<code>abstract</code>关键字,在C++中在函数后加上 <code>= 0</code>表示,例如:<code>int pfun() = 0</code>,没有函数体。<br>在C++中纯虚函数用<code>overrid</code>重写，虚函数用<code>virtual</code>重写。在C#中都用<code>overrid</code>。</p>
+<p>纯虚函数的类也称为<strong>抽象类</strong>，是为了让使用者必须override整个类，从而无法被实例化，从编译器层面禁止了无实际意义的class对象的创建。C#一样。</p>
+<h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><h4 id="1-模板类和模板方法（泛型）"><a href="#1-模板类和模板方法（泛型）" class="headerlink" title="1. 模板类和模板方法（泛型）"></a>1. 模板类和模板方法（泛型）</h4><p>通过模板实现泛型编程，实现运行时多态，</p>
+<p>建立一个通用函数，其函数返回值类型和形参类型可以不具体制定，用一个<strong>虚拟的类型</strong>来代表。</p>
+<p>建立一个通用类，类中的成员数据类型可以不具体制定，用一个<strong>虚拟的类型</strong>来代表。</p>
+<p>比如，资源加载中有许多类型的资源进行加载，我拿到资源需要进行判空，类型转化等操作，可以封装一个函数，传入资源的类型在函数里就进行判空和类型转化，直接可以拿到资源进行使用。</p>
+<h4 id="2-容器"><a href="#2-容器" class="headerlink" title="2. 容器"></a>2. 容器</h4><h5 id="⭐std-vector，对对应C-中List"><a href="#⭐std-vector，对对应C-中List" class="headerlink" title="- ⭐std::vector&lt;T&gt;，对对应C#中List&lt;T&gt;"></a>- ⭐<code>std::vector&lt;T&gt;</code>，对对应C#中<code>List&lt;T&gt;</code></h5><p>vector容器的迭代器是支持随机访问的迭代器。<br>vector数据结构和数组非常相似，也称为单端数组。<br>vector与普通数组区别：数组是<strong>静态空间</strong>，而vector可以动态扩展。<br>并不是在原空间之后续接新空间，而是找更大的内存空间，然后将原数据拷贝新空间，释放原空间。<br>应该合理的分配初始空间，防止进行较大的拷贝。</p>
+<h3 id="简述数组与指针的区别"><a href="#简述数组与指针的区别" class="headerlink" title="简述数组与指针的区别"></a>简述数组与指针的区别</h3><ul>
+<li><code>数组</code>是直接访问数据的。</li>
+<li><code>指针</code>是间接访问数据的。</li>
+</ul>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h5><ul>
+<li><code>数组</code>是类型相同、数目固定的若干个变量的有限集合，它存放的是数据。</li>
+<li><code>指针</code>是变量的地址，存放的是变量的地址。</li>
+</ul>
+<h5 id="存储方式："><a href="#存储方式：" class="headerlink" title="存储方式："></a>存储方式：</h5><ul>
+<li><code>数组</code>通常存储在静态存储区或栈上。</li>
+<li><code>指针</code>可以随时随地地指向任意类型的内存块。</li>
+</ul>
+<h5 id="内存容量："><a href="#内存容量：" class="headerlink" title="内存容量："></a>内存容量：</h5><ul>
+<li>用运算符<code>sizeof</code>可以计算出数组的容量(字节数)。</li>
+<li><code>sizeof(p)</code>，<code>p</code>为指针得到的是一个指针变量的字节数，而不是p多指的内存容量。</li>
+</ul>
+<h3 id="new和malloc区别"><a href="#new和malloc区别" class="headerlink" title="new和malloc区别"></a>new和malloc区别</h3><h4 id="申请内存的位置不同："><a href="#申请内存的位置不同：" class="headerlink" title="申请内存的位置不同："></a>申请内存的位置不同：</h4><ul>
+<li>new 操作符从自由存储区（free store）上为对象动态分配内存空间，自由存储区是 C++ 基于 new 操作符的一个抽象概念，凡是通过 new 操作符进行内存申请，该内存即为自由存储区。自由存储区不仅可以是堆，还可以是静态存储区或线程局部存储区，这取决于 operator new 在哪里为对象分配内存。需要注意的是，使用 new 申请的内存空间，需要使用对应的 delete 释放内存，否则会出现内存泄漏问题。</li>
+<li>malloc 函数从堆上动态分配内存。需要注意的是，使用 malloc 申请的内存空间，需要使用对应的 free 释放内存，否则会出现内存泄漏问题。</li>
+</ul>
+<h4 id="返回类型的安全性"><a href="#返回类型的安全性" class="headerlink" title="返回类型的安全性"></a>返回类型的安全性</h4><ul>
+<li>new 操作符内存分配成功时，返回的是对象类型的指针，类型严格与对象匹配，无须进行类型转换，故 new 是符合类型安全性的操作符。</li>
+<li>malloc 内存分配成功则是返回 void 指针，需要通过强制类型转换将 void 指针转换成我们需要的类型，这可能会带来类型安全性的问题。</li>
+</ul>
+<h4 id="内存分配失败时的返回值"><a href="#内存分配失败时的返回值" class="headerlink" title="内存分配失败时的返回值"></a>内存分配失败时的返回值</h4><ul>
+<li>new 内存分配失败时，会抛出 std::bad_alloc 异常，这个异常可以通过异常处理机制捕获处理。</li>
+<li>malloc 分配失败时返回 NULL，需要手动进行错误处理。</li>
+</ul>
+<h4 id="分配内存大小"><a href="#分配内存大小" class="headerlink" title="分配内存大小"></a>分配内存大小</h4><ul>
+<li><p>使用 new 操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息自行计算。需要注意的是，对于数组类型的内存申请，需要使用 new[] 操作符。</p>
+</li>
+<li><p>malloc 则需要明确指出所需内存的尺寸。</p>
+</li>
+</ul>
+<h4 id="是否调用构造函数-析构函数"><a href="#是否调用构造函数-析构函数" class="headerlink" title="是否调用构造函数&#x2F;析构函数"></a>是否调用构造函数&#x2F;析构函数</h4><ul>
+<li>使用 new 操作符来分配对象内存时会经历三个步骤：</li>
+</ul>
+<ol>
+<li>调用 operator new 函数（对于数组是 operator new[]）分配一块足够大的，原始的，未命名的内存空间以便存储特定类型的对象。</li>
+<li>编译器运行相应的构造函数以构造对象，并为其传入初值。</li>
+<li>对象构造完成后，返回一个指向该对象的指针。</li>
+</ol>
+<ul>
+<li>使用 delete 操作符来释放对象内存时会经历两个步骤：</li>
+</ul>
+<ol start="4">
+<li>调用对象的析构函数。</li>
+<li>编译器调用operator delete(或operator delete[])函数释放内存空间。</li>
+</ol>
+<ul>
+<li>malloc不会调用构造函数，free也不会调用析构函数。</li>
+<li></li>
+</ul>
+<h4 id="对于数组的处理"><a href="#对于数组的处理" class="headerlink" title="对于数组的处理"></a>对于数组的处理</h4><ul>
+<li>C++ 提供了 new[] 与 delete[] 来专门处理数组类型的分配。new 对数组的支持体现在它会分别调用构造函数函数初始化每一个数组元素，释放对象时为每个对象调用析构函数。</li>
+<li>注意 delete[] 要与 new[] 配套使用，不然会找出数组对象部分释放的现象，造成内存泄漏。</li>
+<li>malloc 并知道你在这块内存上要放的数组还是啥别的东西，反正它就给你一块原始的内存，在给你个内存的地址就完事。所以如果要动态分配一个数组的内存，还需要我们手动自定数组的大小</li>
+<li></li>
+</ul>
+<h4 id="是否可以被重载"><a href="#是否可以被重载" class="headerlink" title="是否可以被重载"></a>是否可以被重载</h4><p>opeartor new &#x2F;operator delete 可以被重载。注意，new 表达式和 operator new 是不同的，前者调用后者，严格来说，我们区分的是 new 表达式和 malloc 表达式，所以应该都不支持重载。</p>
+<h4 id="是否支持内存扩充"><a href="#是否支持内存扩充" class="headerlink" title="是否支持内存扩充"></a>是否支持内存扩充</h4><ul>
+<li>new 不支持内存扩充</li>
+<li>malloc 在分配内存后，如果内存不足，可以<strong>使用 realloc 进行内存重新分配</strong>，实现扩充。</li>
+</ul>
+<h2 id="计算机基础篇"><a href="#计算机基础篇" class="headerlink" title="计算机基础篇"></a>计算机基础篇</h2><h3 id="⭐map的实现原理"><a href="#⭐map的实现原理" class="headerlink" title="⭐map的实现原理"></a>⭐map的实现原理</h3><p>C#中使用Dictionary&lt;TKey,TValue&gt;，C++使用std::map&lt;TK,TV&gt;。</p>
+<p>map的内部实现是<a target="_blank" rel="noopener" href="http://wenwen.soso.com/z/Search.e?sp=S%E7%BA%A2%E9%BB%91%E6%A0%91&ch=w.search.yjjlink&cid=w.search.yjjlink">红黑树</a>，Dictionary的实现是<a target="_blank" rel="noopener" href="http://wenwen.soso.com/z/Search.e?sp=S%E5%93%88%E5%B8%8C%E8%A1%A8&ch=w.search.yjjlink&cid=w.search.yjjlink">哈希表</a>。</p>
+<h4 id="map实现"><a href="#map实现" class="headerlink" title="map实现"></a>map实现</h4><h5 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h5><p>要了解红黑树先了解<strong>二叉排序树（二叉查找树）</strong></p>
+<p class='item-img' data-src='/2002/01/01/images/nc6qj.webp'><img src="/2002/01/01/images/nc6qj.webp"><br class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020240207212901.png'><img src="/2002/01/01/images/Pasted%20image%2020240207212901.png"></p>
+<p>其实这就是二分的思想，与二分查找的思想一致。<br>但是，其增删查改的效率与树的形态有关。<br>增删查改<strong>最好</strong>时间复杂为<code>O(lg(n))</code></p>
+<p class='item-img' data-src='/2002/01/01/images/ag7vx.webp'><img src="/2002/01/01/images/ag7vx.webp" alt="ag7vx"></p>
+<p>由于二叉树多次插入新节点的不平衡，带来查找效率大打折扣，于是使用一种方法使得二叉树搜索树能够<strong>自平衡</strong>。</p>
+<h5 id="平衡二叉树和2-3树"><a href="#平衡二叉树和2-3树" class="headerlink" title="平衡二叉树和2-3树"></a>平衡二叉树和2-3树</h5><p>于是有了<strong>红黑树：</strong> </p>
+<p>红黑树提出前有<strong>平衡二叉树</strong>和<strong>2-3树</strong>，这里大概讲一下：</p>
+<ul>
+<li>平衡二叉树<br>平衡二叉树的规则很简单：</li>
+</ul>
+<p>1.保持是一个二叉树<br>2.每个节点的左子树和右子树的平衡因子的绝对值小于等于1，也就是左子树的高度减去右子树的高度的值为-1，0，1。</p>
+<p>当插入一个节点时，如果某个节点的平衡因子被破坏，需要进行旋转操作，有LL，LR，RR，RL四种不平衡情况。只要遵循二叉树的原则来旋转，并且降低树的高度。</p>
+<ul>
+<li>2-3树</li>
+</ul>
+<p>这个暂且看这上面的内容：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19856999/answer/2706230925">红黑树比 AVL 树具体更高效在哪里？ - 知乎 (zhihu.com)</a></p>
+<h5 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h5><p>1.节点是红色或黑色。</p>
+<p>2.根节点是黑色。</p>
+<p>3.每个叶子节点都是黑色的空节点（NIL节点）。</p>
+<p>4 每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)</p>
+<p>5.从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。</p>
+<p>其实看起来规则多多，只要对照平衡二叉树其实规则一致。都是为了保持平衡，也就是保持平衡因子。</p>
+<p>红黑树相比与平衡二叉树可能某些时候出现不平衡的现象，因为有时候红黑树只需要通过染色，就可以达到目的。</p>
+<p>具体看<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19856999/answer/2706230925">红黑树比 AVL 树具体更高效在哪里？ - 知乎 (zhihu.com)</a></p>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p>先看<a href="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/24%E6%95%A3%E5%88%97%E8%A1%A8(%E5%93%88%E5%B8%8C%E8%A1%A8)%E7%9A%84%E6%9F%A5%E6%89%BE.md">24散列表(哈希表)的查找</a>这个复习一下</p>
+<p>可以这样理解，哈希表就是将其<strong>关键数据</strong>（key）转换成储存其的地址，通过<code>hash</code>函数从<strong>关键数据</strong>（key）得到地址从而直接访问数据。</p>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><h5 id="直接定址发和除留余数法"><a href="#直接定址发和除留余数法" class="headerlink" title="直接定址发和除留余数法"></a>直接定址发和除留余数法</h5><p>用于简单的数据，但是有时候会有冲突。</p>
+<p>例如处理10，20，30，40，50</p>
+<p>直接取其十位，或者用一个取模函数得到他们余数不相等的模</p>
+<p>处理冲突的方法  </p>
+<h5 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h5><p>如果有冲突就找下一个位置</p>
+<p class='item-img' data-src='/2002/01/01/images/77tvf.webp'><img src="/2002/01/01/images/77tvf.webp" alt="77tvf"><br class='item-img' data-src='/2002/01/01/images/ipa3l.webp'><img src="/2002/01/01/images/ipa3l.webp" alt="ipa3l"></p>
+<h5 id="二次探测"><a href="#二次探测" class="headerlink" title="二次探测"></a>二次探测</h5><p class='item-img' data-src='/2002/01/01/images/x5v3y.webp'><img src="/2002/01/01/images/x5v3y.webp" alt="x5v3y"></p>
+<p class='item-img' data-src='/2002/01/01/images/qzlya.webp'><img src="/2002/01/01/images/qzlya.webp" alt="qzlya"></p>
+<h5 id="伪随机探测"><a href="#伪随机探测" class="headerlink" title="伪随机探测"></a>伪随机探测</h5><p class='item-img' data-src='/2002/01/01/images/avwla.webp'><img src="/2002/01/01/images/avwla.webp" alt="avwla"></p>
+<h5 id="链地址法"><a href="#链地址法" class="headerlink" title="链地址法"></a>链地址法</h5><p class='item-img' data-src='/2002/01/01/images/a6mii.webp'><img src="/2002/01/01/images/a6mii.webp" alt="a6mii"><br class='item-img' data-src='/2002/01/01/images/l1fl3.webp'><img src="/2002/01/01/images/l1fl3.webp" alt="l1fl3"></p>
+<h4 id="C-Dictionary"><a href="#C-Dictionary" class="headerlink" title="C# Dictionary&lt;TKey,TValue&gt;"></a>C# Dictionary&lt;TKey,TValue&gt;</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96633352">【C#】浅析C# Dictionary实现原理 - 知乎 (zhihu.com)</a></p>
+<p>其实Dictionary就是使用链地址法的哈希表。其容量是大于当前容量的最小质数。当其容量不足的时候会进行扩容。</p>
+<h3 id="DFS和BFS"><a href="#DFS和BFS" class="headerlink" title="DFS和BFS"></a>DFS和BFS</h3><h4 id="先复习一下图这个结构"><a href="#先复习一下图这个结构" class="headerlink" title="先复习一下图这个结构"></a>先复习一下图这个结构</h4><p>图,一般用于表示多对多的数据结构</p>
+<h5 id="数组表示法-临界矩阵"><a href="#数组表示法-临界矩阵" class="headerlink" title="数组表示法: 临界矩阵"></a>数组表示法: 临界矩阵</h5><p>用一个<strong>顶点表</strong>表示顶点数据,再用一个二维数组<strong>临接矩阵</strong>表示顶点的连接关系。</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231012195424.png'><img src="/2002/01/01/images/Pasted%20image%2020231012195424.png"></p>
+<p>在有向图中只行表示<strong>出度</strong></p>
+<p><strong>有权网</strong>，并且图中的顶点可以带有权值。</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020231012195700.png'><img src="/2002/01/01/images/Pasted%20image%2020231012195700.png"></p>
+<h5 id="临界表：-链表表示法"><a href="#临界表：-链表表示法" class="headerlink" title="临界表： 链表表示法"></a>临界表： 链表表示法</h5><p class='item-img' data-src='/_images/709d87afc7f8777f8b93b828c7bf986bd6145073.png@1256w_594h_!web-article-pic.webp'><img src="/_images/709d87afc7f8777f8b93b828c7bf986bd6145073.png@1256w_594h_!web-article-pic.webp"></p>
+<h4 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h4><p>遍历的实质就是找到<strong>邻接点</strong></p>
+<p><a href="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/19%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86.md">19图的遍历</a></p>
+<h5 id="深度优先"><a href="#深度优先" class="headerlink" title="深度优先"></a>深度优先</h5><p><strong>一条道走到黑</strong>直到所有的邻接点都被访问过了。再退回到上一步。直到所有的顶点都被访问过。</p>
+<p>有点像<strong>先序遍历</strong></p>
+<p class='item-img' data-src='/_images/1a13f091ca7e71fbbb96a6d79350c36e2fbe85ea.png@1256w_664h_!web-article-pic.webp'><img src="/_images/1a13f091ca7e71fbbb96a6d79350c36e2fbe85ea.png@1256w_664h_!web-article-pic.webp"><img src="/_images/18e214a6a035d9d4802cd2b24f47f26ec517eca5.png@1256w_622h_!web-article-pic.webp"><br class='item-img' data-src='/_images/cd8db24e1a36ec22ceb9834e132c41b8a3f11b23.png@1256w_582h_!web-article-pic.webp'><img src="/_images/cd8db24e1a36ec22ceb9834e132c41b8a3f11b23.png@1256w_582h_!web-article-pic.webp"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//伪代码</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Graph</span>&#123;<br>	<span class="hljs-type">int</span> vetex[];<br>	<span class="hljs-type">int</span> relat_table[][];<br>	<span class="hljs-type">int</span> count;<br>&#125;<br><br><span class="hljs-type">bool</span> visited[];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DFS</span><span class="hljs-params">(Graph graph,<span class="hljs-type">int</span> index)</span></span>&#123;<br>	visited = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[graph.count];<br>	visited[index] = <span class="hljs-literal">true</span>;<br>	cout &lt;&lt; graph[index];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i;i &lt; graph.count;i++) &#123;<br>		<span class="hljs-keyword">if</span>(graph.relat_table[index][i] &amp;&amp; !visited[i]) &#123;<br>			 <span class="hljs-built_in">DFS</span>(graph,i);<br>		&#125;<br>	&#125; <br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="广度优先"><a href="#广度优先" class="headerlink" title="广度优先"></a>广度优先</h5><p>简而言之就是一个<strong>先进先出</strong>的队列</p>
+<p><strong>广度优先搜索算法</strong>（英语：Breadth-First Search，缩写BFS），又译作宽度优先搜索，或横向优先搜索，是一种图形搜索方法。简单的说，BFS是从根节点开始，沿着树德宽度遍历树德节点。如果所有节点均被访问，则算法终止。广度优先搜索的实现一般采用open-closed表。</p>
+<p>BFS是一种盲目搜索法，目的是系统的展开并检查图中的所有节点，以寻找结果。换句话说，它并不考虑结果的可能地址，彻底的搜索整张图，直到找到结果为止。</p>
+<p>从算法的观点，所有因为展开节点而得到的子节点都会被加入一个先进先出的队列中。一般在实现过程中，其邻居节点尚未被检验过的节点会被放置在一个被称为open的容器中（例如队列或者链表），而被检验过的节点则被放置在被称为closed的容器中。（open-closed表)</p>
+<p class='item-img' data-src='/2002/01/01/images/0dzs6.webp'><img src="/2002/01/01/images/0dzs6.webp" alt="0dzs6"></p>
+<h3 id="广度优先搜索（BFS），实现的方法："><a href="#广度优先搜索（BFS），实现的方法：" class="headerlink" title="广度优先搜索（BFS），实现的方法："></a>广度优先搜索（BFS），实现的方法：</h3><ol>
+<li><p>首先将根节点放入队列中；</p>
+</li>
+<li><p>从队列中取出第一个节点，并检验它是否为目标：</p>
+</li>
+</ol>
+<p>·如果找到目标，结束搜索并回传结果；</p>
+<p>·否则将它所有尚未检验过的直接子节点加入队列中。</p>
+<ol start="3">
+<li><p>若队列为空，表示整张图都检查过了–也就代表图中没有要搜索的目标。结束搜索并回传“找不到目标”；</p>
+</li>
+<li><p>重复步骤2。</p>
+</li>
+</ol>
+<p>⭐内存五大区<br>⭐栈和堆区别<br>栈内存增长顺序<br>线程和进程的区别<br>线程间的通讯方式<br>进程间的通讯方式<br>windows linux 系统的大小端<br>UDP和TCP区别</p>
+<h2 id="图形学"><a href="#图形学" class="headerlink" title="图形学"></a>图形学</h2><p>渲染管线<br>深度测试</p>
+<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><p>协程和线程区别</p>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h2 id="项目讲解"><a href="#项目讲解" class="headerlink" title="项目讲解"></a>项目讲解</h2><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/03/02/%E5%AE%9E%E8%B7%B5/02-2DGameKit/">← 下一篇 02-2DGameKit</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2002/01/01/images/">images.md 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">C++篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%92%8CC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.</span> <span class="toc-text">C++和C的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E5%90%88%E4%BD%93%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.</span> <span class="toc-text">联合体、结构体、类的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 结构体和类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E8%AF%B4%E5%A4%9A%E6%80%81"><span class="toc-number">1.3.</span> <span class="toc-text">说一说多态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%87%8D%E8%BD%BD"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%87%8D%E5%86%99"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%87%8D%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 重定义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">虚函数的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STL"><span class="toc-number">1.5.</span> <span class="toc-text">STL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%92%8C%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%EF%BC%88%E6%B3%9B%E5%9E%8B%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 模板类和模板方法（泛型）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%B9%E5%99%A8"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 容器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%AD%90std-vector%EF%BC%8C%E5%AF%B9%E5%AF%B9%E5%BA%94C-%E4%B8%ADList"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">- ⭐std::vector&lt;T&gt;，对对应C#中List&lt;T&gt;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.6.</span> <span class="toc-text">简述数组与指针的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">定义:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">存储方式：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%AE%B9%E9%87%8F%EF%BC%9A"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">内存容量：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E5%92%8Cmalloc%E5%8C%BA%E5%88%AB"><span class="toc-number">1.7.</span> <span class="toc-text">new和malloc区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8D%E5%90%8C%EF%BC%9A"><span class="toc-number">1.7.1.</span> <span class="toc-text">申请内存的位置不同：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.7.2.</span> <span class="toc-text">返回类型的安全性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%A4%B1%E8%B4%A5%E6%97%B6%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">1.7.3.</span> <span class="toc-text">内存分配失败时的返回值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F"><span class="toc-number">1.7.4.</span> <span class="toc-text">分配内存大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E8%B0%83%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.7.5.</span> <span class="toc-text">是否调用构造函数&#x2F;析构函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">1.7.6.</span> <span class="toc-text">对于数组的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%AB%E9%87%8D%E8%BD%BD"><span class="toc-number">1.7.7.</span> <span class="toc-text">是否可以被重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81%E5%86%85%E5%AD%98%E6%89%A9%E5%85%85"><span class="toc-number">1.7.8.</span> <span class="toc-text">是否支持内存扩充</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="toc-number">2.</span> <span class="toc-text">计算机基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90map%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">⭐map的实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#map%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.1.1.</span> <span class="toc-text">map实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">二叉排序树</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C2-3%E6%A0%91"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">平衡二叉树和2-3树</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">红黑树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.1.</span> <span class="toc-text">构造方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E5%8F%91%E5%92%8C%E9%99%A4%E7%95%99%E4%BD%99%E6%95%B0%E6%B3%95"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">直接定址发和除留余数法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">线性探测法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E6%AC%A1%E6%8E%A2%E6%B5%8B"><span class="toc-number">2.2.1.3.</span> <span class="toc-text">二次探测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%8E%A2%E6%B5%8B"><span class="toc-number">2.2.1.4.</span> <span class="toc-text">伪随机探测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="toc-number">2.2.1.5.</span> <span class="toc-text">链地址法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-Dictionary"><span class="toc-number">2.2.2.</span> <span class="toc-text">C# Dictionary&lt;TKey,TValue&gt;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DFS%E5%92%8CBFS"><span class="toc-number">2.3.</span> <span class="toc-text">DFS和BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E5%A4%8D%E4%B9%A0%E4%B8%80%E4%B8%8B%E5%9B%BE%E8%BF%99%E4%B8%AA%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.1.</span> <span class="toc-text">先复习一下图这个结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%A1%A8%E7%A4%BA%E6%B3%95-%E4%B8%B4%E7%95%8C%E7%9F%A9%E9%98%B5"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">数组表示法: 临界矩阵</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%B4%E7%95%8C%E8%A1%A8%EF%BC%9A-%E9%93%BE%E8%A1%A8%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">临界表： 链表表示法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">2.3.2.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">深度优先</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">广度优先</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">广度优先搜索（BFS），实现的方法：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E5%AD%A6"><span class="toc-number">3.</span> <span class="toc-text">图形学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity"><span class="toc-number">4.</span> <span class="toc-text">Unity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%AE%B2%E8%A7%A3"><span class="toc-number">6.</span> <span class="toc-text">项目讲解</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

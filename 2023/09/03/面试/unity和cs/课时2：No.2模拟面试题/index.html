@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课时2：No.2模拟面试题 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>课时2：No.2模拟面试题</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-09-02T16:00:00.000Z" id="date"> 2023-09-03</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.944Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">1.4k</div></span></div></div><hr><div id="post-content"><h2 id="C"><a href="#C" class="headerlink" title="C#"></a><strong>C#</strong></h2><h3 id="1-请说说你认为C-中-和-Equals-的区别是什么？"><a href="#1-请说说你认为C-中-和-Equals-的区别是什么？" class="headerlink" title="*1. 请说说你认为C#中 &#x3D;&#x3D; 和 Equals 的区别是什么？"></a><strong>*1. 请说说你认为C#中 &#x3D;&#x3D; 和 Equals 的区别是什么？</strong></h3><p>我的回答：</p>
+<p>​	&#x3D;&#x3D;与Equals都可以重载,=&#x3D;是运算符重载,Equals可以直接重载</p>
+<p>答案：</p>
+<ol>
+<li>&#x3D;&#x3D; 是运算符，Equals是万物之父Object中的虚方法，子类可重写</li>
+<li>Equals 一般在子类中重写后用于比较两个对象中内容是否相同<br> &#x3D;&#x3D;在没有运算符重载的前提下时<br> 引用类型用于比较地址；值类型用于比较值是否相同</li>
+<li>运算效率不同，一般Equals没有&#x3D;&#x3D;效率高，因为一般Equals比较的内容比&#x3D;&#x3D;多</li>
+</ol>
+<h3 id="2-浅拷贝和深拷贝的区别？可以举例说明"><a href="#2-浅拷贝和深拷贝的区别？可以举例说明" class="headerlink" title="2. 浅拷贝和深拷贝的区别？可以举例说明"></a><strong>2.</strong> <strong>浅拷贝和深拷贝的区别？可以举例说明</strong></h3><p>我的回答：</p>
+<p>​	深拷贝是将原数据拷贝到另一个全新的空间,浅拷贝只拷贝地址,改变拷贝后的数据原数据会改变,深拷贝改变拷贝后的数据原数据不会改变。(用C++解释下	)</p>
+<p>答案：</p>
+<p>浅拷贝：<br>只复制对象的引用地址<br>两个对象指向同一内存地址，修改其中一个另一个也会随之变化</p>
+<p>深拷贝：<br>将对象和值赋值过来，两个对象修改其中任意值都不会影响对方</p>
+<p>举例：</p>
+<p>比如引用对象A和引用对象B<br>让A &#x3D; B，就是浅拷贝，此时A、B的引用地址相同，改A中内容，B也变</p>
+<p>如果想要深拷贝，简单处理就是new（包括对象中的成员）</p>
+<h3 id="3-下面两种获10000个数的方式，哪种效率更高？为什么"><a href="#3-下面两种获10000个数的方式，哪种效率更高？为什么" class="headerlink" title="3. 下面两种获10000个数的方式，哪种效率更高？为什么?"></a><strong>3. 下面两种获10000个数的方式，哪种效率更高？为什么?</strong></h3><p class='item-img' data-src='/2002/01/01/images/121347b75e1d633221.png'><img src="/2002/01/01/images/121347b75e1d633221.png" alt="img"></p>
+<p>我的回答：</p>
+<p>​	第二种效率跟高，应为list在增加的过程中会扩容</p>
+<p>答案：</p>
+<p>方式2的效率更高<br>因为List本质是数组，我们通过Add往List中添加元素时，会不断的触发扩容<br>扩容会带来内存和性能上的消耗<br>内存方面：每次扩容会产生垃圾，还会造成GC的触发<br>性能方面：每次扩容会进行“搬家”（老数组中内容存入新数组中）</p>
+<h3 id="4-请说出下方代码中"><a href="#4-请说出下方代码中" class="headerlink" title="4. 请说出下方代码中"></a><strong>4. 请说出下方代码中</strong></h3><p>  <strong>1.A处和B处谁先打印？</strong></p>
+<p>  <strong>2.A、B出打印的i值分别是多少？</strong></p>
+<p class='item-img' data-src='/2002/01/01/images/121406ed5109338227.png'><img src="/2002/01/01/images/121406ed5109338227.png" alt="img"></p>
+<p>我的回答：<br>​	</p>
+<ol>
+<li>没用过finally</li>
+</ol>
+<p>答案：</p>
+<ol>
+<li>B处先打印，A处后打印</li>
+<li>A处 i &#x3D; 10，B处 i &#x3D; 11</li>
+</ol>
+<p>考点：finally的执行顺序</p>
+<h3 id="5-请问A、B两处-i-的值为多少？"><a href="#5-请问A、B两处-i-的值为多少？" class="headerlink" title="5. 请问A、B两处 i 的值为多少？"></a><strong>5. 请问A、B两处 i 的值为多少？</strong></h3><p class='item-img' data-src='/2002/01/01/images/12142513c4c3739672.png'><img src="/2002/01/01/images/12142513c4c3739672.png" alt="img"></p>
+<p class='item-img' data-src='/2002/01/01/images/121425170ae9635147.png'><img src="/2002/01/01/images/121425170ae9635147.png" alt="img"></p>
+<p>我的回答：</p>
+<p>​	1.没用过finally</p>
+<p>答案：<br>A、B两处都为11<br>考点：<br>1.finally的执行顺序<br>2.值和引用赋值表现的区别</p>
+<h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a><strong>Unity</strong></h2><h3 id="1-Unity中当一个细小高速物体撞击另一个较大物体时，会出现什么情况？如何避免？"><a href="#1-Unity中当一个细小高速物体撞击另一个较大物体时，会出现什么情况？如何避免？" class="headerlink" title="1. Unity中当一个细小高速物体撞击另一个较大物体时，会出现什么情况？如何避免？"></a><strong>1.</strong> <strong>Unity中当一个细小高速物体撞击另一个较大物体时，会出现什么情况？如何避免？</strong></h3><p>​	细小物体可能会由于速度过大在一帧的距离里直接穿过较大物体，使用连续检测或者使用射线检测辅助。</p>
+<p>答案：</p>
+<ol>
+<li>我们可以尽量用射线检测来替代细小物体的物理系统碰撞<br>因为传统的FPS游戏都是通过射线检测加模拟计算来判断伤害的</li>
+<li>修改Rigidbody刚体中的Interpolate（插值）和CollisionDetection（碰撞检测）两个参数，来提高碰撞检测的准确性</li>
+</ol>
+<p>	</p>
+<h3 id="2-请简述一下Prefab（预制体）的本质是什么？"><a href="#2-请简述一下Prefab（预制体）的本质是什么？" class="headerlink" title="2. 请简述一下Prefab（预制体）的本质是什么？"></a><strong>2. 请简述一下Prefab（预制体）的本质是什么？</strong></h3><p>我的回答：</p>
+<p>​	本质是序列化的GameObject。</p>
+<p>答案：</p>
+<p>Prefab的本质就是一个配置文件<br>其中记录了一个GameObject对象上挂载的脚本信息<br>并且记录了脚本信息中的可配置的属性信息</p>
+<h3 id="3-Unity是否支持写成多线程程序？如果支持的话需要注意什么？"><a href="#3-Unity是否支持写成多线程程序？如果支持的话需要注意什么？" class="headerlink" title="3.Unity是否支持写成多线程程序？如果支持的话需要注意什么？"></a>3.Unity是否支持写成多线程程序？如果支持的话需要注意什么？</h3><p>​	可以支持多线程，但要注意： </p>
+<ol>
+<li>注意在webgl下不支持</li>
+<li>不允许操作UnityEngine命名空间下的所有对象</li>
+</ol>
+<p>答案：<br>支持<br>注意：<br>1.只能从主线程访问Unity相关组件、对象以及<br>UnityEngine命名空间中的绝大部分内容<br>2.如果多线程中要和Unity主线程同时修改一些数据<br>可以通过lock关键词加锁</p>
+<h3 id="4-请简述一下对象池，在游戏开发中我们什么时候会用到它？"><a href="#4-请简述一下对象池，在游戏开发中我们什么时候会用到它？" class="headerlink" title="4. 请简述一下对象池，在游戏开发中我们什么时候会用到它？"></a><strong>4. 请简述一下对象池，在游戏开发中我们什么时候会用到它？</strong></h3><p>​	对象池可以复用对象，减少GC的次数，提高用户体验，减少卡顿。</p>
+<p>​	当需要不断重复利用对象资源时要用对象池，例如特效、音频AudioSource</p>
+<p>答案：</p>
+<ol>
+<li><p>对象池的主要作用是 避免大量创建对象再释放对象时造成的内存消耗，可以有效降低GC发生的频率。我们把不用的对象放入对象池中而不是让它直接变为垃圾，下次需要用到对象时再从对象池中获取，我们通过占用内存来避免更多的内存消耗和GC的发生</p>
+</li>
+<li><p>在游戏中频繁创建对象、实例化对象的地方，都可以用到对象池。比如前端开发中，游戏中的子弹、伤害字体、特效等等、比如后端开发中线程池等等</p>
+</li>
+</ol>
+<h3 id="5-什么是DrawCall？DrawCall为什么会影响游戏运行效率？如何减少DrawCall？"><a href="#5-什么是DrawCall？DrawCall为什么会影响游戏运行效率？如何减少DrawCall？" class="headerlink" title="5. 什么是DrawCall？DrawCall为什么会影响游戏运行效率？如何减少DrawCall？"></a><strong>5. 什么是DrawCall？DrawCall为什么会影响游戏运行效率？如何减少DrawCall？</strong></h3><p>​	渲染</p>
+<p>答案：<br>1.什么是DrawCall？<br>每次CPU准备渲染相关数据并通知GPU的过程称为一次DrawCall</p>
+<p>2.DrawCall为什么会影响游戏运行效率？<br>如果DrawCall次数较高，意味着CPU会花费更多的时间准备渲染数据，这会进行更多的计算，进而影响游戏的运行效率</p>
+<p>3.如何减少DrawCall？<br>2D和UI层面：打图集，并且注意面板中不同图集图片的层级不要穿插<br>3D模型层面：利用动态批处理和静态批处理，尽量不使用实时光照和实时阴影<br>等等</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/09/04/%E9%9D%A2%E8%AF%95/unity%E5%92%8Ccs/%E8%AF%BE%E6%97%B63%EF%BC%9ANo.3%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95%E9%A2%98/">← 下一篇 课时3：No.3模拟面试题</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/08/30/%E9%9D%A2%E8%AF%95/unity%E5%92%8Ccs/%E8%AF%BE%E6%97%B61%EF%BC%9ANo.1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95%E9%A2%98/">课时1：No.1模拟面试题 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">1.</span> <span class="toc-text">C#</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AF%B7%E8%AF%B4%E8%AF%B4%E4%BD%A0%E8%AE%A4%E4%B8%BAC-%E4%B8%AD-%E5%92%8C-Equals-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">*1. 请说说你认为C#中 &#x3D;&#x3D; 和 Equals 的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%8F%AF%E4%BB%A5%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.</span> <span class="toc-text">2. 浅拷贝和深拷贝的区别？可以举例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%8B%E9%9D%A2%E4%B8%A4%E7%A7%8D%E8%8E%B710000%E4%B8%AA%E6%95%B0%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%93%AA%E7%A7%8D%E6%95%88%E7%8E%87%E6%9B%B4%E9%AB%98%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.</span> <span class="toc-text">3. 下面两种获10000个数的方式，哪种效率更高？为什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AF%B7%E8%AF%B4%E5%87%BA%E4%B8%8B%E6%96%B9%E4%BB%A3%E7%A0%81%E4%B8%AD"><span class="toc-number">1.4.</span> <span class="toc-text">4. 请说出下方代码中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%AF%B7%E9%97%AEA%E3%80%81B%E4%B8%A4%E5%A4%84-i-%E7%9A%84%E5%80%BC%E4%B8%BA%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">5. 请问A、B两处 i 的值为多少？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unity"><span class="toc-number">2.</span> <span class="toc-text">Unity</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Unity%E4%B8%AD%E5%BD%93%E4%B8%80%E4%B8%AA%E7%BB%86%E5%B0%8F%E9%AB%98%E9%80%9F%E7%89%A9%E4%BD%93%E6%92%9E%E5%87%BB%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%BE%83%E5%A4%A7%E7%89%A9%E4%BD%93%E6%97%B6%EF%BC%8C%E4%BC%9A%E5%87%BA%E7%8E%B0%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%EF%BC%9F%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1. Unity中当一个细小高速物体撞击另一个较大物体时，会出现什么情况？如何避免？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%B7%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8BPrefab%EF%BC%88%E9%A2%84%E5%88%B6%E4%BD%93%EF%BC%89%E7%9A%84%E6%9C%AC%E8%B4%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2. 请简述一下Prefab（预制体）的本质是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Unity%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81%E5%86%99%E6%88%90%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%A8%8B%E5%BA%8F%EF%BC%9F%E5%A6%82%E6%9E%9C%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%9D%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">3.Unity是否支持写成多线程程序？如果支持的话需要注意什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AF%B7%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%8B%E5%AF%B9%E8%B1%A1%E6%B1%A0%EF%BC%8C%E5%9C%A8%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E6%88%91%E4%BB%AC%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E7%94%A8%E5%88%B0%E5%AE%83%EF%BC%9F"><span class="toc-number">2.4.</span> <span class="toc-text">4. 请简述一下对象池，在游戏开发中我们什么时候会用到它？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BB%80%E4%B9%88%E6%98%AFDrawCall%EF%BC%9FDrawCall%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%BD%B1%E5%93%8D%E6%B8%B8%E6%88%8F%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87%EF%BC%9F%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91DrawCall%EF%BC%9F"><span class="toc-number">2.5.</span> <span class="toc-text">5. 什么是DrawCall？DrawCall为什么会影响游戏运行效率？如何减少DrawCall？</span></a></li></ol></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

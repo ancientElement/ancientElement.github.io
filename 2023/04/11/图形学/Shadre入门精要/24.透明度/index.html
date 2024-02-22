@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>24.透明度 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>24.透明度</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-04-10T16:00:00.000Z" id="date"> 2023-04-11</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.882Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">1.1k</div></span></div></div><hr><div id="post-content"><ol>
+<li>渲染队列</li>
+<li>透明度混合要关闭深度写入</li>
+</ol>
+<h2 id="透明度测试"><a href="#透明度测试" class="headerlink" title="透明度测试"></a>透明度测试</h2><p>Tags: 设置标签</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cs">Tags<br>&#123;<br>    <span class="hljs-string">&quot;Queue&quot;</span> = <span class="hljs-string">&quot;AlphaTest&quot;</span> <span class="hljs-string">&quot;IgnoreProject&quot;</span> = <span class="hljs-string">&quot;True&quot;</span> <span class="hljs-string">&quot;RenderType&quot;</span> = <span class="hljs-string">&quot;TransparentCutout&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li><p><em>Queue</em> <em>渲染队列</em> <em>AlphaTest<strong>队列</strong></em> unity定义的五个渲染队列</p>
+<table>
+<thead>
+<tr>
+<th>渲染队列</th>
+<th>渲染队列描写叙述</th>
+<th>渲染队列值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Background</td>
+<td>这个队列通常被最先渲染。</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>Geometry</td>
+<td>这是默认的渲染队列。它被用于绝大多数对象。不透明几何体使用该队列。</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>AlphaTest</td>
+<td>通道检查的几何体使用该队列。它和Geometry队列不同，对于在全部立体物体绘制后渲染的通道检查的对象，它更有效。</td>
+<td>2450</td>
+</tr>
+<tr>
+<td>Transparent</td>
+<td>该渲染队列在Geometry和AlphaTest队列后被渲染。不论什么通道混合的（也就是说。那些不写入深度缓存的Shaders）对象使用该队列。比如玻璃和粒子效果。</td>
+<td>3000</td>
+</tr>
+<tr>
+<td>Overlay</td>
+<td>该渲染队列是为覆盖物效果服务的。不论什么最后被渲染的对象使用该队列，比如镜头光晕。</td>
+<td>4000</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><em>IgnoreProject</em> <em>不受投影器的影响</em></p>
+<p>IgnoreProjector 标签 在内置渲染管线中， IgnoreProjector 子着色器标签向 Unity <strong>告知几何体是否受 投影器 影响</strong></p>
+</li>
+<li><p>Projector: 投影器</p>
+<p>__投影器__允许您将__材质__投影到与其视锥体相交的所有对象上。材质必须使用特殊类型的着色器才能使投影效果有效；有关如何使用提供的 Projector&#x2F;Light 和 Projector&#x2F;Multiply 着色器的示例，请参阅 Unity 标准资源中的投影器预制件。</p>
+</li>
+<li><p><em>RenderType</em> </p>
+<p>这些RenderType的类型名称实际上是一种约定，用来区别这个Shader要渲染的对象，当然你也可以改成自定义的名称，只不过需要自己区别场景中不同渲染对象使用的Shader的RenderType的类型名称不同，也就是说RenderType类型名称使用自定义的名称并不会对该Shader的使用和着色效果产生影响。</p>
+<p class='item-img' data-src='/2002/01/01/images/image-20230430165741389.png'><img src="/2002/01/01/images/image-20230430165741389.png" alt="image-20230430165741389"></p>
+</li>
+</ol>
+<h2 id="透明度混合-关闭深度写入"><a href="#透明度混合-关闭深度写入" class="headerlink" title="透明度混合:关闭深度写入"></a>透明度混合:关闭深度写入</h2><ol>
+<li><p>透明度混合要关闭深度写入</p>
+<p>ZWrite off</p>
+</li>
+<li><p><em>渲染队列</em> <em>Transparent<strong>队列</strong></em></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cs">Tags<br>&#123;<br>    <span class="hljs-string">&quot;Queue&quot;</span> = <span class="hljs-string">&quot;Transparent&quot;</span> <span class="hljs-string">&quot;IgnoreProject&quot;</span> = <span class="hljs-string">&quot;True&quot;</span> <span class="hljs-string">&quot;RenderType&quot;</span> = <span class="hljs-string">&quot;Transparent&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>混合</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cs">Pass&#123;<br>    Tags<br>    &#123;<br>        <span class="hljs-string">&quot;LightMode&quot;</span> = <span class="hljs-string">&quot;ForwardBase&quot;</span><br>    &#125;<br>    ZWrite off<br>    Blend SrcAlpha OneMinusSrcAlpha<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>常见混合类型 (Blend Type)</p>
+<p>以下是最常见的混合类型的语法：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cs">Blend SrcAlpha OneMinusSrcAlpha <span class="hljs-comment">// 传统透明度</span><br>Blend One OneMinusSrcAlpha <span class="hljs-comment">// 预乘透明度</span><br>Blend One One <span class="hljs-comment">// 加法</span><br>Blend OneMinusDstColor One <span class="hljs-comment">// 软加法</span><br>Blend DstColor Zero <span class="hljs-comment">// 乘法</span><br>Blend DstColor SrcColor <span class="hljs-comment">// 2x 乘法</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230430165805856.png'><img src="/2002/01/01/images/image-20230430165805856.png" alt="image-20230430165805856"></p>
+<h2 id="透明度混合-开启深度写入"><a href="#透明度混合-开启深度写入" class="headerlink" title="透明度混合:开启深度写入"></a>透明度混合:开启深度写入</h2><ol>
+<li><p>需要使用俩个pass</p>
+<p>第一个Pass开启深度写入，不输出颜色，第二个进行正常透明度混合。</p>
+<p><code>ColorMask</code>用于设置颜色通道的写掩码，语义：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">ColorMask  RGB | A | 0  <br></code></pre></td></tr></table></figure>
+
+<p>设置为0时，表示该Pass不写入任何颜色通道，不会输出任何颜色。</p>
+<p>实例效果：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cs">Pass<br>&#123;<br>    ZWrite On<br>    ColorMask <span class="hljs-number">0</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p class='item-img' data-src='/2002/01/01/images/image-20230430165834980.png'><img src="/2002/01/01/images/image-20230430165834980.png" alt="image-20230430165834980"></p>
+<h2 id="双面渲染的透明效果"><a href="#双面渲染的透明效果" class="headerlink" title="双面渲染的透明效果"></a>双面渲染的透明效果</h2><ol>
+<li><p>前面实现的透明效果中，透明度测试和透明度混合均无法看到物体内部结构。这是由于默认情况下渲染引擎剔除了物体背面的（相对于摄像机的方向）渲染图元，通过使用<strong>Cull</strong>命令控制需要剔除的面或得到双面渲染效果。 <strong>Cull</strong>语义：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Cull | Back | Front | Off     <br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>​	设置为Back 背对摄像机的图元不会被渲染，设置为Front朝向摄像机的图元不会被渲染，设置	为Off，双面渲染。</p>
+<ol start="2">
+<li><p>在&#x3D;&#x3D;透明度测试&#x3D;&#x3D;中加入</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cs">Pass&#123;<br>    Tags&#123;<span class="hljs-string">&quot;LightMode&quot;</span>=<span class="hljs-string">&quot;ForwardBase&quot;</span>&#125;<br><br>    Cull Off   <span class="hljs-comment">//开启双面渲染效果     </span><br>&#125;   <br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="透明度混合双面渲染"><a href="#透明度混合双面渲染" class="headerlink" title="透明度混合双面渲染"></a>透明度混合双面渲染</h2><p>由于透明度混合是关闭了深度写入的，因此如果直接关闭剔除，并不能保证一个物体的正面和背面按照正确定的渲染顺序进行渲染，可能得到错误效果。因此实现双面透明度混合可以通过两个Pass，先剔除正面，渲染背面，再剔除背面渲染正面。</p>
+<ol>
+<li><p>先剔除正面</p>
+</li>
+<li><p>在&#x3D;&#x3D;透明度混合:关闭深度&#x3D;&#x3D;写入中</p>
+<p>第一个pass</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs">Cull Front  <span class="hljs-comment">//先渲染背面</span><br></code></pre></td></tr></table></figure>
+
+<p>第二个pass</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs">Cull Back  <span class="hljs-comment">//再渲染正面</span><br></code></pre></td></tr></table></figure>
+
+<p class='item-img' data-src='/2002/01/01/images/image-20230430165927592.png'><img src="/2002/01/01/images/image-20230430165927592.png" alt="image-20230430165927592"></p>
+</li>
+</ol>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/04/11/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shadre%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/23.%E9%81%AE%E7%BD%A9%E7%BA%B9%E7%90%86/">← 下一篇 23.遮罩纹理</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/04/11/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shadre%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/25.%E5%A4%8D%E6%9D%82%E5%85%89%E7%85%A7/">25.复杂光照 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%8F%E6%98%8E%E5%BA%A6%E6%B5%8B%E8%AF%95"><span class="toc-number">1.</span> <span class="toc-text">透明度测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%8F%E6%98%8E%E5%BA%A6%E6%B7%B7%E5%90%88-%E5%85%B3%E9%97%AD%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">透明度混合:关闭深度写入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%8F%E6%98%8E%E5%BA%A6%E6%B7%B7%E5%90%88-%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5"><span class="toc-number">3.</span> <span class="toc-text">透明度混合:开启深度写入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E9%9D%A2%E6%B8%B2%E6%9F%93%E7%9A%84%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">双面渲染的透明效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%8F%E6%98%8E%E5%BA%A6%E6%B7%B7%E5%90%88%E5%8F%8C%E9%9D%A2%E6%B8%B2%E6%9F%93"><span class="toc-number">5.</span> <span class="toc-text">透明度混合双面渲染</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

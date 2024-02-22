@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>27.高级纹理 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>27.高级纹理</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-04-10T16:00:00.000Z" id="date"> 2023-04-11</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.883Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">926</div></span></div></div><hr><div id="post-content"><p><strong>Step2 反射计算</strong></p>
+<p>反射效果通过入射光线方向和表面法线得到&#x3D;&#x3D;反射方向&#x3D;&#x3D;，</p>
+<p class='item-img' data-src='/2002/01/01/images/v2-20520eacd5edc381d9aa83c8d5c6a259_720w.png'><img src="/2002/01/01/images/v2-20520eacd5edc381d9aa83c8d5c6a259_720w.png" alt="img"></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//将观察方向的反方向作为入射方向去计算反射方向</span><br><span class="hljs-comment">//入射方向和法线方向</span><br>o.worldRefl = reflect(-o.worldViewDir, o.worldNormal);<br></code></pre></td></tr></table></figure>
+
+<p>再利用反射方向对&#x3D;&#x3D;立方体纹理进行采样&#x3D;&#x3D;，得到反射效果。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cs">fixed3 reflection = texCUBE(_Cubemap, i.worldRefl).rgb * _ReflectColor.rgb;<br></code></pre></td></tr></table></figure>
+
+<p>入射光线为观察方向的反方向，主要使用CG函数中的reflect函数。</p>
+<p>使用_ReflectAmount混合漫反射和反射</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//使用_ReflectAmount混合漫反射和反射</span><br>fixed4 col = fixed4(ambient + lerp(diffuse, reflection, _ReflectAmount) * atten, <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>Step3 折射计算</strong> 折射计算和反射计算类似，先计算出折射方向，</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//计算折射 法线方向入射方向折射率</span><br>o.worldRefr = refract(normalize(-o.worldViewDir), normalize(o.worldNormal),_RefractRatio);<br></code></pre></td></tr></table></figure>
+
+
+
+<p>再向生成立方体纹理进行采样，主要用到CG函数中的refract函数，传入三个参数，入射方向，法线方向，折射率比值（入射到反射方向）<strong>值得注意的是</strong> 传入的方向参数必须是归一化之后的方向。完整代码为</p>
+<p class='item-img' data-src='/2002/01/01/images/v2-af4968b065bf83962ddfa312619483c6_720w.png'><img src="/2002/01/01/images/v2-af4968b065bf83962ddfa312619483c6_720w.png" alt="img"></p>
+<p><strong>菲涅尔反射</strong><br>菲涅尔反射描述一种光学现象，当光线照射到物体表面时，一部分发生反射，一部分发生折射，一部分进入物体内部发生反射或折射。实时渲染中，经常使用<strong>菲涅尔反射</strong>，通过视角方向控制反射程度。<br>菲涅尔反射通过菲涅尔等式计算，真实的菲尼尔反射非常复杂，实时渲染中使用近似公式计算，两个用的比较多的近似公式：</p>
+<ul>
+<li><strong>Schlick菲涅尔近似等式</strong></li>
+</ul>
+<p class='item-img' data-src='/2002/01/01/images/v2-a063ba636a1b5b63b17e2c0e0817e09c_720w.png'><img src="/2002/01/01/images/v2-a063ba636a1b5b63b17e2c0e0817e09c_720w.png" alt="img"></p>
+<p>F为反射系数，控制菲涅尔反射强度，v为视角方向，n为法线方向</p>
+<ul>
+<li><strong>Empricial菲涅尔近似等式</strong></li>
+</ul>
+<p class='item-img' data-src='/2002/01/01/images/v2-7326358504eb70b770c41bb70db4c4a9_720w.png'><img src="/2002/01/01/images/v2-7326358504eb70b770c41bb70db4c4a9_720w.png" alt="img"></p>
+<p>bias、scale和power是控制项</p>
+<p>许多车漆、水面等材质的渲染经常使用菲涅尔反射模拟更加真实的反射效果。<br>使用Schlick菲涅尔近似等式模拟，完整代码：</p>
+<p><strong>使用渲染纹理实现镜子效果</strong><br>通过一个额外的摄像机，调整到对应位置，设置渲染目标为一张渲染纹理，将该渲染纹理作为一张2D纹理，在采样是，将UV坐标的进行翻转即可，完整代码：</p>
+<p><strong>玻璃效果</strong><br>Unity Shader中可以使用GrabPass完成对屏幕图像的抓取。定义GrabPass后，Unity将当前屏幕图像绘制在一张纹理中，使用GrabPass模拟玻璃透明效果，可以对物体后面的图像做更复杂的处理（使用法线模拟折射效果），而不是像使用透明度混合，只是颜色上的混合。<br>在使用GrabPass进行透明效果模拟时，要注意<strong>渲染顺序的设置</strong> ，先保证场景中所有不透明物体已经绘制在屏幕上，再对屏幕进行抓取图像，因此一般设置成 “Queue”&#x3D;”Transparent”</p>
+<p>实现玻璃效果：</p>
+<ul>
+<li>Step1 获取指定位置的立方体纹理，通过反射方向采样得到反射颜色</li>
+<li>Step2 获取屏幕抓取图像，通过法线纹理得到法线方向作为影响值与影响因子相乘，调整获取的屏幕图像扭曲程度来模拟折射</li>
+<li>Step3 将两者颜色进行混合，通过混合值调整反射和折射的混合程度</li>
+</ul>
+<p><strong>程序纹理</strong><br>程序纹理是通过计算机计算生成的图像，使用特定的算法创建个性化图案或非常真实的自然元素。<br>创建一个波点纹理</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/04/11/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shadre%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/26.%E5%85%89%E7%85%A7%E8%A1%B0%E5%87%8F/">← 下一篇 26.光照衰减</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/04/11/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shadre%E5%85%A5%E9%97%A8%E7%B2%BE%E8%A6%81/28.%E8%AE%A9%E7%94%BB%E9%9D%A2%E5%8A%A8%E8%B5%B7%E6%9D%A5/">28.让画面动起来 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

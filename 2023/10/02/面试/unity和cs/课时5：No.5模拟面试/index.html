@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课时5：No.5模拟面试 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>课时5：No.5模拟面试</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-10-01T16:00:00.000Z" id="date"> 2023-10-02</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.945Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">1.5k</div></span></div></div><hr><div id="post-content"><p><strong>C#</strong></p>
+<p><strong>1.以下代码，谁的效率更高？为什么？</strong></p>
+<p class='item-img' data-src='/2002/01/01/images/m2oqp.png'><img src="/2002/01/01/images/m2oqp.png" alt="m2oqp"></p>
+<p>我的回答:</p>
+<p>代码二效率更高,代码二中直接给出了list的容量,list在添加的过程中如果没有超出容量不需要扩容;</p>
+<p>代码一在添加的过程中当数组的容量不足时会扩大到原来的两倍,有扩大数组的消耗;</p>
+<p>答案：</p>
+<p>代码2的效率更高</p>
+<p>因为List的本质是数组，在初始化时，如果不默认为其指明分配多少容量，它会不断扩容<br>扩容会带来效率的降低和垃圾的产生<br>效率的降低：从旧数组到新数组的搬家<br>垃圾的产生：每次扩容时，就数组就变成了垃圾</p>
+<p><strong>2.数组和链表的区别是什么？</strong></p>
+<p>我的回答:</p>
+<p>数组 链表不了解</p>
+<p>答案：</p>
+<p>1.存储结构不同<br>数组是顺序存储结构，在内存中是连续存储的<br>链表是链式存储结构，在内存中是非连续存储的</p>
+<p>2.访问效率不同<br>数组由于是顺序存储，通过下标访问，访问效率高<br>链表由于是非连续存储，我们想要获取其中某一元素，需要从头或尾遍历，效率低</p>
+<p>3.插入、删除效率不同<br>数组由于是顺序存储，在插入和删除时，需要整体移动数组中的大部分元素，效率低<br>链表由于是链式存储，在插入和删除时，效率高</p>
+<p>4.越界问题<br>数组由于是顺序存储，声明时容量是固定的，如果不处理扩容逻辑，存在越界风险<br>链表由于是链式存储，无越界风险</p>
+<p><strong>3.C# 中的Action和Func是什么？<br>   Unity 中的UnityAction是什么？<br>   他们有什么区别？</strong></p>
+<p>我的回答:</p>
+<p>是C#包装的委托,action是无返回值的委托,func有返回值</p>
+<p>UnityAction是Unity包装的委托;</p>
+<p>区别: UnityAction可以序列化,在Inspector上拖拽选择操作</p>
+<p>答案：</p>
+<p>Action和Func是System命名空间下 C#为我们提供的两个写好的委托<br>Action本身是一个无参无返回值的委托<br>对应的Action&lt;&gt;泛型委托支持最多16个参数</p>
+<p>Func本身是一个无参有返回值的委托<br>对应的Func&lt;&gt;泛型委托支持最多16个参数，并且有返回值</p>
+<p>UnityAction是UnityEngine.Events命名空间下 Unity为我们提供的写好的委托<br>UnityAction本身是一个无参无返回值的委托<br>对应的UnityAction&lt;&gt;泛型委托支持最多4个参数<br><strong>4.请问最终的打印结果是什么？</strong></p>
+<p class='item-img' data-src='/2002/01/01/images/vrx0q.png'><img src="/2002/01/01/images/vrx0q.png" alt="vrx0q"></p>
+<p class='item-img' data-src='/2002/01/01/images/fr1n5.png'><img src="/2002/01/01/images/fr1n5.png" alt="fr1n5"></p>
+<p class='item-img' data-src='/2002/01/01/images/wlqra.png'><img src="/2002/01/01/images/wlqra.png" alt="wlqra"></p>
+<p>默认值-“Alice”-1</p>
+<p>答案：</p>
+<p>0-Alice-7<br>考点：</p>
+<ol>
+<li>值和引用的区别</li>
+<li>特殊引用类型string</li>
+<li>结构体中的引用成员</li>
+</ol>
+<p><strong>5.网络游戏开发中，网络传输数据的基本流程是什么？</strong></p>
+<p>我的回答:</p>
+<p>数据按照协议序列化为二进制数据,进行网络传输</p>
+<p>服务器接收二进制数据,按照协议解析二进制数据</p>
+<p>答案：</p>
+<p>客户端将自定义类对象数据序列化为2进制数据发送给服务端</p>
+<p>服务端将收到的2进制数据反序列化为对应的类对象进行逻辑处理</p>
+<p>如果是服务端发送给客户端的消息也是同理</p>
+<p><strong>Unity</strong></p>
+<p><strong>1.两个四元数相乘有什么作用？<br>  四元数乘以向量有什么作用？</strong></p>
+<p>我的回答:</p>
+<p>四元数乘以向量可以使得向量按照四元数进行旋转</p>
+<p>答案:</p>
+<p>四元数相乘：角度叠加</p>
+<p>四元数乘以向量：向量旋转</p>
+<p><strong>2.图中的小球是否被渲染了？是否会产生DrawCall？</strong></p>
+<p class='item-img' data-src='/2002/01/01/images/rngll.png'><img src="/2002/01/01/images/rngll.png" alt="rngll"></p>
+<p>我的回答:</p>
+<p>没有不会</p>
+<p>答案：</p>
+<p>不会被渲染，不会产生DrawCall</p>
+<p>Unity本身有摄像机视锥体剔除，也就是不会显示完全位于视锥体之外的游戏对象<br>那么小球就不会进行渲染，也不会提交数据给GPU，也就不会产生DrawCall</p>
+<p><strong>3.在没有使用遮挡剔除的情况下，图中A和B都是默认标准材质<br>   图中的小球最终是否会被渲染，是否会产生DrawCall</strong></p>
+<p class='item-img' data-src='/2002/01/01/images/jcrdo.png'><img src="/2002/01/01/images/jcrdo.png" alt="jcrdo"></p>
+<p>我的回答:</p>
+<p>不会被渲染,但是有DrawCall</p>
+<p>答案：</p>
+<p>最终不会被渲染，标准材质存在深度测试，小球在立方体后方，不会通过深度测试，所以不会被渲染</p>
+<p>会产生DrawCall，既然都深度测试了，那么肯定是存在DrawCall的<br>深度测试发生在片元着色器处理之后，GPU会对每个片元执行深度测试来决定遮挡关系，决定是否被渲染</p>
+<p><strong>4.如果不考虑IOS平台，只在Windows和Android平台上发布游戏，如何在不使用第三方热更新方案的前提下实现热更新功能</strong></p>
+<p>我的回答:</p>
+<p>ILRuntime</p>
+<p>答案：</p>
+<p>C#的反射</p>
+<p>可以通过热更DLL文件的形式，加载程序集（dll）<br>利用反射执行热更DLL包中的逻辑</p>
+<p><strong>5.Unity中如何调试排查Android上运行的项目问题</strong></p>
+<p>我的回答:</p>
+<p>不知道,断点</p>
+<p>答案：</p>
+<ol>
+<li><p>如果需要进行断点调试<br>通过数据线链接运行项目的Android设备<br>发布时开启了<br>Development Build 开发模式构建<br>Autoconnect Profiler 自动连接分析器<br>Script Debuggins 脚本调试<br>Wait For Managed Debugger 等待托管调试器<br>等选项<br>然后只需要Build and Run既可以<br>利用Unity的Profiler 性能剖析器窗口排查性能问题<br>并且还可以进行断点调试</p>
+</li>
+<li><p>如果只是获取一些打印调试信息<br>可以利用Unity2019.4及其以上版本提供的Android Logcat工具获取信息<br>Unity2019.4以下的版本，可以使用Android的ADB（安卓调试桥）工具</p>
+</li>
+<li><p>如果需要获取设备输入信息<br>可以利用Unity Remote来测试移动设备的输入相关逻辑</p>
+</li>
+</ol>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/10/03/unity/%E7%83%AD%E6%9B%B4%E6%96%B0/%E5%AE%9E%E8%B7%B5%EF%BC%9AAB%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/02%E7%94%9F%E6%88%90AB%E5%8C%85%E5%AF%B9%E6%AF%94%E6%96%87%E4%BB%B6/">← 下一篇 02生成AB包对比文件</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/09/29/unity/%E7%83%AD%E6%9B%B4%E6%96%B0/Lua/%E7%83%AD%E8%A1%A5%E4%B8%81/L01%E7%83%AD%E8%A1%A5%E4%B8%81/">L01热补丁 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

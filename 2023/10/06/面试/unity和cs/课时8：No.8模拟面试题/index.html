@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课时8：No.8模拟面试题 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>课时8：No.8模拟面试题</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-10-05T16:00:00.000Z" id="date"> 2023-10-06</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.947Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">688</div></span></div></div><hr><div id="post-content"><p><strong>C#</strong></p>
+<p><strong>1. 如果我们想为Unity中的Transform类添加一个自定义的方法，应该如何处理？</strong></p>
+<p>我的回答：</p>
+<p>使用拓展方法，定义静态类作为transform专用用拓展类</p>
+<p>答案：</p>
+<p>通过C#的拓展方法相关知识点进行添加</p>
+<p><strong>2. 请说出using关键字的两个作用</strong></p>
+<p>我的回答：</p>
+<p>应用命名空间、开辟数据流</p>
+<p>答案：</p>
+<ol>
+<li>引入命名空间</li>
+<li>安全使用引用对象</li>
+</ol>
+<p><strong>3. C#中Dictionary不支持相同键存储<br>    如果想要一个键对应多个值如何处理？</strong></p>
+<p>我的回答：</p>
+<p>不知道</p>
+<p>答案：</p>
+<p class='item-img' data-src='/_images/Pasted%20image%2020231007160017.png'><img src="/_images/Pasted%20image%2020231007160017.png"></p>
+<p><strong>4. 请问下面代码的最终打印结果是什么？为什么？</strong></p>
+<p class='item-img' data-src='https://scb4a2cp-sb-qn.qiqiuyun.net/files/course/2023/03-05/1005266e9fd6307619.png'><img src="https://scb4a2cp-sb-qn.qiqiuyun.net/files/course/2023/03-05/1005266e9fd6307619.png"></p>
+<p>我的回答：</p>
+<p>不知道 应该都是10</p>
+<p>答案：</p>
+<p>全是10</p>
+<p>当委托最终执行时，他们使用的i，都是for循环中声明的i，此时的i已经变成了10</p>
+<p><strong>5. 上题中的代码，如果我们希望打印出0~9，应该如何修改代码？</strong></p>
+<p>我的回答：</p>
+<p class='item-img' data-src='/_images/Pasted%20image%2020231007160113.png'><img src="/_images/Pasted%20image%2020231007160113.png"></p>
+<p><strong>Unity</strong></p>
+<p><strong>1. Unity中如何将本地坐标转为世界坐标？</strong></p>
+<p>我的回答：</p>
+<p>使用transforminvice ，使用转换矩阵</p>
+<p>答案：</p>
+<ol>
+<li>用本地坐标加上父对象相对世界的坐标（如果有多层父子关系，不停地往上加即可）</li>
+<li>利用Transform中的TransformPoint方法</li>
+</ol>
+<p><strong>2. Unity中如何计算出两个向量之间的夹角，请说出两种方式</strong></p>
+<p>我的回答：</p>
+<p>向量点乘、</p>
+<p>答案：</p>
+<ol>
+<li>利用Vector3中的API：Vector3.Angle</li>
+<li>先使用 Vector3.Dot 算出方向向量点乘结果，再通过Mathf.Acos反三角函数算出弧度，再将弧度转为角度</li>
+</ol>
+<p><strong>3. 请写出UGUI中两种处理异形按钮的具体方法</strong></p>
+<p>我的回答：</p>
+<p>用不同大小的按钮拼凑，使用裁剪后的图片，再使用自定义事件为图片定义按钮点击事件</p>
+<p>答案：</p>
+<p>方法一：异形按钮，自带的像素检测阈值</p>
+<p>方法二：异形按钮，通过子对象拼凑</p>
+<p>*<em>4. 请说出Unity中如何进行数据持久化，至少说出5种方式</em></p>
+<p>我的回答：</p>
+<p>json ，xml，二进制，scriptableobject，</p>
+<p>答案：</p>
+<p>PlayerPrefs</p>
+<p>2进制文件存储</p>
+<p>xml文件存储</p>
+<p>json文件存储</p>
+<p>数据库存储（本地、远端、通过服务器存储到数据库）</p>
+<p><strong>5. 在Unity中如何控制渲染优先级？（谁先渲染谁后渲染，分情况回答）</strong></p>
+<p>可以在shader中定义渲染队列，</p>
+<p>答案：</p>
+<ol>
+<li>不同摄像机渲染时，摄像机深度（Camera depth）控制优先级</li>
+<li>相同摄像机时，排序层级（Sorting Layer）控制优先级</li>
+<li>相同排序层级时，层中的顺序（Order in Layer）控制优先级</li>
+<li>相同摄像机，无排序层级属性时，Shader中的RenderQueue（渲染队列）控制优先级</li>
+</ol>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/14%E9%98%9F%E5%88%97/">← 下一篇 14队列</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/10/05/%E9%9D%A2%E8%AF%95/unity%E5%92%8Ccs/%E8%AF%BE%E6%97%B67%EF%BC%9ANo.7%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/">课时7：No.7模拟面试 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

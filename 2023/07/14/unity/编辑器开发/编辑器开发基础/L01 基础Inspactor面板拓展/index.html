@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>L01 基础Inspactor面板拓展 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>L01 基础Inspactor面板拓展</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-07-13T16:00:00.000Z" id="date"> 2023-07-14</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.836Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">415</div></span></div></div><hr><div id="post-content"><p><strong>1.[ContextMenu()]  点击齿轮调用函数</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cs">[<span class="hljs-meta">ContextMenu(<span class="hljs-string">&quot;输出1&quot;</span>)</span>]<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Debug1</span>()</span> &#123;<br>    Debug.log(<span class="hljs-number">1</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>2.[ContextMenuItem(“”,””)]给一个成员变量添加右键菜单</strong></p>
+<p><strong>3.[Tooltip (“右键看看”)]鼠标移动上去时显示的文字</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//给一个成员变量添加右键菜单</span><br><span class="hljs-comment">//第一个参数是菜单的名称</span><br><span class="hljs-comment">//第二个参数是右键点击的回调函数</span><br>[<span class="hljs-meta">ContextMenuItem (<span class="hljs-string">&quot;输出国家&quot;</span>，<span class="hljs-string">&quot;OutCountry&quot;</span>)</span>]<br>[<span class="hljs-meta">Tooltip (<span class="hljs-string">&quot;右键看看&quot;</span>)</span>]<span class="hljs-comment">//鼠标移动上去时显示的文字    </span><br><span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> Country;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OutCountry</span> ()</span><br>&#123;<br>	Debug. Log (Country);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>4.[RequireComponent()]</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//关于类型和类名</span><br><span class="hljs-comment">//BoxCollider:是类名，适用于函数提供泛型方法</span><br><span class="hljs-comment">//typeof (BoxCol1ider): System. Type, C#的类型，适用于函数需要 System.Type 参数</span><br><span class="hljs-comment">//当前组件依赖于盒子碰撞体</span><br><span class="hljs-comment">//当前组件挂载在对象上时，盒子碰撞体会一起被添加上去</span><br><span class="hljs-comment">//当 Player 组件没有被移除时，盒子碰撞体不能被删除</span><br><br>[<span class="hljs-meta">RequireComponent (typeof (BoxCollider))</span>]<br></code></pre></td></tr></table></figure>
+
+<p><strong>5.[ExecuteInEditMode]</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//使生命周期函数，在编辑器状态下可以执行，游戏中也可以正常使用</span><br><span class="hljs-comment">//Update()在场景中对象发生变化或项目组织发生变化时会在编辑器下执行</span><br>[<span class="hljs-meta">ExecuteInEditMode</span>]<br></code></pre></td></tr></table></figure>
+
+<p><strong>6.[AddComponentMenu(“”,)]</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-comment">//将 Player?组件添加到 AddComponent 上</span><br><span class="hljs-comment">//第一个参数：分类名/组件名</span><br><span class="hljs-comment">//第二个参数：列表中显示的顺序</span><br>[<span class="hljs-meta">AddComponentMenu (<span class="hljs-string">&quot;自定义控制器/玩家控制器&quot;</span>，1)</span>]<br></code></pre></td></tr></table></figure>
+
+<p><strong>7.单选我们使用十进制理解，即不同数代表不同选项</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-built_in">enum</span> PlayerProfression <br>&#123;<br>	Warrior =<span class="hljs-number">0</span>, Wizard <span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>8.多选使用二进制理解，即不同位代表不同选项</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-built_in">enum</span> PlayerLoveColor<br>&#123;<br>	Green <span class="hljs-number">1</span>, Red =<span class="hljs-number">2</span>, Pink <span class="hljs-number">4</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/07/15/unity%E6%8F%92%E4%BB%B6/unity_input_system/lesson13%20InputAction/">← 下一篇 Lesson13 InputAction</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/07/14/unity/%E7%BC%96%E8%BE%91%E5%99%A8%E5%BC%80%E5%8F%91/%E7%BC%96%E8%BE%91%E5%99%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/L02%E5%A4%96%E6%8C%82%E5%BC%8F%E5%BC%80%E5%8F%91Editor/">L02外挂式开发Editor 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

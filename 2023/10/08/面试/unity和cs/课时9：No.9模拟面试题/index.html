@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课时9：No.9模拟面试题 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>课时9：No.9模拟面试题</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2023-10-07T16:00:00.000Z" id="date"> 2023-10-08</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-15T16:48:05.947Z" id="updated"> 2024-02-16</time></div></span><br><span>文章总字数: <div class="control">812</div></span></div></div><hr><div id="post-content"><p><strong>Lua</strong></p>
+<p><strong>1. 请说出Lua中常用的数据类型（至少说出6种）</strong></p>
+<p>我的回答： </p>
+<p>number、string、table、function、boolean</p>
+<p>答案：</p>
+<p>nil</p>
+<p>boolean</p>
+<p>number</p>
+<p>string</p>
+<p>table</p>
+<p>function</p>
+<p>userdata</p>
+<p>thread</p>
+<p><strong>2. Lua中pairs和ipairs的区别</strong></p>
+<p>我的回答： </p>
+<p>pair无法处理断层 与 负数</p>
+<p>答案：</p>
+<p>pairs可以遍历出表中的所有键值对信息，在遍历不规则表时，建议用它<br>ipairs只能遍历出连续信息，对于不规则结构，可能会缺失</p>
+<p><strong>3. Lua中常用的元方法有哪些？至少说出3个原方法</strong></p>
+<p>我的回答： </p>
+<p>答案：</p>
+<p>__index<br>__newindex<br>__tostring<br>__call<br>__add 运算符+<br>__sub 运算符-<br>__mul 运算符*<br>__div 运算符&#x2F;<br>__mod 运算符%<br>__unm 运算符-<br>__concat 运算符..<br>__eq 运算符&#x3D;&#x3D;<br>__lt 运算符&lt;<br>__le 运算符&lt;&#x3D;</p>
+<p>等</p>
+<p><strong>4. Lua中元表的作用</strong></p>
+<p>我的回答： </p>
+<p>可以用来实现多态，模拟基础，模拟new</p>
+<p>答案：</p>
+<p>为一个表设置元表后，允许该表的行为关联元方法</p>
+<p><strong>5. Lua中__index和__newindex有什么作用</strong></p>
+<p>我的回答： </p>
+<p>__index在当前表没有某个元素时，在__index所指的表寻找<br>__newindex在为表添加元素时，在__newindex所指的表添加</p>
+<p>答案：</p>
+<p>__index用于查找：如果访问不存在的数据，由__index提供最终结果</p>
+<p>__newindex用于更新：如果对不存在的数据赋值，由__newindex对数据进行赋值</p>
+<p><strong>Unity</strong></p>
+<p><strong>1. Unity中判断两个2D矩形是否相交，有几种方式？（请至少说出两种方式）</strong></p>
+<p>我的回答：</p>
+<p>使用碰撞检测，用trigger的方式，</p>
+<p>使用overlap函数判断矩形范围内是否有其他物体</p>
+<p>答案：</p>
+<ol>
+<li>使用Unity物理系统进行碰撞检测</li>
+<li>使用Unity中范围检测相关API</li>
+<li>自己写算法进行检测</li>
+</ol>
+<p><strong>2. Unity中想要制作角色的连招功能，在制作状态机时我们一般如何处理？</strong></p>
+<p>我的回答： </p>
+<p>用代码控制过渡，不使用状态机的过渡</p>
+<p>答案：</p>
+<ol>
+<li>状态机条件可以添加一个Trigger类型和Int类型<br>Trigger条件主要用于触发动作，Int条件主要用于连招计数判断</li>
+<li>逻辑上，当攻击按键输入时，我们需要触发动作，并且进行攻击计数<br>每次按键时都应该重新进      行攻击计数延迟清零</li>
+</ol>
+<p><strong>3. Unity中如果想要在动作的某一时刻进行伤害检测，我们应该怎么做？（请说出两种做法）</strong></p>
+<p>我的回答： </p>
+<ol>
+<li>添加动画事件，在某一时刻动画开启伤害检测，在某一时刻关闭</li>
+</ol>
+<p>答案：</p>
+<ol>
+<li>添加动画事件</li>
+<li>在切换动画一开始，进行延迟触发，延迟时 间为想要触发伤害的时间（延迟可以用延迟函数，也可以用协同程序）</li>
+</ol>
+<p><strong>4. Unity中想要制作自动寻路逻辑，我们应该怎么做？（请至少说出两种做法）</strong></p>
+<p>我的回答： </p>
+<ol>
+<li>使用NavMeshPro</li>
+<li>自己写寻路算法，比如A*寻路算法</li>
+</ol>
+<p>答案：</p>
+<ol>
+<li>Unity自带的网格寻路系统</li>
+<li>自定义寻路算法（比如 A星寻路算法）</li>
+</ol>
+<p><strong>5. 游戏编辑器（比如 角色编辑器、关卡编辑器、地图编辑器等工具）的本质是什么？</strong></p>
+<p>我的回答： </p>
+<p>答案：</p>
+<p>数据的图形化编辑工具</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/10/08/%E9%9D%A2%E8%AF%95/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F%E6%B1%87%E6%80%BB-Steven%E7%8E%8B%E2%80%8B/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F%E6%B1%87%E6%80%BB-%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%AF%87-Steven%E7%8E%8B%E2%80%8B/">← 下一篇 游戏开发面经汇总-图形学基础篇-Steven王​</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/10/08/%E9%9D%A2%E8%AF%95/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F%E6%B1%87%E6%80%BB-Steven%E7%8E%8B%E2%80%8B/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E9%9D%A2%E7%BB%8F%E6%B1%87%E6%80%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%AF%87-Steven%E7%8E%8B%E2%80%8B/">游戏开发面经汇总-计算机基础篇-Steven王​ 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

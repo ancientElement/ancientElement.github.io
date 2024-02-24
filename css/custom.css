@@ -29,6 +29,9 @@
     z-index: 100;
 }
 
+strong {
+    color: #61e8e1!important;
+}
 
 #Archives {
     height: 100%;

@@ -12,8 +12,8 @@
 <h3 id="说一说多态"><a href="#说一说多态" class="headerlink" title="说一说多态"></a>说一说多态</h3><h4 id="1-重载"><a href="#1-重载" class="headerlink" title="1. 重载"></a>1. 重载</h4><p>同一作用域下，同名函数不同参数，</p>
 <h4 id="2-重写"><a href="#2-重写" class="headerlink" title="2. 重写"></a>2. 重写</h4><p>派生类对基类作用域下同名(参数、返回值)虚函数函数进行覆盖</p>
 <h4 id="3-重定义"><a href="#3-重定义" class="headerlink" title="3. 重定义"></a>3. 重定义</h4><p>派生类对基类作用域下同名(参数、返回值)函数进行隐藏<br>在C#中用new关键字重定义</p>
-<h3 id="虚函数的用法"><a href="#虚函数的用法" class="headerlink" title="虚函数的用法"></a>虚函数的用法</h3><p>当一个类有一个以上虚函数时，那么这个类便会包含一张虚函数表。而当一个子类继承并重载了基类的虚函数时，它也会有自己的一张虚函数表，虚函数表中存的是函数指针。</p>
-<p><img src="/_images/v2-e2f479ca9b1c56ac33dfae896ce56f49_720w.webp"></p>
+<h3 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h3><p>当一个类有一个以上虚函数时，那么这个类便会包含一张虚函数表。而当一个子类继承并重载了基类的虚函数时，它也会有自己的一张虚函数表，虚函数表中存的是函数指针。</p>
+<p><img src="/2002/01/01/images/v2-e2f479ca9b1c56ac33dfae896ce56f49_720w.webp"></p>
 <p>函数重载后，会在自己的虚函数表中的指针指向重载过后的函数，而未重载的函数虚函数表中的指针与基类相同。</p>
 <p><strong>纯虚函数</strong>，（抽象函数）在C#中有<code>abstract</code>关键字,在C++中在函数后加上 <code>= 0</code>表示,例如:<code>int pfun() = 0</code>,没有函数体。<br>在C++中纯虚函数用<code>overrid</code>重写，虚函数用<code>virtual</code>重写。在C#中都用<code>overrid</code>。</p>
 <p>纯虚函数的类也称为<strong>抽象类</strong>，是为了让使用者必须override整个类，从而无法被实例化，从编译器层面禁止了无实际意义的class对象的创建。C#一样。</p>

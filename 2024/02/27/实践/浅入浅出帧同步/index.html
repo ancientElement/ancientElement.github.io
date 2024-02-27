@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>浅入浅出帧同步 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>浅入浅出帧同步</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-02-26T16:00:00.000Z" id="date"> 2024-02-27</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-27T01:34:30.833Z" id="updated"> 2024-02-27</time></div></span><br><span>文章总字数: <div class="control">919</div></span></div></div><hr><div id="post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>概览现有的帧同步视频资料与文档资料，要不就是仅仅简述一个帧同步的架构，再就是以及写好了一个比较具有规模的帧同步框架，一时间让读者摸不着头脑。</p>
+<p>本教程从一个<strong>小DEMO</strong>出发，从最古早的<strong>帧锁定同步算法</strong>开始逐步讲解<strong>追帧</strong>、<strong>录像回放</strong>、<strong>预测回滚</strong></p>
+<p>本DEMO的基础是<a target="_blank" rel="noopener" href="https://github.com/ancientElement/NetGameBook">ancientElement&#x2F;NetGameBook (github.com)</a>TCP通信框架。</p>
+<p>有的同学就会说：为什么用<strong>TCP</strong>呢，为什么不用<strong>UDP</strong>？</p>
+<p>其实，在初期学习，我都想要将学习成本尽可能的压缩，现在刚好有不需要处理<strong>乱序</strong>和<strong>丢包</strong>的TCP干嘛不去用呢？</p>
+<p>这里引用一下SkyWind的话：</p>
+<p class='item-img' data-src='/_images/Pasted%20image%2020240227080921.png'><img src="/_images/Pasted%20image%2020240227080921.png"></p>
+<p>其实帧同步和状态同步，在我的理解中，<strong>帧同步</strong>是转发<strong>操作</strong>，<strong>状态同步</strong>是转发<strong>结果</strong>。</p>
+<p>帧同步还需要经过<strong>操作输入–》模拟</strong>，的过程才可以得到结果，这就导致了一个问题，<strong>后来的</strong>客户端怎么办，他没有收到到过<strong>其他玩家</strong>之前的操作输入怎么得到其他玩家<strong>现在的状态</strong>，难不成要储存一个玩家状态发送给<strong>后加入的玩家吗</strong>？</p>
+<p>NONONO，早期的话，可以设计成<strong>全部的玩家进入</strong>才会开始游戏，这样所有玩家的都会有<strong>相同的</strong>操作输入。并且这样的设计是无法实现<strong>掉线重连</strong>和<strong>后来加入</strong>的。</p>
+<p>要设计成为支持掉线重连，需要保存一个所有玩家的<strong>每帧</strong>操作输入。有玩家加入之后，他的客户端本地发送一个更新<strong>第0帧</strong>操作的消息，服务器收到以后，发现卧槽我到跑到<strong>第10帧</strong>了这老弟还要更新<strong>第0帧</strong>，在统一发送第10帧时，单独针对发送给这个老弟的消息中将<strong>第0帧到第10帧</strong>的所有操作打包，其他人的照成不变。</p>
+<p>老弟服务器接收到<strong>第0帧到第10帧</strong>的所有操作后，将其玩家的输入操作<strong>快速模拟</strong>一遍直到<strong>第10帧</strong>，真就是为什么你打<strong>王者荣耀</strong>的时候掉线了，重新连接后会有自己和其他玩家的<strong>快速影像</strong>。</p>
+<h2 id="帧锁定同步算法-从Demo开始讲解"><a href="#帧锁定同步算法-从Demo开始讲解" class="headerlink" title="帧锁定同步算法-从Demo开始讲解"></a>帧锁定同步算法-从Demo开始讲解</h2><p>可以参考一下这一张图片的流程：</p>
+<p>[<img src="/2002/01/01/images/3qtcd.png" alt="3qtcd"></p>
+<center>图1 帧锁定同步流程图</center>
+
+<p>文字流程：<br>服务器</p>
+<ol>
+<li>玩家就位后发送<strong>第0帧</strong>的操作，第0帧都是空操作。</li>
+<li>等待<strong>第1帧</strong>的所有玩家接收操作到位。<ol>
+<li>接收到位后，广播所有玩家当前帧操作，当前帧加一。<br>客户端：</li>
+</ol>
+</li>
+<li>等到<strong>第0帧</strong>的到来，<strong>第0帧</strong>没到不允许上传操作。<ol>
+<li>接收到第0帧后，更新逻辑帧。</li>
+</ol>
+</li>
+<li>接收到<strong>第0帧</strong>后，等待66ms（FPS：15）搜集并且上传<strong>第1帧</strong>的操作，没有接收到不允许上传。</li>
+</ol>
+<blockquote>
+<p>没错就是这么简单，都说了是浅入浅出。</p>
+</blockquote>
+<h3 id="玩家脚本"><a href="#玩家脚本" class="headerlink" title="玩家脚本"></a>玩家脚本</h3><p>帧同步的性质决定了，<code>BasePlayer</code>脚本中只能<strong>模拟</strong>，<strong>输入</strong>只能由外部给到。在<code>OnLogicUpdate</code>函数中，根据参数<code>PlayerInputData</code>来模拟当前帧的逻辑操作。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnLogicUpdate</span>(<span class="hljs-params"><span class="hljs-built_in">float</span> delta, PlayerInputData playerInput</span>)</span>  <br>&#123;  <br>    <span class="hljs-keyword">if</span> (playerInput.JoyX != <span class="hljs-number">0</span> ||  <br>        playerInput.JoyY != <span class="hljs-number">0</span>)  <br>    &#123;  <br>        m_state = STATEENUM.move;  <br>    &#125;  <br>    <span class="hljs-keyword">else</span>  <br>    &#123;  <br>        m_state = STATEENUM.move;  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">switch</span> (m_state)  <br>    &#123;  <br>        <span class="hljs-keyword">case</span> STATEENUM.idle:  <br>            IdleUpdate(delta);  <br>            <span class="hljs-keyword">break</span>;  <br>        <span class="hljs-keyword">case</span> STATEENUM.move:  <br>            MoveUpdate(delta, playerInput);  <br>            <span class="hljs-keyword">break</span>;  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="PlayerMgr"><a href="#PlayerMgr" class="headerlink" title="PlayerMgr"></a>PlayerMgr</h3><p>用来<strong>注册玩家</strong>、<strong>发送注册消息</strong>、<strong>统一更新</strong>所有玩家的逻辑帧的管理脚本。</p>
+<h3 id="NetTick"><a href="#NetTick" class="headerlink" title="NetTick"></a>NetTick</h3><p>接收<code>UpdateMessage</code>，搜集玩家操作上传<code>Upload</code>。</p>
+<h3 id="服务器Room"><a href="#服务器Room" class="headerlink" title="服务器Room"></a>服务器Room</h3><div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/02/25/%E5%AE%9E%E8%B7%B5/Playable%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E4%B8%8E%E8%AE%B2%E8%A7%A3/">Playable动画系统 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A7%E9%94%81%E5%AE%9A%E5%90%8C%E6%AD%A5%E7%AE%97%E6%B3%95-%E4%BB%8EDemo%E5%BC%80%E5%A7%8B%E8%AE%B2%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">帧锁定同步算法-从Demo开始讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%A9%E5%AE%B6%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">玩家脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PlayerMgr"><span class="toc-number">2.2.</span> <span class="toc-text">PlayerMgr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NetTick"><span class="toc-number">2.3.</span> <span class="toc-text">NetTick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8Room"><span class="toc-number">2.4.</span> <span class="toc-text">服务器Room</span></a></li></ol></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CSharp中的GC | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>CSharp中的GC</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-02-27T16:00:00.000Z" id="date"> 2024-02-28</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-02-28T13:09:17.748Z" id="updated"> 2024-02-28</time></div></span><br><span>文章总字数: <div class="control">1.9k</div></span></div></div><hr><div id="post-content"><blockquote>
+<p>转载请标明出处</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/560421474">C#垃圾回收机制(GC) - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dotnet261010/p/12330503.html">C#基础：.NET中GC的运行机制 - .NET开发菜鸟 - 博客园 (cnblogs.com)</a></p>
+<h2 id="浅谈GC"><a href="#浅谈GC" class="headerlink" title="浅谈GC"></a>浅谈GC</h2><h3 id="出现契机"><a href="#出现契机" class="headerlink" title="出现契机"></a>出现契机</h3><blockquote>
+<p>原来是<strong>手动内存管理</strong>和<strong>自动内存管理</strong>的争端</p>
+</blockquote>
+<p>在C&#x2F;C++时代,手动内存管理是必要的，忙碌的程序员们会回收他们自己一个又一个不需要再使用的对象。可能是与当时价格昂贵的内存等硬件配置有关。</p>
+<blockquote>
+<p>大略看下来有与Unity中的<strong>Addressable</strong>资源管理有点类似了</p>
+</blockquote>
+<p>在<code>JAVA</code>语言中就开始了自动的内存管理，为了解放程序员，让程序员更加注重在逻辑编写上。</p>
+<p>当然<code>.net</code>紧随其后。</p>
+<h3 id="GC的原理"><a href="#GC的原理" class="headerlink" title="GC的原理"></a>GC的原理</h3><h4 id="一、Mark-Compact-标记压缩算法"><a href="#一、Mark-Compact-标记压缩算法" class="headerlink" title="一、Mark-Compact 标记压缩算法"></a><strong>一、Mark-Compact 标记压缩算法</strong></h4><p>堆中有很多的<strong>对象</strong>，并且堆中<strong>新申请</strong>地对象地址在<strong>高字节</strong>，堆中复杂的<strong>引用关系</strong>组成了一张复杂的<strong>图</strong>，于是乎我们需要<strong>遍历</strong>这张网，<strong>遍历到的元素</strong>说明<strong>被引用了</strong>，<strong>标记他</strong>，而<strong>未遍历到的</strong>元素在遍历结束后<strong>清理他</strong>。清理完成之后这个<strong>堆是离散的了</strong>，内存<strong>不连续</strong>，我们需要重新将所有对象<strong>紧紧的挨在一起</strong>，也就是压缩，压缩好之后，就清理出了一大片内存空间。</p>
+<p>那么我们如何遍历呢？学过图这个数据结构都会知道<strong>广度优先</strong>和<strong>深度优先</strong>遍历算法。这里就不细讲了，但是我们遍历需要一个<strong>入口</strong>。</p>
+<p>这就是<strong>roots</strong>，可以有很多入口，因为这个<strong>图</strong>，不一定就是完全<strong>连通图</strong>，那么这个roots<strong>怎么得到</strong>呢？</p>
+<blockquote>
+<p>这个没有看到哪里有讲过😓，后面找到再看吧<br>并且这样<strong>遍历</strong>、<strong>压缩</strong>一来，性能消耗就成了大问题</p>
+</blockquote>
+<h4 id="二、-Generational-分代算法"><a href="#二、-Generational-分代算法" class="headerlink" title="二、 Generational 分代算法"></a><strong>二、 Generational 分代算法</strong></h4><p>上面提到堆中<strong>新申请</strong>地对象地址在<strong>高字节</strong>，这样我们就可以对堆中的内存对象进行一个年龄划分。如图所示：</p>
+<p class='item-img' data-src='https://pic1.zhimg.com/80/v2-571dcbe1872d6ea4159d947d0c961170_720w.webp'><img src="https://pic1.zhimg.com/80/v2-571dcbe1872d6ea4159d947d0c961170_720w.webp"><br> <center>图1 分代算法</center></p>
+<p>并且我们有一下几个假设条件：<br>1、大量<strong>新创建的</strong>对象生命周期都比较<strong>短</strong>，而较<strong>老的对象</strong>生命周期会更<strong>长</strong><br>2、对<strong>部分内存</strong>进行回收比基于<strong>全部内存</strong>的回收操作要<strong>快</strong><br>3、新创建的对象之间<strong>关联程度</strong>通常<strong>较强</strong>。heap分配的对象是<strong>连续的</strong>，关联度较强有利于提高CPU cache的命中率</p>
+<p>Heap分为3个代龄区域，相应的GC有3种方式：<strong>Gen 0 collections</strong>, <strong>Gen 1 collections</strong>, <strong>Gen 2 collections</strong>。</p>
+<p>如果Gen 0 heap内存<strong>达到阀值</strong>，则触发<strong>0代GC</strong>，<strong>0代GC</strong>后Gen 0中<strong>幸存的对象</strong>进入Gen1。<br>如果Gen 1的内存<strong>达到阀值</strong>，则进行<strong>1代GC</strong>，<strong>1代GC</strong>将<strong>Gen 0 heap</strong>和<strong>Gen 1 heap</strong>一起进行回收，<strong>幸存的对象</strong>进入Gen2。<br>以此类推。</p>
+<p>Gen 0和Gen 1比<strong>较小</strong>，这两个代龄加起来总是保持在<strong>16M左右</strong>；Gen2的大小由<strong>应用程序</strong>确定，可能达到几G，因此0代和1代GC的<strong>成本非常低</strong>，2代GC称为<strong>fullGC</strong>，通常成本<strong>很高</strong>。粗略的计算0代和1代GC应当能在<strong>几毫秒</strong>到<strong>几十毫秒</strong>之间完成，Gen 2 heap比较大时<strong>fullGC</strong>可能需要花费<strong>几秒</strong>时间。大致上来讲.NET应用运行期间2代、1代和0代GC的频率应当大致为1:10:100。</p>
+<h4 id="三、Finalization-Queue和Freachable-Queue"><a href="#三、Finalization-Queue和Freachable-Queue" class="headerlink" title="三、Finalization Queue和Freachable Queue"></a><strong>三、Finalization Queue和Freachable Queue</strong></h4><blockquote>
+<p>Finalization Queue 保存<strong>含有Finalize方法</strong>的对象的<strong>指针</strong>的<strong>队列</strong><br>Freachable Queue  <strong>触发</strong>里面指针指向的对象的<strong>Finalize</strong> 方法</p>
+</blockquote>
+<p>这两个队列和.net对象所提供的Finalize方法有关。</p>
+<p>引用自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/560421474">C#垃圾回收机制(GC) - 知乎 (zhihu.com)</a></p>
+<p>这两个队列并不用于存储真正的对象，而是存储一组指向对象的指针。当程序中使用了new操作符在Managed Heap上分配空间时，GC会对其进行分析，如果该对象<strong>含有Finalize方法</strong>则在<strong>Finalization Queue</strong>中添加一个<strong>指向该对象的指针</strong>。在GC被启动以后，经过Mark阶段分辨出哪些是垃圾。再在垃圾中搜索，如果发现垃圾中有被Finalization Queue中的指针所指向的对象，则将这个对象从垃圾中分离出来，并将指向它的指针移动到Freachable Queue中。这个过程被称为是对象的复生（Resurrection），本来死去的对象就这样被救活了。为什么要救活它呢？因为这个对象的Finalize方法还没有被执行，所以不能让它死去。Freachable Queue平时不做什么事，但是一旦里面被添加了指针之后，它就会去触发所指对象的Finalize方法执行，之后将这个指针从队列中剔除，这是对象就可以安静的死去了。</p>
+<p><strong>ReRegisterForFinalize</strong>和<strong>SuppressFinalize</strong></p>
+<blockquote>
+<p>ReRegisterForFinalize：请求系统完成对象的Finalize方法<br>SuppressFinalize： 请求系统不要完成对象的Finalize方法</p>
+</blockquote>
+<p><code>.net framework</code>的System.GC类提供了控制Finalize的两个方法，ReRegisterForFinalize和SuppressFinalize。前者是请求系统完成对象的Finalize方法，后者是请求系统不要完成对象的Finalize方法。ReRegisterForFinalize方法其实就是将指向对象的指针重新添加到Finalization Queue中。这就出现了一个很有趣的现象，因为在Finalization Queue中的对象可以复生，如果在对象的Finalize方法中调用ReRegisterForFinalize方法，这样就形成了一个在堆上永远不会死去的对象，像凤凰涅槃一样每次死的时候都可以复生。</p>
+<p><strong>.NET的GC机制有这样两个问题：</strong></p>
+<p>首先，GC并不是能释放所有的资源。它不能自动释放<strong>非托管资源</strong>。</p>
+<blockquote>
+<p><strong>托管资源：</strong><br>Net中的所有类型都是（直接或间接）从System.Object类型派生的。<br>CTS中的类型被分成两大类——引用类型（reference type，又叫托管类型[managed type]），分配在内存堆上，值类型分配在栈上。<br>值类型在栈里，先进后出，值类型变量的生命有先后顺序，这个确保了值类型变量在推出作用域以前会释放资源。比引用类型更简单和高效。堆栈是从高地址往低地址分配内存。<br>引用类型分配在托管堆(Managed Heap)上，声明一个变量在栈上保存，当使用new创建对象时，会把对象的地址存储在这个变量里。托管堆相反，从低地址往高地址分配内存，如图</p>
+</blockquote>
+<p>第二，GC并不是实时性的，这将会造成系统<strong>性能</strong>上的瓶颈和<strong>不确定性</strong>。</p>
+<p>GC并不是实时性的，这会造成系统性能上的瓶颈和不确定性。所以有了<strong>IDisposable</strong>接口，IDisposable接口定义了Dispose方法，这个方法用来供程序员显式调用以<strong>释放非托管资源</strong>。使用using 语句可以简化资源管理。</p>
+<blockquote>
+<p><strong>非托管资源：</strong><br><code>ApplicationContext</code>,<code>Brush,Component</code>,<code>ComponentDesigner</code>,<code>Container</code>,<code>Context</code>,<code>Cursor</code>,<code>FileStrea</code>,<code>Font</code>,<code>Icon</code>,<code>Image</code>,<code>Matrix</code>,<code>Object</code>,<code>OdbcDataReader</code>,<code>OleDBDataReader</code>,<code>Pen</code>,<code>Regex</code>,<code>Socket</code>,<code>StreamWriter</code>,<code>Timer</code>,<code>Tooltip</code> ,文件句柄,GDI资源,数据库连接等等资源。可能在使用的时候很多都没有注意到！</p>
+</blockquote>
+<p>示例：</p>
+<p>当你用Dispose方法释放未托管对象的时候，应该调用GC.SuppressFinalize。如果对象正在终结队列(finalization queue),GC.SuppressFinalize会阻止GC调用Finalize方法。因为Finalize方法的调用会牺牲部分性能。如果你的Dispose方法已经对委托管资源作了清理，就没必要让GC再调用对象的Finalize方法(MSDN)。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/02/28/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E6%B5%85%E8%B0%88%E5%BA%8F%E5%88%97%E5%8C%96/">浅谈序列化 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%85%E8%B0%88GC"><span class="toc-number">2.</span> <span class="toc-text">浅谈GC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%A5%91%E6%9C%BA"><span class="toc-number">2.1.</span> <span class="toc-text">出现契机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GC%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">GC的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81Mark-Compact-%E6%A0%87%E8%AE%B0%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95"><span class="toc-number">2.2.1.</span> <span class="toc-text">一、Mark-Compact 标记压缩算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-Generational-%E5%88%86%E4%BB%A3%E7%AE%97%E6%B3%95"><span class="toc-number">2.2.2.</span> <span class="toc-text">二、 Generational 分代算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81Finalization-Queue%E5%92%8CFreachable-Queue"><span class="toc-number">2.2.3.</span> <span class="toc-text">三、Finalization Queue和Freachable Queue</span></a></li></ol></li></ol></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

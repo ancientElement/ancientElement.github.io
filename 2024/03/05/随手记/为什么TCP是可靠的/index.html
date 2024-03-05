@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>为什么TCP是可靠的 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>为什么TCP是可靠的</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-05T14:19:00.000Z" id="date"> 2024-03-05</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-05T15:56:53.547Z" id="updated"> 2024-03-05</time></div></span><br><span>文章总字数: <div class="control">842</div></span></div></div><hr><div id="post-content"><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/112317245">https://zhuanlan.zhihu.com/p/112317245</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86391759">简单聊聊 TCP 的可靠性 - 知乎 (zhihu.com)</a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>当前我所熟知的TCP可靠主要是根据TCP的丢包重传和有序性。但是，是怎么样的原理实现了丢包重传和有序性呢这个我们慢慢道来。</p>
+<blockquote>
+<p>TCP主要提供了检验和、序列号&#x2F;确认应答、超时重传、最大消息长度、滑动窗口控制等方法实现了可靠性传输。</p>
+</blockquote>
+<h2 id="检验和checksum-—-包损坏"><a href="#检验和checksum-—-包损坏" class="headerlink" title="检验和checksum — 包损坏"></a>检验和checksum — 包损坏</h2><p>checksum是一个16bit的数据，他根据我们的TCP<strong>报头Head</strong>、<strong>伪头部</strong>和<strong>数据信息Data</strong>，来计算。</p>
+<blockquote>
+<p>感觉非常像消息长度呀</p>
+</blockquote>
+<p class='item-img' data-src='https://pic3.zhimg.com/80/v2-e938d87de675f742db36e5f729326002_720w.webp'><img src="https://pic3.zhimg.com/80/v2-e938d87de675f742db36e5f729326002_720w.webp"></p>
+<center>图1 checkesum</center>
+
+
+<p><strong>客户端</strong>接收到这个TCP报文的数据后也进行一个<strong>计算</strong>，计算后得到的信息与<strong>checksum</strong>进行比对。</p>
+<ul>
+<li>如果计算结果符合期望值，说明数据包没有收到<strong>干扰&#x2F;损坏</strong></li>
+<li>如果<strong>不符合期望</strong>，一般会直接<strong>丢弃</strong>该数据包</li>
+</ul>
+<h2 id="序列号seq-—-乱序"><a href="#序列号seq-—-乱序" class="headerlink" title="序列号seq — 乱序"></a>序列号seq — 乱序</h2><p>在上面的图中有一个<strong>Sequence Number序列号</strong>，通过这个序列号，我们可以在客户端维护一个有序的TCP数据表。</p>
+<p>如下图所示，假设初始 <code>seq=1</code> ，发送的第一个报文 <strong>A</strong> 的长度为 12， 那么发送第二个报文 <strong>B</strong> 的 <code>seq=1+12=13</code>。</p>
+<p>这样我们的TCP就可以判断<strong>B</strong>是否是<strong>A</strong>的下一个报文了。</p>
+<p class='item-img' data-src='https://pic1.zhimg.com/80/v2-885c60b71b095666ba9c394a42e2a984_720w.webp'><img src="https://pic1.zhimg.com/80/v2-885c60b71b095666ba9c394a42e2a984_720w.webp"></p>
+<center>图2 seq</center>
+  
+
+<p><strong>接收方</strong>接收到多个报文后，可以基于 <code>seq</code> 对数据包进行<strong>升序排序</strong>，并且通过检查 <code>seq</code> 的值，可以判断接收的数据包之间是否有<strong>间隔</strong>。</p>
+<p>除此之外，<code>seq</code> 使得 TCP 有能力处理<strong>重复数据包</strong>的问题（幂等），因为接收方可以根据 <code>seq</code> 判断出该数据包是不是已经被接收了，这样顺带还解决了<strong>数据冗余</strong>的问题。</p>
+<h2 id="应答机制ack-—-丢包"><a href="#应答机制ack-—-丢包" class="headerlink" title="应答机制ack — 丢包"></a>应答机制ack — 丢包</h2><blockquote>
+<p>注意大写ACK和小写ack是有区别的<br>大写ACK一般指的是<strong>报文的类型</strong><br>小写ack指的就是这个 32bit 长的<strong>号码</strong></p>
+</blockquote>
+<p><code>ack</code>是一个与上面提到的<code>seq</code>相同长度的<strong>32bit</strong>的值，<code>ack</code>实际上就是对<code>seq</code>的<strong>估计值</strong>，如上，假设客户端<strong>收到B</strong>，那么他要应答一个<code>ack = 14</code>的<strong>ACK报文</strong>给服务器。服务器<strong>接收</strong>到了带有<code>ack</code>的<strong>ACK报文</strong>并且通过一个<strong>比对</strong>就可以得到客户端是否<strong>接收</strong>到了发送的信息。</p>
+<h3 id="重传"><a href="#重传" class="headerlink" title="重传"></a>重传</h3><p>以上都是在没有<strong>丢包</strong>的情况下讨论的，如果发生<strong>丢包</strong>了呢？这个时候就会产生<strong>重传</strong>。</p>
+<ul>
+<li>发送方发送一个<strong>未被确认</strong>的数据包后就启动一个<strong>计时器</strong></li>
+<li>如果在<strong>指定时间</strong>内没有收到 <code>ACK</code> ， 发送方可以<strong>重传</strong>该报文</li>
+</ul>
+<p class='item-img' data-src='https://pic4.zhimg.com/80/v2-6e4243e46d882b76de6ee3c21376bf2f_720w.webp'><img src="https://pic4.zhimg.com/80/v2-6e4243e46d882b76de6ee3c21376bf2f_720w.webp"></p>
+<center>图3 ack</center>
+
+
+<p><strong>超时重传</strong> + <strong>ACK</strong> 也有一个小问题，就是最开始提到的<strong>数据冗余</strong>问题。</p>
+<p>重传数据包可能导致接收方接收到<strong>多个重复</strong>的数据包， 如果你还没忘记的话，这个可以通过前面一节说到的 <code>seq</code> 去解决。</p>
+<blockquote>
+<p>实际上 TCP 的<strong>拥塞控制</strong>也是预防丢包的有效机制之一，有兴趣的同学可以去了解</p>
+</blockquote>
+<h2 id="延迟确认-阻塞控制-滑动窗口"><a href="#延迟确认-阻塞控制-滑动窗口" class="headerlink" title="延迟确认 阻塞控制 滑动窗口"></a>延迟确认 阻塞控制 滑动窗口</h2><p>先看这两篇吧：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/112317245">https://zhuanlan.zhihu.com/p/112317245</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86391759">简单聊聊 TCP 的可靠性 - 知乎 (zhihu.com)</a></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/03/05/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E4%BB%A4%E4%BA%BA%E5%B4%A9%E6%BA%83%E7%9A%84DrawCall%E4%B8%8E%E4%BC%98%E5%8C%96/">DrawCall 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E9%AA%8C%E5%92%8Cchecksum-%E2%80%94-%E5%8C%85%E6%8D%9F%E5%9D%8F"><span class="toc-number">3.</span> <span class="toc-text">检验和checksum — 包损坏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8F%B7seq-%E2%80%94-%E4%B9%B1%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text">序列号seq — 乱序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%AD%94%E6%9C%BA%E5%88%B6ack-%E2%80%94-%E4%B8%A2%E5%8C%85"><span class="toc-number">5.</span> <span class="toc-text">应答机制ack — 丢包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E4%BC%A0"><span class="toc-number">5.1.</span> <span class="toc-text">重传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E8%BF%9F%E7%A1%AE%E8%AE%A4-%E9%98%BB%E5%A1%9E%E6%8E%A7%E5%88%B6-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">6.</span> <span class="toc-text">延迟确认 阻塞控制 滑动窗口</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

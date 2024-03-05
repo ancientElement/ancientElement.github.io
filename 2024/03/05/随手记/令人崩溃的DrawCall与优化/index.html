@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DrawCall | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>DrawCall</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-05T12:03:00.000Z" id="date"> 2024-03-05</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-05T15:56:53.548Z" id="updated"> 2024-03-05</time></div></span><br><span>文章总字数: <div class="control">2.3k</div></span></div></div><hr><div id="post-content"><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352715430">Unity基础：DrawCall从入门到精通 - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/602785764">什么是DrawCall? - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zerobeyond/p/17739766.html">https://www.cnblogs.com/zerobeyond/p/17739766.html</a></p>
+<h2 id="什么是DrawCall"><a href="#什么是DrawCall" class="headerlink" title="什么是DrawCall"></a>什么是DrawCall</h2><p>我们先来翻译翻译，<strong>绘制调用</strong>，没错就是CUP向GPU调图形渲染的<strong>命令</strong>。</p>
+<blockquote>
+<p><code>DrawCall</code>本身的含义其实很简单，就是CPU调用图像<strong>应用编程接口(API)<strong>，如OpenGL中的<code>glDrawElecments</code>命令或者是<code>DirectX</code>中的<code>DrawIndexedPrimitive</code>命令，来</strong>命令GPU</strong>进行渲染的操作。</p>
+</blockquote>
+<p><strong>Batches</strong>通常被我们称为绘图调用（Draw Call）。这些是<strong>简单</strong>的绘制命令，例如，在此处绘制此对象，然后在此处绘制另一个对象。这主要是关于<strong>使用</strong>当前全局渲染状态绘制<strong>相同着色器</strong>、<strong>相似参数</strong>的对象。</p>
+<h3 id="提交DrawCall的步骤："><a href="#提交DrawCall的步骤：" class="headerlink" title="提交DrawCall的步骤："></a>提交DrawCall的步骤：</h3><ol>
+<li><p><strong>准备数据（Prepare Data）</strong>：在CPU上准备渲染所需的数据，例如<strong>顶点坐标</strong>、<strong>法线</strong>、<strong>纹理坐标</strong>等。</p>
+</li>
+<li><p><strong>设置渲染状态（Set Render State）</strong>：设置<strong>渲染状态</strong>，包括<strong>渲染目标</strong>、<strong>深度测试</strong>、<strong>混合模式</strong>、<strong>着色器程序</strong>等。</p>
+</li>
+<li><p><strong>绘制调用（Draw Call）</strong>：通过API调用（如OpenGL或DirectX）发起绘制命令，告诉GPU如何绘制准备好的数据。</p>
+</li>
+</ol>
+<h2 id="命令缓存区"><a href="#命令缓存区" class="headerlink" title="命令缓存区"></a>命令缓存区</h2><p>CPU的<code>DrawCall</code>，并不会<strong>直接</strong>给到GPU，可能是因为两者运行速度不一致，在两者之间有一个命令缓冲全区。</p>
+<blockquote>
+<p>其实现在我已经看到过很多由于速度不一致而设计的缓冲区，例如：<strong>寄存器</strong>、<strong>消息队列</strong><br>所以我才大胆猜测</p>
+<p>实际上也是效率问题引起的，如果CPU只有等待GPU处理完一个命令才给下一个命令效率太低下了。</p>
+</blockquote>
+<p class='item-img' data-src='http://imgtec.eetrend.com/files/2019-10/%E5%8D%9A%E5%AE%A2/100045671-82869-00.png'><img src="http://imgtec.eetrend.com/files/2019-10/%E5%8D%9A%E5%AE%A2/100045671-82869-00.png"></p>
+<center> 图1 命令缓冲区</center>
+
+<h2 id="SetPasses"><a href="#SetPasses" class="headerlink" title="SetPasses"></a>SetPasses</h2><p>上图中<strong>黄色</strong>的方框”渲染模型A”就是<strong>DrawCell</strong>，红色的方框是<strong>SetPasses</strong>。</p>
+<blockquote>
+<p>但是，<strong>SetPasses</strong>描述了一种更昂贵的操作：<strong>材质更改</strong>。更改材质很<strong>昂贵</strong>，因为我们必须设置一个<strong>新的渲染状态</strong>。其中包括<strong>着色器参数</strong>和<strong>管线设置</strong>，例如<strong>Alpha Blending</strong>，<strong>Z-Test</strong>，<strong>Z-Writing</strong>。</p>
+</blockquote>
+<p>所以材质的更改也是一个性能上的大问题。我们要尽量使用相同的材质避免<strong>SetPasses</strong>产生更大的消耗。在共享材质的情况下我们的<strong>SetPasses</strong>只用提交一次。</p>
+<p class='item-img' data-src='https://pic2.zhimg.com/80/v2-918f56f805d88a064e9643b9db480ddd_720w.webp'><img src="https://pic2.zhimg.com/80/v2-918f56f805d88a064e9643b9db480ddd_720w.webp"></p>
+<center>图2 Unity中的**Batch(DrawCall)**和**SetPass**</center>
+
+<p>最后，你可以并且应该使用<strong>Unity Frame Debugger</strong>。该工具将为你显示当前视图正在发出的特Draw Call（Batches）。你可以点击_Window → Analysis → Frame Debugger_菜单打开它。</p>
+<h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><p>提交<strong>大量很小</strong>的DrawCall会造成CPU的性能瓶颈，即CPU把时间都花费在<strong>准备DrawCall</strong>的工作上了。那么很显然的一个优化方法就是把很多小的DrawCall<strong>合并</strong>成一个<strong>大的DrawCall</strong>，这就是<strong>批处理</strong>。</p>
+<p>游戏开发人员使用<strong>批处理</strong>将<strong>相似对象</strong>的渲染分组到<strong>同一个Draw Call</strong>中。这样，CPU只需支付<strong>一次DrawCall</strong>即可渲染<strong>多个对象</strong>。</p>
+<p>在批处理中，<strong>相似</strong>定义为在不同的对象上使用<strong>相同的材质</strong>。如果完成此步骤，则可以完成最复杂的步骤。</p>
+<h2 id="静态批处理"><a href="#静态批处理" class="headerlink" title="静态批处理"></a>静态批处理</h2><p>一下皆引用自：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352715430">Unity基础：DrawCall从入门到精通 - 知乎 (zhihu.com)</a></p>
+<p>适用于<strong>不会</strong>在运行时<strong>改变</strong>的网格，Unity编辑器在<strong>构建阶段</strong>将多个<strong>静态网格</strong>合并成<strong>一个网格</strong>，并生成一个合并后的网格文件。这样可以显著减少Draw Call的数量，但缺点是无法在<strong>运行时动态修改</strong>这些网格。这样将静态物体的网格进行合并，就只需要<strong>一次DrawCall</strong>。</p>
+<p>在Player Setting，如图所示。选择您要启用的目标平台，打开Static Batching。</p>
+<p class='item-img' data-src='https://pic1.zhimg.com/80/v2-7d4c8499afb020ab411a9bccd518c5e4_720w.webp'><img src="https://pic1.zhimg.com/80/v2-7d4c8499afb020ab411a9bccd518c5e4_720w.webp"></p>
+<center>图3 静态合批</center>
+
+<p>更准确地说，Unity将查找启用了<strong>batching static</strong>标志的对象。然后，Unity将尝试<strong>合并公用材质</strong>的对象。</p>
+<p>Unity静态批处理通过<strong>创建</strong>包含各个网格的<strong>巨大网格</strong>来工作。但是Unity也会保持<strong>原始网格</strong>的完整，因此我们仍然能够单独渲染它们。<br>这样我们可以仅绘制可见视野内的对象，而丢弃不可见的对象，使得<strong>视锥裁切</strong>正常工作。</p>
+<p>通过将所有网格都放在一个网格中，我们就可以在不更改渲染状态的情况下全部绘制它们。</p>
+<p>静态批处理的主要<strong>限制</strong>是每批可以具有<strong>的顶点和索引的数量</strong>，通常为每个<strong>64k</strong>，可以在<a href="https://link.zhihu.com/?target=https://docs.unity3d.com/Manual/DrawCallBatching.html">此处</a>检查限制更新（如果有）。</p>
+<p>静态批处理的缺点是<strong>增加了内存使用量</strong>。如果您有100个石头，每个石头模型占用1MB，则可以预期内存使用量将超过<strong>100MB</strong>。发生这种情况的原因是，巨大的批处理网格将所有石头一起包含在一个网格中。</p>
+<p>但是，内存使用对你来说不是问题。毕竟，你可以查看我的<a href="https://link.zhihu.com/?target=https://thegamedev.guru/unity-addressables/tutorial-learn-the-basics/">Unity可寻址对象教程</a>，该<a href="https://link.zhihu.com/?target=https://thegamedev.guru/unity-addressables/tutorial-learn-the-basics/">教程</a>将帮助你节省大量内存。</p>
+<h2 id="技术2：Unity-GPU-Instancing"><a href="#技术2：Unity-GPU-Instancing" class="headerlink" title="技术2：Unity GPU Instancing"></a>技术2：Unity GPU Instancing</h2><p>GUP Instancing 可以用于绘制非静态的对象，因为它通过传递一个transform给GPU而得到绘制，相同的物体仍然只有一次DrawCall。</p>
+<p>这是针对每种材质激活GPU Instancing设置，如下所示。</p>
+<p class='item-img' data-src='https://pic4.zhimg.com/80/v2-9db47f7f807a3684b8ca1a5252a9858f_720w.webp'><img src="https://pic4.zhimg.com/80/v2-9db47f7f807a3684b8ca1a5252a9858f_720w.webp"></p>
+<center>图4 GPU Instancing</center>
+
+<p>Unity GPU Instancing：材质设置</p>
+<p>GPU实例化让你可以非常高效地绘制<strong>相同</strong>的网格几次。Unity通过向GPU传递转一个<strong>Transform列表</strong>来做到这一点。毕竟，每块石头都有自己的位置，旋转和缩放。</p>
+<p>与静态批处理相比，这是一项强大的技术，因为它不会激增<strong>内存使用量</strong>，并且不需要对象是静态的。</p>
+<p class='item-img' data-src='https://pic2.zhimg.com/v2-562397b048dad9eeca3e3aab2d881415_b.jpg'><img src="https://pic2.zhimg.com/v2-562397b048dad9eeca3e3aab2d881415_b.jpg" alt="动图封面"></p>
+<center>图5 GPU Instancing</center>
+
+<p>要使用GPU Instancing，你只需要在材质检视面板中启用它即可。如果你有多个具有相同网格和材质的对象，那么Unity对它们将自动进行批处理。</p>
+<p>但是，创建Transform列表会<strong>降低性能</strong>。如果在游戏过程中没有物体移动&#x2F;旋转&#x2F;缩放，则只需支付一次此开销。但是，如果对象<strong>每帧都更改一次</strong>，则需要<strong>每帧支付一次开销</strong>。</p>
+<p><strong>推荐一个插件：</strong><a href="https://link.zhihu.com/?target=https://assetstore.unity.com/packages/tools/utilities/gpu-instancer-117566">GPUInstance</a>比Unity默认的要好用的多。</p>
+<h2 id="动态批处理"><a href="#动态批处理" class="headerlink" title="动态批处理"></a>动态批处理</h2><p>适用于需要在运行时动态修改的网格，Unity会在<strong>运行时</strong>动态合并具有<strong>相同材质</strong>的网格，以减少Draw Call的数量。动态批处理不需要预先合并网格，而是在<strong>运行时</strong>根据需要动态合并网格，因此适用于需要<strong>动态创建</strong>、<strong>销毁</strong>或<strong>修改</strong>的网格。</p>
+<p>但是，请记住，Unity动态批处理<strong>受到更加严格的限制</strong>。你只能将其应用于具有少于<strong>300个顶点</strong>和<strong>900个顶点</strong>属性（_颜色，UV_等）的网格。材质也应使用single-pass着色器。<a href="https://link.zhihu.com/?target=https://docs.unity3d.com/Manual/DrawCallBatching.html">此处</a>有完整的限制列表。</p>
+<p>出现此限制的<strong>原因</strong>是在运行时创建这些批处理的CPU<strong>性能成本</strong>。与单独发出绘图调用相比，超过300个顶点很难证明批量CPU的成本合理。</p>
+<p>不仅如此，动态批处理<strong>非常不可预测</strong>。你无法真正确定对象将如何被批处理。结果通常会随着帧的变化而变化。打开Unity Frame Debugger并查看结果，在每帧之间动态批处理的结果发生巨大变化是令人困惑的。</p>
+<p>我认为，这应该是你的不得已的方法。但是，嘿，它仍然是一种有用的工具，请不要忽略它。</p>
+<h2 id="技术4：Unity运行时批处理API"><a href="#技术4：Unity运行时批处理API" class="headerlink" title="技术4：Unity运行时批处理API"></a>技术4：Unity运行时批处理API</h2><p>Unity使你可以访问<strong>2个强大的API</strong>，以在<strong>运行时</strong>合并网格。</p>
+<p>假设你正在开车。在车的内部，你会看到一些元素，例如座椅，把手，挡风玻璃和你收藏的咖啡杯。你可以在比赛开始之前设定这些元素。</p>
+<p>一旦你做出选择并开始比赛，这些元素就会在你的赛车中<strong>变成静态</strong>的（无法再次更改）。让我解释一：</p>
+<p>车内部的物品、零件都变成<strong>相对静态</strong>的了。</p>
+<p>但是，Unity认为所有这些都是动态的。这就是为什么在这种情况下无法进行静态批处理的原因。</p>
+<p>尽管如此，我们仍然可以通过使用<strong>静态批处理API</strong>，<strong>手动</strong>创建合批。</p>
+<p>最简单的方法是使用<a href="https://link.zhihu.com/?target=https://docs.unity3d.com/ScriptReference/StaticBatchingUtility.Combine.html">StaticBatchingUtility.Combine</a>。该函数传入一个<strong>根游戏对象</strong>，并将遍历其所有子对象并将其几何形状<strong>合并</strong>为一个大块。一个<strong>容易遗漏</strong>的限制是，要批处理的所有子网格的导入设置必须允许开启<code>_CPU read/write_</code>。</p>
+<p>第二种方法是使用<a href="https://link.zhihu.com/?target=https://docs.unity3d.com/ScriptReference/Mesh.CombineMeshes.html">Mesh.CombineMeshes</a>。此函数间接获取网格列表并创建组合的网格。然后，你可以将该网格分配给mesh filter渲染。</p>
+<p>我简化了这两种功能的解释。查看文档以获取有关如何使用它们的详细信息。</p>
+<p>在下图中，您将看到我如何应用<strong>StaticBatchingUtility</strong> API的功能在运行时将一些动态坦克批合并为一个网格。</p>
+<p class='item-img' data-src='https://pic1.zhimg.com/80/v2-0222071d93d18cabd27407bde56685d4_720w.webp'><img src="https://pic1.zhimg.com/80/v2-0222071d93d18cabd27407bde56685d4_720w.webp"></p>
+<center>图6 批处理API</center><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/03/05/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E4%B8%BA%E4%BB%80%E4%B9%88TCP%E6%98%AF%E5%8F%AF%E9%9D%A0%E7%9A%84/">← 下一篇 为什么TCP是可靠的</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/03/05/%E5%AE%9E%E8%B7%B5/%E9%80%9A%E7%94%A8%E4%B8%94%E9%85%8D%E7%BD%AE%E5%8C%96%E7%9A%84%E5%8A%A8%E4%BD%9C%E7%B3%BB%E7%BB%9F/">通用且配置化的动作系统 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFDrawCall"><span class="toc-number">2.</span> <span class="toc-text">什么是DrawCall</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4DrawCall%E7%9A%84%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">提交DrawCall的步骤：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E7%BC%93%E5%AD%98%E5%8C%BA"><span class="toc-number">3.</span> <span class="toc-text">命令缓存区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SetPasses"><span class="toc-number">4.</span> <span class="toc-text">SetPasses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">批处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%89%B9%E5%A4%84%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">静态批处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF2%EF%BC%9AUnity-GPU-Instancing"><span class="toc-number">7.</span> <span class="toc-text">技术2：Unity GPU Instancing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%89%B9%E5%A4%84%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">动态批处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF4%EF%BC%9AUnity%E8%BF%90%E8%A1%8C%E6%97%B6%E6%89%B9%E5%A4%84%E7%90%86API"><span class="toc-number">9.</span> <span class="toc-text">技术4：Unity运行时批处理API</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

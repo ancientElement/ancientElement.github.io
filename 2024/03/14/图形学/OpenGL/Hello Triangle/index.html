@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Hello Triangle | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>Hello Triangle</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-14T10:34:00.000Z" id="date"> 2024-03-14</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-14T15:48:31.829Z" id="updated"> 2024-03-14</time></div></span><br><span>文章总字数: <div class="control">652</div></span></div></div><hr><div id="post-content"><h2 id="VAO和VBO"><a href="#VAO和VBO" class="headerlink" title="VAO和VBO"></a>VAO和VBO</h2><p><strong>VAO（Vertex Array Object）：</strong></p>
+<ul>
+<li>VAO是OpenGL中的顶点数组对象，用于封装和管理顶点数组的状态。</li>
+<li>VAO存储了顶点数组的配置信息，包括顶点属性的格式、绑定的顶点缓冲对象（VBO）等。</li>
+<li>使用VAO可以方便地定义和管理顶点数据，减少了重复代码的编写，并提高了渲染效率。</li>
+</ul>
+<blockquote>
+<p>就跟我们软光栅中读取出来<code>.obj</code>一样，有顶点信息、面信息、法线信息、UV信息</p>
+</blockquote>
+<p><strong>VBO（Vertex Buffer Object）：</strong></p>
+<ul>
+<li>VBO是OpenGL中的顶点缓冲对象，用于存储顶点数据和其他相关数据。</li>
+<li>VBO可以存储顶点的位置、法线、纹理坐标等数据，并通过索引来访问这些数据。</li>
+<li>使用VBO可以将顶点数据存储在显存中，提高了数据传输的效率，并减少了CPU和GPU之间的数据传输次数。</li>
+<li>VBO可以与VAO结合使用，通过绑定到VAO来实现对顶点数据的管理和渲染。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// 顶点数据</span><br><span class="hljs-type">float</span> vertices[] = &#123;<br>    <span class="hljs-number">-0.5f</span>, <span class="hljs-number">-0.5f</span>, <span class="hljs-number">0.0f</span>,<br>    <span class="hljs-number">0.5f</span>, <span class="hljs-number">-0.5f</span>, <span class="hljs-number">0.0f</span>,<br>    <span class="hljs-number">0.0f</span>, <span class="hljs-number">0.5f</span>, <span class="hljs-number">0.0f</span><br>&#125;;<br><br><span class="hljs-comment">// 创建VAO</span><br><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> VAO;<br><span class="hljs-built_in">glGenVertexArrays</span>(<span class="hljs-number">1</span>, &amp;VAO);<br><br><span class="hljs-comment">// 创建VBO</span><br><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> VBO;<br><span class="hljs-built_in">glGenBuffers</span>(<span class="hljs-number">1</span>, &amp;VBO);<br><span class="hljs-built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, VBO);<br><span class="hljs-built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="hljs-built_in">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);<br></code></pre></td></tr></table></figure>
+
+<p>这段代码的作用是创建一个包含三个顶点的三角形，并将顶点数据存储到VBO中。首先，通过调用<code>glGenVertexArrays</code>函数生成一个VAO对象，然后通过调用<code>glGenBuffers</code>函数生成一个VBO对象。接着，使用<code>glBindBuffer</code>函数将VBO绑定到GL_ARRAY_BUFFER目标上，并调用<code>glBufferData</code>函数将顶点数据复制到VBO中。最后，通过VAO和VBO来管理顶点数据，以便后续的渲染操作。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="hljs-built_in">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);<br></code></pre></td></tr></table></figure>
+<p>绑定操作的目的是告诉OpenGL接下来的操作将应用到哪个对象上。在这段代码中，调用<code>glBindBuffer</code>将VBO绑定到了<code>GL_ARRAY_BUFFER</code>目标上，这意味着接下来对<code>GL_ARRAY_BUFFER</code>的操作将影响到这个VBO对象。</p>
+<p><code>glBufferData</code>函数用于将数据复制到当前绑定的缓冲区对象中。它的参数含义如下：</p>
+<ul>
+<li><code>GL_ARRAY_BUFFER</code>：指定缓冲区的类型，这里是顶点缓冲区。</li>
+<li><code>sizeof(vertices)</code>：顶点数据的大小，以字节为单位。</li>
+<li><code>vertices</code>：指向包含顶点数据的数组的指针。</li>
+<li><code>GL_STATIC_DRAW</code>：指定了缓冲区中的数据将如何被使用。<code>GL_STATIC_DRAW</code>表示数据将不会或几乎不会被修改，并且将被画很多次。</li>
+</ul>
+<p>综合来看，这行代码的作用是将顶点数据复制到VBO中，并告诉OpenGL这些数据是静态的，不会经常修改。</p>
+<h2 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h2><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/leetcode%E5%88%B7%E9%A2%98/%E5%8D%95%E8%B0%83%E6%A0%88/496.%20%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0%20I/">← 下一篇 496. 下一个更大元素 I</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/03/14/%E5%9B%BE%E5%BD%A2%E5%AD%A6/OpenGL/Hello%20Window/">Hello Window 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VAO%E5%92%8CVBO"><span class="toc-number">1.</span> <span class="toc-text">VAO和VBO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shader"><span class="toc-number">2.</span> <span class="toc-text">Shader</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

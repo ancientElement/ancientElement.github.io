@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>常用容器的底层原理 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>常用容器的底层原理</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-16T13:52:00.000Z" id="date"> 2024-03-16</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-17T02:56:19.985Z" id="updated"> 2024-03-17</time></div></span><br><span>文章总字数: <div class="control">1.8k</div></span></div></div><hr><div id="post-content"><h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><p>STL（Standard Template Library）中包含多种容器，每种容器都有其特定的底层实现。以下是几种常见的STL容器以及它们的底层实现方式：</p>
+<ol>
+<li><p><strong>数组容器（array）</strong>：</p>
+<ul>
+<li>底层实现：<code>std::array</code> 是一个固定大小的数组容器，底层实现使用静态数组来存储元素，因此具有数组的特性，如随机访问和连续存储空间。</li>
+</ul>
+</li>
+<li><p><strong>动态数组容器（vector）</strong>：</p>
+<ul>
+<li>底层实现：<code>std::vector</code> 是一个动态数组容器，底层实现使用动态分配的数组来存储元素。当元素数量超过当前容量时，会重新分配更大的内存空间，并将原有元素拷贝到新的内存空间中。</li>
+</ul>
+</li>
+<li><p><strong>链表容器（list）</strong>：</p>
+<ul>
+<li>底层实现：<code>std::list</code> 是一个双向链表容器，底层实现使用双向链表来存储元素。每个节点包含指向前一个节点和后一个节点的指针。</li>
+</ul>
+</li>
+<li><p><strong>双端队列容器（deque）</strong>：</p>
+<ul>
+<li>底层实现：<code>std::deque</code> 是一个双端队列容器，底层实现通常使用多个固定大小的数组块来存储元素，每个数组块称为一个缓冲区。当需要在两端插入或删除元素时，可以在头部或尾部的缓冲区进行操作。</li>
+</ul>
+</li>
+<li><p><strong>栈容器（stack）</strong> 和  <strong>队列容器（queue）</strong>：</p>
+<ul>
+<li>底层实现：<code>std::stack</code> 和 <code>std::queue</code> 分别是栈和队列容器的适配器，它们的底层实现通常基于其他容器，如 <code>std::deque</code> 或 <code>std::list</code>。栈通常使用 <code>std::deque</code> 作为底层容器，而队列通常使用 <code>std::deque</code> 或 <code>std::list</code>。</li>
+</ul>
+</li>
+<li><p><strong>映射容器（map）</strong> 和 <strong>集合容器（set）</strong>：</p>
+<ul>
+<li>底层实现：<code>std::map</code> 和 <code>std::set</code> 是基于红黑树实现的关联容器。红黑树是一种自平衡的二叉搜索树，具有良好的平衡性能，保证了插入、删除和查找操作的时间复杂度都是 O(log n)。</li>
+</ul>
+</li>
+</ol>
+<p>以上是一些常见的STL容器及其底层实现方式的简要介绍。不同的容器在不同的场景下具有不同的性能特点和适用性，应根据实际需求选择合适的容器。</p>
+<h2 id="C-1"><a href="#C-1" class="headerlink" title="C#"></a>C#</h2><p>在 C# 中，常用的容器包括数组、列表（List）、字典（Dictionary）、队列（Queue）和栈（Stack）等。这些容器在 .NET Framework 中都有其特定的底层实现方式。以下是其中一些常见容器的底层实现方式：</p>
+<ol>
+<li><p><strong>数组</strong>：</p>
+<ul>
+<li>底层实现：数组是 C# 中的基本数据结构，底层实现直接使用内存中的连续存储空间来存储元素。数组的长度在创建时确定，且无法改变。</li>
+</ul>
+</li>
+<li><p>**列表（List&lt;T&gt;) ** ：</p>
+<ul>
+<li>底层实现：列表使用动态数组来存储元素，底层实现使用数组作为存储元素的载体。当列表需要扩展容量时，会重新分配更大的数组，并将原有元素拷贝到新的数组中。</li>
+</ul>
+</li>
+<li><p><strong>字典（Dictionary&lt;TKey, TValue&gt;）</strong>：</p>
+<ul>
+<li>底层实现：字典使用哈希表（hash table）来存储键值对。哈希表是一种基于数组的数据结构，通过哈希函数将键映射到数组的索引位置，并在该位置存储对应的值。哈希表具有良好的查找性能，查找、插入和删除操作的时间复杂度都是 O(1)。</li>
+</ul>
+</li>
+<li><p><strong>队列（Queue&lt;T&gt;）</strong>：</p>
+<ul>
+<li>底层实现：队列通常使用链表来实现，底层实现使用双向链表或循环链表来存储元素。在队列的头部进行出队操作，在队列的尾部进行入队操作。</li>
+</ul>
+</li>
+<li><p><strong>栈（Stack&lt;T&gt;）</strong>：</p>
+<ul>
+<li>底层实现：栈通常使用链表或数组来实现，底层实现使用数组或链表来存储元素。在栈顶进行入栈和出栈操作。</li>
+</ul>
+</li>
+</ol>
+<p>除了以上常见的容器，C# 还提供了其他一些容器和数据结构，如集合（HashSet&lt;T&gt;）、有序集合（SortedSet&lt;T&gt;）、双端队列（Deque&lt;T&gt;）等，它们也有各自特定的底层实现方式。</p>
+<p>总的来说，C# 中的容器都是经过优化的数据结构，具有良好的性能和易用性，开发人员可以根据实际需求选择合适的容器来进行数据操作。</p>
+<h2 id="vector和list的使用场景"><a href="#vector和list的使用场景" class="headerlink" title="vector和list的使用场景"></a>vector和list的使用场景</h2><ol>
+<li><p><strong>vector</strong>：</p>
+<ul>
+<li><p><strong>底层实现</strong>：<code>vector</code> 使用动态数组实现，因此在内存中是连续存储的，可以通过索引进行快速访问。</p>
+</li>
+<li><p><strong>适用场景</strong>：</p>
+<ul>
+<li>需要<strong>快速随机访问</strong>元素，时间复杂度为 O(1)。</li>
+<li>需要在<strong>尾部</strong>进行频繁的<strong>插入</strong>和<strong>删除</strong>操作，时间复杂度为 O(1)。</li>
+<li>需要通过 <code>push_back</code> 在尾部添加元素，并且不需要频繁在中间或头部插入或删除元素。</li>
+<li>对内存空间的<strong>连续性</strong>要求不高。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>list</strong>：</p>
+<ul>
+<li><p><strong>底层实现</strong>：<code>list</code> 使用<strong>双向链表</strong>实现，每个节点包含指向前一个节点和后一个节点的指针，因此在内存中<strong>不是连续</strong>存储的。</p>
+</li>
+<li><p><strong>适用场景</strong>：</p>
+<ul>
+<li>需要在<strong>任意位置</strong>进行频繁的<strong>插入</strong>和<strong>删除</strong>操作，时间复杂度为 O(1)。</li>
+<li><strong>不需要</strong>进行频繁的随机访问元素，因为在 <code>list</code> 中进行随机访问的时间复杂度是 O(n)。</li>
+<li>需要高效地在<strong>中间</strong>或<strong>头部</strong>插入或删除元素。</li>
+<li>对内存空间的连续性要求较低，且可以接受额外的指针开销。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="stack的适配器是什么，能不能用vector，为什么"><a href="#stack的适配器是什么，能不能用vector，为什么" class="headerlink" title="stack的适配器是什么，能不能用vector，为什么"></a>stack的适配器是什么，能不能用vector，为什么</h2><p>在C++中，<code>std::stack</code> 是一个适配器容器，它提供了一种通过特定容器类型（默认是 <code>std::deque</code>）来实现栈（后进先出）数据结构的方式。</p>
+<p>适配器容器本质上是一个封装了底层容器的类，它提供了一种特定的接口，使得底层容器的功能能够满足某种特定的数据结构需求。<code>std::stack</code> 就是通过封装底层容器来提供栈的功能，使得用户可以使用类似于栈的操作，如 <code>push()</code>、<code>pop()</code>、<code>top()</code> 等，而无需关心底层容器的具体实现。</p>
+<p><code>std::stack</code> 默认使用 <code>std::deque</code> 作为底层容器，但也可以通过模板参数指定其他容器类型，如 <code>std::vector</code>。但是，并不是所有的容器都适合用作 <code>std::stack</code> 的底层容器。虽然 <code>std::vector</code> 也可以存储元素，并提供栈的基本操作，但并不是最佳选择，原因如下：</p>
+<ol>
+<li><p><strong>高效的插入和删除操作</strong>：<code>std::deque</code> 支持高效的在<strong>头部</strong>和<strong>尾部</strong>进行插入和删除操作，时间复杂度为 O(1)，这与栈的操作特性相符。</p>
+</li>
+<li><p><strong>不会触发数据移动</strong>：由于 <code>std::deque</code> 使用了分段连续存储的数据结构，插入和删除操作不会触发数据的整体移动，而 <code>std::vector</code> 则可能会导致<strong>数据的移动</strong>，时间复杂度为 O(n)。</p>
+</li>
+</ol>
+<p>相比之下，<code>std::deque</code> 提供了更好的插入和删除操作性能，同时不需要频繁地重新分配内存。因此，通常情况下，建议使用 <code>std::deque</code> 作为 <code>std::stack</code> 的底层容器。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/03/16/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E5%A4%9A%E6%80%81/">← 下一篇 多态</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/leetcode%E5%88%B7%E9%A2%98/%E5%AD%97%E7%AC%A6%E4%B8%B2/125.%20%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2/">125. 验证回文串 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">2.</span> <span class="toc-text">C#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vector%E5%92%8Clist%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">3.</span> <span class="toc-text">vector和list的使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stack%E7%9A%84%E9%80%82%E9%85%8D%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8vector%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="toc-number">4.</span> <span class="toc-text">stack的适配器是什么，能不能用vector，为什么</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

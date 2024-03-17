@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>多态 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>多态</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-16T14:37:00.000Z" id="date"> 2024-03-16</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-17T02:56:19.984Z" id="updated"> 2024-03-17</time></div></span><br><span>文章总字数: <div class="control">514</div></span></div></div><hr><div id="post-content"><h2 id="重载、重写、隐藏"><a href="#重载、重写、隐藏" class="headerlink" title="重载、重写、隐藏"></a>重载、重写、隐藏</h2><ol>
+<li><p><strong>重载（Overload）</strong>：</p>
+<ul>
+<li>概念：在同一个作用域内，使用相同的<strong>函数名</strong>，但<strong>参数</strong>列表不同的多个函数。重载函数可以有不同的参数类型、参数个数或参数顺序。</li>
+<li>特点：重载函数必须有不同的参数列表，不能仅仅依靠返回类型来区分。</li>
+</ul>
+</li>
+<li><p><strong>重写（Override）</strong>：</p>
+<ul>
+<li>概念：在派生类中重新定义基类中已经存在的<strong>虚函数</strong>，以实现多态性。派生类中的重写函数必须和基类中的原函数有相同的<strong>函数签名</strong>（即函数名、参数列表和返回类型都相同）。</li>
+<li>特点：通过重写虚函数，派生类可以在运行时替换掉基类中的虚函数，实现动态多态。</li>
+</ul>
+</li>
+<li><p><strong>隐藏（Hide）</strong>：</p>
+<ul>
+<li><p>概念：在派生类中定义一个和基类中的非虚函数同名的函数，导致基类的同名函数在派生类中不可见。</p>
+</li>
+<li><p>特点：隐藏函数不会影响基类中同名函数的访问，但会隐藏掉基类中的同名函数，使其在派生类中不可见。</p>
+</li>
+<li><p>在C++中的关键字是using</p>
+</li>
+<li><p>在C#中的关键字是new</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="什么函数可以-不可以声明为虚函数"><a href="#什么函数可以-不可以声明为虚函数" class="headerlink" title="什么函数可以&#x2F;不可以声明为虚函数"></a>什么函数可以&#x2F;不可以声明为虚函数</h2><ol>
+<li><p><strong>构造函数</strong>和<strong>析构函数</strong>：构造函数和析构函数可以在类的继承层次结构中使用，但它们不能是虚函数。因为在构造对象和销毁对象时，虚函数机制不会起作用。对于构造函数，对象的类型是已知的，而对于析构函数，对象的<strong>析构</strong>顺序是由<strong>基类</strong>到<strong>派生类</strong>依次<strong>调用</strong>的，不需要虚函数的动态绑定。</p>
+</li>
+<li><p><strong>静态成员函数</strong>：静态成员函数与<strong>类关联</strong>，而不是与类的对象关联。因此，它们不属于任何对象的虚函数表，不能声明为虚函数。</p>
+</li>
+<li><p><strong>非成员函数</strong>：非成员函数不属于任何类，因此不能声明为虚函数。</p>
+</li>
+</ol>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/03/16/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">← 下一篇 进程与线程</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/03/16/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">常用容器的底层原理 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%E3%80%81%E9%87%8D%E5%86%99%E3%80%81%E9%9A%90%E8%97%8F"><span class="toc-number">1.</span> <span class="toc-text">重载、重写、隐藏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%87%BD%E6%95%B0%E5%8F%AF%E4%BB%A5-%E4%B8%8D%E5%8F%AF%E4%BB%A5%E5%A3%B0%E6%98%8E%E4%B8%BA%E8%99%9A%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">什么函数可以&#x2F;不可以声明为虚函数</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

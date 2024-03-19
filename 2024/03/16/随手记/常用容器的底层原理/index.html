@@ -16,7 +16,7 @@ if (window.localStorage.getItem('theme-mode') === 'dark')
   --dark-background: url('/images/wallhaven-p9gr2p.jpg');
   --light-background: url('/images/wallhaven-495xd1.jpg');
   --theme-encrypt-confirm: '确认'
-}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>常用容器的底层原理</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-16T13:52:00.000Z" id="date"> 2024-03-16</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-17T02:56:19.985Z" id="updated"> 2024-03-17</time></div></span><br><span>文章总字数: <div class="control">1.8k</div></span></div></div><hr><div id="post-content"><h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><p>STL（Standard Template Library）中包含多种容器，每种容器都有其特定的底层实现。以下是几种常见的STL容器以及它们的底层实现方式：</p>
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">日记</span></a></li><li class="navItem"><a class="navBlock" href="/todo/"><span class="navItemTitle">任务</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>常用容器的底层原理</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-16T13:52:00.000Z" id="date"> 2024-03-16</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-19T00:08:22.787Z" id="updated"> 2024-03-19</time></div></span><br><span>文章总字数: <div class="control">1.8k</div></span></div></div><hr><div id="post-content"><h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><p>STL（Standard Template Library）中包含多种容器，每种容器都有其特定的底层实现。以下是几种常见的STL容器以及它们的底层实现方式：</p>
 <ol>
 <li><p><strong>数组容器（array）</strong>：</p>
 <ul>
@@ -30,12 +30,12 @@ if (window.localStorage.getItem('theme-mode') === 'dark')
 </li>
 <li><p><strong>链表容器（list）</strong>：</p>
 <ul>
-<li>底层实现：<code>std::list</code> 是一个双向链表容器，底层实现使用双向链表来存储元素。每个节点包含指向前一个节点和后一个节点的指针。</li>
+<li>底层实现：<code>std::list</code> 是一个双向链表容器，底层实现使用<strong>双向链表</strong>来存储元素。每个节点包含指向前一个节点和后一个节点的指针。</li>
 </ul>
 </li>
 <li><p><strong>双端队列容器（deque）</strong>：</p>
 <ul>
-<li>底层实现：<code>std::deque</code> 是一个双端队列容器，底层实现通常使用多个固定大小的数组块来存储元素，每个数组块称为一个缓冲区。当需要在两端插入或删除元素时，可以在头部或尾部的缓冲区进行操作。</li>
+<li>底层实现：<code>std::deque</code> 是一个双端队列容器，底层实现通常使用多个固定大小的数组块来存储元素，每个数组块称为一个缓冲区。当需要在<strong>两端插入或删除</strong>元素时，可以在头部或尾部的缓冲区进行操作。</li>
 </ul>
 </li>
 <li><p><strong>栈容器（stack）</strong> 和  <strong>队列容器（queue）</strong>：</p>
@@ -45,7 +45,7 @@ if (window.localStorage.getItem('theme-mode') === 'dark')
 </li>
 <li><p><strong>映射容器（map）</strong> 和 <strong>集合容器（set）</strong>：</p>
 <ul>
-<li>底层实现：<code>std::map</code> 和 <code>std::set</code> 是基于红黑树实现的关联容器。红黑树是一种自平衡的二叉搜索树，具有良好的平衡性能，保证了插入、删除和查找操作的时间复杂度都是 O(log n)。</li>
+<li>底层实现：<code>std::map</code> 和 <code>std::set</code> 是基于<strong>红黑树实现</strong>的关联容器。红黑树是一种自平衡的二叉搜索树，具有良好的平衡性能，保证了插入、删除和查找操作的时间复杂度都是 O(log n)。</li>
 </ul>
 </li>
 </ol>

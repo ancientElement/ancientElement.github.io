@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="zh-cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>关于A星寻路的缺点探讨 | AncientElement</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: false});</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="/css/custom.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: Bender;
+ src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+ font-family: BenderLight;
+ src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('/images/wallhaven-p9gr2p.jpg');
+  --light-background: url('/images/wallhaven-495xd1.jpg');
+  --theme-encrypt-confirm: '确认'
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">每日委托</span></a></li><li class="navItem"><a class="navBlock" href="/oldTime1/"><span class="navItemTitle">旧事1</span></a></li><li class="navItem"><a class="navBlock" href="/oldTime2/"><span class="navItemTitle">旧事2</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>关于A星寻路的缺点探讨</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-23T03:10:00.000Z" id="date"> 2024-03-23</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-23T03:44:42.027Z" id="updated"> 2024-03-23</time></div></span><br><span>文章总字数: <div class="control">449</div></span></div></div><hr><div id="post-content"><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://blog.codingnow.com/2006/07/astar.html">云风的 BLOG: A* 算法之误区 (codingnow.com)</a><br><a target="_blank" rel="noopener" href="https://www.redblobgames.com/pathfinding/a-star/introduction.html">A* 算法简介 (redblobgames.com)</a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>引用自:<a target="_blank" rel="noopener" href="https://blog.codingnow.com/2006/07/astar.html">云风的 BLOG: A* 算法之误区 (codingnow.com)</a></p>
+<blockquote>
+<p>A* 算法理论上 <del>是时间最优的</del> 可以得到最优解，不过我们可以通过选择一个更好的<strong>估价函数</strong>，或是减少解空间来提高性能。 A* 算法最大的缺点就是，<strong>空间需求</strong>太大。我们可以用一些时间换空间的方法改进。但是如果不存在解（比如在寻路问题中，根本<strong>不存在一条通达的路</strong>），采用 A* 算法求解，势必会<strong>穷举</strong>所有的可能。所以一般在游戏里，我们一般会采用额外的手法避免这个问题。</p>
+</blockquote>
+<ol>
+<li>A*寻路的<strong>空间需求</strong></li>
+</ol>
+<p>在A*算法中,我们常用两个容器来保存<strong>待遍历</strong>的节点和<strong>不需要遍历</strong>的节点,这一点确实是用空间来换时间,如果节点数量过多,<strong>空间消耗</strong>是很大的。</p>
+<ol start="2">
+<li><strong>不存在解</strong></li>
+</ol>
+<p>如果又不存在解的情况,A*还是会遍历周围的格子节点,这就造成了不必要的消耗。</p>
+<p>黄色是终点，蓝色是起点，尽管没有到达终点的路径，还是将<strong>整个地图</strong>都遍历了。</p>
+<p>例如下图：</p>
+<p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020240323111752.png'><img src="/2002/01/01/images/Pasted%20image%2020240323111752.png"></p>
+<center> 图1 不存在解 </center>
+
+<ul>
+<li><strong>解决方案</strong></li>
+</ul>
+<p>可以事先求得<strong>终点</strong>是否被包围，如果包围则，返回空。</p>
+<ol start="3">
+<li><strong>启发函数</strong>的影响</li>
+</ol>
+<p><strong>估价函数</strong>的准确性影响搜索结果：估价函数的准确性会影响A星算法的最终结果，因此选择<strong>合适</strong>的估价函数很关键。</p>
+<p>关于启发函数：<a target="_blank" rel="noopener" href="https://www.redblobgames.com/pathfinding/a-star/introduction.html">A* 算法简介 (redblobgames.com)</a>，观看以上文章了解，<strong>曼哈顿</strong>距离与<strong>欧拉</strong>距离</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/03/23/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E5%9B%9E%E5%88%B0%E5%9F%BA%E7%A1%80-%E5%85%B3%E4%BA%8E%E5%9B%9B%E5%85%83%E6%95%B0/">← 下一篇 回到基础-关于四元数</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/leetcode%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/78.%20%E5%AD%90%E9%9B%86/">78. 子集 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+ el: '#valine'
+ , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
+ , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'
+ , path: window.location.pathname
+});document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

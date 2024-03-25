@@ -16,8 +16,117 @@ if (window.localStorage.getItem('theme-mode') === 'dark')
   --dark-background: url('/images/wallhaven-p9gr2p.jpg');
   --light-background: url('/images/wallhaven-495xd1.jpg');
   --theme-encrypt-confirm: '确认'
-}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">每日委托</span></a></li><li class="navItem"><a class="navBlock" href="/oldTime1/"><span class="navItemTitle">旧事1</span></a></li><li class="navItem"><a class="navBlock" href="/oldTime2/"><span class="navItemTitle">旧事2</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>几何着色器</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-24T14:35:00.000Z" id="date"> 2024-03-24</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-24T14:59:50.163Z" id="updated"> 2024-03-24</time></div></span><br><span>文章总字数: <div class="control">63</div></span></div></div><hr><div id="post-content"><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Firepad-magic/p/10698749.html">Unity 几何着色器 - 世纪末の魔术师 - 博客园 (cnblogs.com)</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/585436751">几何着色器（Geometry Shader）的基础介绍以及简单示例 - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/76775024">几何着色器 - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/650172883">OpenGL - 教程 - 高阶 - 几何着色器 - 知乎 (zhihu.com)</a></p>
-<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/03/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E5%86%85%E5%AD%98/">← 下一篇 操作系统之内存</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/03/24/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E5%86%85%E5%AD%98%E6%B1%A0%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">内存池和内存管理 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.</span> <span class="toc-text">Reference</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">首页</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/#Archives"><span class="navItemTitle">归档</span></a></li><li class="navItem"><a class="navBlock" href="/friends/"><span class="navItemTitle">盆友</span></a></li><li class="navItem"><a class="navBlock" href="/recent/"><span class="navItemTitle">每日委托</span></a></li><li class="navItem"><a class="navBlock" href="/oldTime1/"><span class="navItemTitle">旧事1</span></a></li><li class="navItem"><a class="navBlock" href="/oldTime2/"><span class="navItemTitle">旧事2</span></a></li></ol></nav></header><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade"><article><div id="post-bg"><div id="post-title"><h1>几何着色器</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-03-24T14:35:00.000Z" id="date"> 2024-03-24</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2024-03-25T04:23:24.741Z" id="updated"> 2024-03-25</time></div></span><br><span>文章总字数: <div class="control">2.9k</div></span></div></div><hr><div id="post-content"><blockquote>
+<p>转载自:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/76775024">几何着色器 - 知乎 (zhihu.com)</a><br>作者:<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/suan-fa-gong-cheng-shi">学无止境 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Firepad-magic/p/10698749.html">Unity 几何着色器 - 世纪末の魔术师 - 博客园 (cnblogs.com)</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/585436751">几何着色器（Geometry Shader）的基础介绍以及简单示例 - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/76775024">几何着色器 - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/650172883">OpenGL - 教程 - 高阶 - 几何着色器 - 知乎 (zhihu.com)</a></p>
+<h2 id="什么是几何着色器"><a href="#什么是几何着色器" class="headerlink" title="什么是几何着色器"></a>什么是几何着色器</h2><p class='item-img' data-src='/2002/01/01/images/Pasted%20image%2020240325111829.png'><img src="/2002/01/01/images/Pasted%20image%2020240325111829.png"></p>
+<blockquote>
+<p>顶点着色器以顶点数据作为输入数据，而几何着色器则以<strong>完整的图元Primitive</strong>作为输入数据。例如，以三角形的三个顶点作为输入，然后输出对应的图元。与顶点着色器不能销毁或创建顶点不同，几何着色器的主要亮点就是可以<strong>创建或销毁</strong>几何图元，此功能让GPU可以实现一些有趣的效果。<br>– <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/76775024">几何着色器 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<h2 id="几何着色器的使用"><a href="#几何着色器的使用" class="headerlink" title="几何着色器的使用"></a>几何着色器的使用</h2><p>为了理解几何着色器是如何工作的，我们首先来看一个例子：</p>
+<p class='item-img' data-src='/2002/01/01/images/9xjf4.webp'><img src="/2002/01/01/images/9xjf4.webp" alt="9xjf4"></p>
+<p>几何着色器的GLSL</p>
+<ul>
+<li><strong>输入类型 (Input Types)</strong></li>
+</ul>
+<p><code>layout(points) in;</code></p>
+<p>我们知道几何着色器的输入是图元，那么到底可以处理那些图元呢？可用的图元类型如下所示(括号里面的数字表示所需要的顶点数目)：</p>
+<ul>
+<li>points-GL_POINTS (1)</li>
+<li>lines-GL_LINES, GL_LINE_STRIP, GL_LINE_LIST （2)</li>
+<li>lines_adjacency-GL_LINES_ADJACENCY, GL_LINE_STRIP_ADJACENCY (4)</li>
+<li>triangles-GL_TRIANGLES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN(3)</li>
+<li>triangles_adjacency-GL_TRIANGLES_ADJACENCY, GL_TRIANGLE_STRIP_ADJACENCY (6)</li>
+</ul>
+<p>如果我们使用<code>glDrawArrays(GL_POINTS, 0, 4)</code>命令来绘制点图元，那么我们需要传入points参数。</p>
+<ul>
+<li><strong>输出类型 (Output Types)</strong></li>
+</ul>
+<p><code>layout(line_strip, max_vertices = 2) out;</code></p>
+<p>下一行代码展示的是几何着色器的输出。几何着色器最有意思的地方在于：输出图元类型跟输入图元类型完全不同，而且输出图元的数量跟输入图元数量也没有关系。括号里面的参数分别表示：输出图元类型和图元最大顶点数。输出图元的类型可以是下面几种：</p>
+<ul>
+<li>points</li>
+<li>line_strip</li>
+<li>triangle_strip</li>
+</ul>
+<p>我们可以发现这三种类型的输出图元可以覆盖所有可能的图元类型，比如，我们可以用3个顶点的triangle_strip来输出一个普通的triangle。</p>
+<p>几何着色器的输出要求我们最大输出顶点数目，当<code>EmitVertex()</code>的数量超出该值时，OpenGL将不会绘制更多的顶点。</p>
+<ul>
+<li><strong>顶点输入 (Vertex Input)</strong></li>
+</ul>
+<p>我们在顶点着色器使用的<code>gl_Position</code>变量其实位于<code>gl_in</code>数组中，该数组的数据成员如下所示：</p>
+<p class='item-img' data-src='/2002/01/01/images/atkis.webp'><img src="/2002/01/01/images/atkis.webp" alt="atkis"></p>
+<p>gl_in数组</p>
+<p>需要注意的是，由于几何着色器的输入是图元的所有顶点，所以这里将<code>gl_in</code>定义为数组。</p>
+<ul>
+<li><strong>顶点输出 (Vertex Output)</strong></li>
+</ul>
+<p>我们使用<code>EmitVertex()</code>和<code>EndPrimitive()</code>两个函数来产生图元。每当我们调用一次<code>EmitVertex()</code>函数时，会将顶点加入到当前的图元；当所有顶点都加入到图元后，我们可以通过<code>EndPrimitive()</code>函数来产生图元。我们需要注意，当我们重复调用<code>EndPrimitive()</code>时，可以生成多个同样的图元。</p>
+<p class='item-img' data-src='/2002/01/01/images/zc2as.webp'><img src="/2002/01/01/images/zc2as.webp" alt="zc2as"></p>
+<p>通过执行该几何着色器，我们得到下面的输出，我们发现GPU的输出是一条线段，而不是顶点。</p>
+<p class='item-img' data-src='/2002/01/01/images/auqk9.webp'><img src="/2002/01/01/images/auqk9.webp" alt="auqk9"></p>
+<p>利用几何着色器得到的输出</p>
+<p>我们可以在顶点着色器中输入颜色分量来控制几何着色器中每个顶点的颜色。我们发现其实几何着色器对颜色的处理和片段着色器差不多，只不多这里的输入是颜色数组，因为输入图元的每个顶点都对应一个自己的颜色属性。</p>
+<p class='item-img' data-src='/2002/01/01/images/wh0ue.webp'><img src="/2002/01/01/images/wh0ue.webp" alt="wh0ue"></p>
+<p>顶点属性包括了颜色信息</p>
+<p class='item-img' data-src='/2002/01/01/images/evp7j.webp'><img src="/2002/01/01/images/evp7j.webp" alt="evp7j"></p>
+<p>顶点着色器</p>
+<p class='item-img' data-src='/2002/01/01/images/7nf28.webp'><img src="/2002/01/01/images/7nf28.webp" alt="7nf28"></p>
+<p>几何着色器</p>
+<p>最终我们得到如下的结果，每个线段都有自己的颜色，而且与输入顶点的颜色相同。</p>
+<p class='item-img' data-src='/2002/01/01/images/u9g81.webp'><img src="/2002/01/01/images/u9g81.webp" alt="u9g81"></p>
+<p>几何着色器输出的图元带有颜色信息</p>
+<h2 id="几何着色器的应用"><a href="#几何着色器的应用" class="headerlink" title="几何着色器的应用"></a>几何着色器的应用</h2><h3 id="法线可视化"><a href="#法线可视化" class="headerlink" title="法线可视化"></a>法线可视化</h3><p>几何着色器的第一个应用是显示物体的法线，这对于光照效果的调试非常有帮助。我们首先在不使用几何着色器的情况下正常渲染一次场景；然后开启几何着色器第二次渲染场景，送到几何着色器的是三角形图元，我们为其每个顶点生成一个法线向量。</p>
+<p>这里需要注意的是，几何着色器中使用的顶点坐标是经过顶点着色器变换后的裁剪空间坐标，所以传入到几何着色器的法线也需要变换到裁剪空间。我们这里需要知道法线向量的变换矩阵与顶点坐标的变换矩阵是不同的，需要使用矩阵的逆阵的转置来变换法向量，关于该矩阵的具体推导可以参考<a href="https://link.zhihu.com/?target=http://www.songho.ca/opengl/gl_normaltransform.html">这个教程</a>。顶点着色器如下所示，将法向量变换到裁剪空间。</p>
+<p class='item-img' data-src='/2002/01/01/images/mos92.webp'><img src="/2002/01/01/images/mos92.webp" alt="mos92"></p>
+<p>在几何着色器中，我们接受的输入图元是triangle，输出的图元是line_strip，我们这里输出的顶点数量max_vertices为6，因为我们需要为triangle的每个顶点输出法线，三个法线向量与三角形的法线相互平行。从下面的几何着色器中我们看到，这里为triangle每个顶点输出了两个顶点，分别是法线的起点和终点，用来表示法线。</p>
+<p class='item-img' data-src='/2002/01/01/images/n4br1.webp'><img src="/2002/01/01/images/n4br1.webp" alt="n4br1"></p>
+<p>最终我们可以得到如下的效果图，我们通过几何着色器来可视化茶壶和机器人的法线，我们注意到，这样的效果类似于给物体增加了毛发(Fur)，所以几何着色器也经常用来实现毛发渲染。</p>
+<p class='item-img' data-src='/2002/01/01/images/mjr0w.webp'><img src="/2002/01/01/images/mjr0w.webp" alt="mjr0w"></p>
+<p>茶壶法线可视化</p>
+<p class='item-img' data-src='/2002/01/01/images/xa0h9.webp'><img src="/2002/01/01/images/xa0h9.webp" alt="xa0h9"></p>
+<p>机器人法线可视化</p>
+<h3 id="动态几何体形成-Dynamically-generating-geometry"><a href="#动态几何体形成-Dynamically-generating-geometry" class="headerlink" title="动态几何体形成 (Dynamically generating geometry)"></a>动态几何体形成 (Dynamically generating geometry)</h3><p>接下来我们看下几何着色器的另一个应用：动态几何体形成。我们利用几何着色器可以实现物体的LOD技术 (Level of Detail)。比如，我们需要在游戏中绘制一个圆圈，那么我们可以根据距离摄像机的远近来调整圆圈的顶点数目，充分利用显卡的性能。我们首先来绘制一个十多边形 (10-sided polygon)，这里需要使用到<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%25E4%25B8%2589%25E8%25A7%2592%25E5%25AD%25A6">三角学</a>的一些知识，如下图所示。</p>
+<p class='item-img' data-src='/2002/01/01/images/zafiz.webp'><img src="/2002/01/01/images/zafiz.webp" alt="zafiz"></p>
+<p class='item-img' data-src='/2002/01/01/images/29c4i.webp'><img src="/2002/01/01/images/29c4i.webp" alt="29c4i"></p>
+<p>十多边形有十个顶点，这里我们绘制了十一个顶点，因为我们需要将多边形封闭起来，所以第一个顶点需要绘制两次。我们可到下面的结果：</p>
+<p class='item-img' data-src='/2002/01/01/images/0yuhx.webp'><img src="/2002/01/01/images/0yuhx.webp" alt="0yuhx"></p>
+<p>具有不同顶点的多边形</p>
+<p>接下来我们通过顶点数据来控制多边形的边数，也就是将边数变成顶点的一个属性值：</p>
+<p class='item-img' data-src='/2002/01/01/images/35bd0.webp'><img src="/2002/01/01/images/35bd0.webp" alt="35bd0"></p>
+<p>利用顶点的Sides数值来控制多边形的边数而不是原来的定值10，我们可以得到下面的效果图。四个多边形分别具有4、8、16和32条边。我们在游戏中可以根据玩家距离摄像机的远近来动态调整多边形边数这个属性值，实现LOD的效果。</p>
+<p class='item-img' data-src='/2002/01/01/images/pau2u.webp'><img src="/2002/01/01/images/pau2u.webp" alt="pau2u"></p>
+<p>利用Sides变量控制多边形的显示</p>
+<h3 id="公告牌-BillBoards"><a href="#公告牌-BillBoards" class="headerlink" title="公告牌 (BillBoards)"></a>公告牌 (BillBoards)</h3><p class='item-img' data-src='/2002/01/01/images/m2sc0.webp'><img src="/2002/01/01/images/m2sc0.webp" alt="m2sc0"></p>
+<p>公告牌技术就是以3D树木图片的四边形来代替3D树的渲染的技术。我们可以使公告牌总是面向摄像机，这样从远处看过去，公告牌不容易露出破绽，如上图所示。</p>
+<p>假设y轴指向正上方，平面xz表示地面，则树木的公告牌立于xz平面切与y轴平行面向摄像机。下图是从y轴俯视看到的公告牌的坐标系。我们给定公告牌的中心位置C (我们可以根据几何着色器将该顶点扩展成四边形来展示公告牌)，摄像机的位置E，通过叉乘我们可以得到公告牌局部坐标系和世界坐标系的对应关系：</p>
+<p class='item-img' data-src='/2002/01/01/images/2m56j.webp'><img src="/2002/01/01/images/2m56j.webp" alt="2m56j"></p>
+<p>XZ平面的投影，摄像机和公告牌之间的位置信息</p>
+<p class='item-img' data-src='/2002/01/01/images/uewrl.webp'><img src="/2002/01/01/images/uewrl.webp" alt="uewrl"></p>
+<p>描述公告牌相对于世界坐标的坐标轴</p>
+<p>通过公告牌的局部坐标系和世界坐标系之间的关系以及公告牌本身的大小，我们可以得到公告牌扩展后的四边形的四个顶点坐标如下：</p>
+<p class='item-img' data-src='/2002/01/01/images/rk0i8.webp'><img src="/2002/01/01/images/rk0i8.webp" alt="rk0i8"></p>
+<p>四边形四个顶点坐标计算</p>
+<p class='item-img' data-src='/2002/01/01/images/py7av.webp'><img src="/2002/01/01/images/py7av.webp" alt="py7av"></p>
+<p>如何利用输入顶点得到四边形的四个顶点坐标示意图</p>
+<p>我们输入几何着色器的正是公告牌的中心点Center，通过几何着色器来扩展为四边形进行展示。</p>
+<h3 id="Alpha-to-Coverage技术"><a href="#Alpha-to-Coverage技术" class="headerlink" title="Alpha-to-Coverage技术"></a>Alpha-to-Coverage技术</h3><p class='item-img' data-src='/2002/01/01/images/3ej9b.webp'><img src="/2002/01/01/images/3ej9b.webp" alt="3ej9b"></p>
+<p>我们在BillBoards技术中会根据树木的alpha值进行alpha测试，当我们靠近观察公告牌时，会发现裁剪树木留下的硬边缘问题，也就是俗称的锯齿问题。这个问题主要是由于<code>discard()</code>或<code>clip()</code>函数带来的，它们用来裁剪掉不需要树木纹理的像素，导致树木的边缘过渡不自然。</p>
+<p>解决该问题的第一种方法是使用alpha-blending技术来代替alpha test。通过线性纹理过滤，我们可以使得公告牌边缘过渡更加自然。由不透明像素逐渐过渡到半透明像素，带来一种渐变的效果。但是，运用alpha-blending技术需要将场景中的物体按照从后往前的顺序进行排序和渲染。对于渲染一大片的森林或草原，排序带来的消耗将非常大。而且alpha-blending技术会在排序后带来大量的OverDraw问题，会很大影响程序的性能。</p>
+<p class='item-img' data-src='/2002/01/01/images/s30vr.webp'><img src="/2002/01/01/images/s30vr.webp" alt="s30vr"></p>
+<p class='item-img' data-src='/2002/01/01/images/4o2lp.webp'><img src="/2002/01/01/images/4o2lp.webp" alt="4o2lp"></p>
+<p>第二种方法是使用多重采样抗锯齿技术 (Multisampling Antialiasing，MSAA)。可以用来缓解多边形边缘的锯齿问题，使之更加平滑。该技术确实有效，不过也带来一些问题。开启MSAA技术后，硬件会生成多个样本 (Samples)，根据样本的可见性和覆盖率来决定样本的颜色信息。关键在于，覆盖率是在多边形层次 (Polygon Level) 上确定下来的，所以MSAA技术并不会检查alpha通道，所以边缘过渡不会有不透明到半透明的过渡效果。如果想要在覆盖率计算过程中考虑alpha通道的情况，那就必须使用 Alpha-to-Coverage 的技术。Alpha-to-Coverage会使用纹理的alpha值来决定采样的覆盖率。</p>
+<p>在开启了MSAA和alpha-to-coverage后，硬件会检测像素着色器返回的alpha值，并用于确定覆盖情况。比如本来利用MSAA得到的coverage是1，但是像素着色器返回的alpha为0.5，那么coverage变成了0.5，这样最后在resolve阶段，这个像素的颜色也被变淡了。正是通过这种技巧，将其颜色弱化，达到了柔软硬边的效果。<a href="https://link.zhihu.com/?target=https://medium.com/@bgolus/anti-aliased-alpha-test-the-esoteric-alpha-to-coverage-8b177335ae4f">关于alpha-to-coverage可以参考这篇文章</a>。</p>
+<p class='item-img' data-src='/2002/01/01/images/l5c3l.webp'><img src="/2002/01/01/images/l5c3l.webp" alt="l5c3l"></p>
+<p>当我们使用alpha测试来裁剪树叶或者围栏这类纹理时，建议使用MSAA和alpha-to-coverage技术来进行边缘过渡处理，所以我们发现其实alpha-to-coverage也属于抗锯齿技术的一种。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a><strong>References</strong></h2><ul>
+<li><a href="https://link.zhihu.com/?target=https://medium.com/@bgolus/anti-aliased-alpha-test-the-esoteric-alpha-to-coverage-8b177335ae4f">https:&#x2F;&#x2F;medium.com&#x2F;@bgolus&#x2F;anti-aliased-alpha-test-the-esoteric-alpha-to-coverage-8b177335ae4f</a></li>
+<li><a href="https://link.zhihu.com/?target=https://learnopengl.com/Introduction">LearnOpenGL - Introduction</a></li>
+<li><a href="https://link.zhihu.com/?target=https://open.gl/geometry">Geometry shaders</a></li>
+</ul>
+<p>编辑于 2019-08-12 13:07</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/03/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E5%86%85%E5%AD%98/">← 下一篇 操作系统之内存</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/03/24/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E5%86%85%E5%AD%98%E6%B1%A0%E5%92%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">内存池和内存管理 上一篇 →</a></div></div></div><div id="comments"><div id="valine"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/images/avatar_black.png" alt="Logo"></a><h3 id="Dr"><a href="/">AncientElement</a></h3><div id="description"><p></p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/ancientElement"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/266967608"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">什么是几何着色器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">几何着色器的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E7%9D%80%E8%89%B2%E5%99%A8%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">几何着色器的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E7%BA%BF%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">4.1.</span> <span class="toc-text">法线可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%87%A0%E4%BD%95%E4%BD%93%E5%BD%A2%E6%88%90-Dynamically-generating-geometry"><span class="toc-number">4.2.</span> <span class="toc-text">动态几何体形成 (Dynamically generating geometry)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E5%91%8A%E7%89%8C-BillBoards"><span class="toc-number">4.3.</span> <span class="toc-text">公告牌 (BillBoards)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Alpha-to-Coverage%E6%8A%80%E6%9C%AF"><span class="toc-number">4.4.</span> <span class="toc-text">Alpha-to-Coverage技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol></div></div><footer><span id="web-runnig-time"></span><br><span id="website-visite"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span></span><br><span id="busuanzi_container_site_uv">本站访客数量<span id="busuanzi_value_site_uv"></span></span></span><br><nobr>powerby <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> author <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/custom.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {new Valine({
  el: '#valine'
  , appId: 'QH3wrf3SrlfoAqJ50hYZC6Dg-gzGzoHsz'
  , appKey: 'Z8zpRl8PKBB9MxsZytgnMoIU' , placeholder: '此条评论委托企鹅物流发送'

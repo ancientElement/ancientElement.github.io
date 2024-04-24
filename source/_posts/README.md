@@ -5,7 +5,6 @@ title: 你好
 <center>
 <a href="https://github.com/ancientElement">GitHub</a>&nbsp&nbsp
 <a href="https://space.bilibili.com/266967608">BiliBili</a>
-<br>
 </center>
 <center>你好,<strong>我是AE</strong>,你也可以叫我<strong>dough(达夫)</strong></center>
 <br>

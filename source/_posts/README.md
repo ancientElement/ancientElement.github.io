@@ -1,4 +1,6 @@
-
+---
+title: 你好
+---
 <center><h1>欢迎来到AE的知识库</h1></center>
 <br>
 <center>你好,<strong>我是AE</strong>,你也可以叫我<strong>dough(达夫)</strong></center>

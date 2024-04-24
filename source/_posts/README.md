@@ -2,7 +2,11 @@
 title: 你好
 ---
 <center><h1>欢迎来到AE的知识库</h1></center>
+<center>
+<a href="https://github.com/ancientElement">GitHub</a>&nbsp&nbsp
+<a href="https://space.bilibili.com/266967608">BiliBili</a>
 <br>
+</center>
 <center>你好,<strong>我是AE</strong>,你也可以叫我<strong>dough(达夫)</strong></center>
 <br>
 <center>我的小站很简洁,<strong>只有我学习到的(总结的)知识</strong></center>

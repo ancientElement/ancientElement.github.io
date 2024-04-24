@@ -1,10 +1,5 @@
 ---
 tags: ["作业","Games101","图形学"]
-categories:
-  - 图形学
-  - Games101
-  - 作业
-series: ["作业"]
 date: 2023-09-27
 title: 02 光栅化和Z-buffer（含提高） 
 password: 211511011

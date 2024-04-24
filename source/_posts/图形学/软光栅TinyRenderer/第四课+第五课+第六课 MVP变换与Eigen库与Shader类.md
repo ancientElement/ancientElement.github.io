@@ -1,12 +1,7 @@
 ---
 title: 第四课+第五课+第六课 MVP变换与Eigen库与Shader类
-categories:
-  - 图形学
-  - 软光栅TinyRenderer
-date: 2024-03-12T14:41:00
+date: 2024-03-12
 tags:
-  - 软光栅TinyRenderer
-series:
   - 软光栅TinyRenderer
 ---
 ![](/images/posts/Pasted%20image%2020240312151201.png)

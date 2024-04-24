@@ -1,12 +1,7 @@
 ---
 title: Texture
-categories:
-  - 图形学
-  - OpenGL
 date: 2024-03-25 13:22
 tags:
-  - OpenGL
-series:
   - OpenGL
 ---
 

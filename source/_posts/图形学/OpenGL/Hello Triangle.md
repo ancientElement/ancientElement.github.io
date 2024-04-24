@@ -1,12 +1,7 @@
 ---
 title: Hello Triangle
-categories:
-  - 图形学
-  - OpenGL
 date: 2024-03-14 18:34
 tags:
-  - OpenGL
-series:
   - OpenGL
 ---
 ## VAO和VBO

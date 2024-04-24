@@ -1,23 +1,14 @@
 ---
 title: leetcode232用栈实现队列
-categories:
-  - 计算机科学基础
-  - leetcode刷题
-  - 栈与队列
 date: 2023-11-11
 tags:
   - leetcode刷题
-  - 栈
-series:
   - 栈
 ---
 
 ![](/images/posts/leetcode232用栈实现队列_231111_153421.pdf)
 
-
-<div>
-  <iframe src="/pdfjs/web/viewer.html?file=/images/posts/leetcode232用栈实现队列_231111_153421.pdf" width="100%" height="775px" frameborder="0"></iframe>
-</div>
+//TODO:等待完善PDF
 
 ```cs
 class MyQueue {

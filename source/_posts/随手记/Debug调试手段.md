@@ -1,13 +1,9 @@
 ---
 title: Debug调试手段
-categories:
-  - 随手记
 date: 2024-01-16T00:00:00
 tags:
   - 随手记
   - debug
-series:
-  - 随手记
 ---
 
 从 0 到 1 学习 Visual Studio Debug 之一：入门 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/28136370)把这个系列看完,再做一些练习√

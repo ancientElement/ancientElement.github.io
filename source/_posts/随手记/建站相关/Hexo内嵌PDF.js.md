@@ -1,16 +1,9 @@
 ---
 title: Hexo内嵌PDF.js
-categories:
-  - 随手记
-  - 建站相关
 date: 2023-11-12
 tags:
   - 建站相关
   - Hexo内嵌PDF
-series:
-  - 建站相关
-password: 211511011
-message: 此文章转载请与作者处观看https://www.bilibili.com/read/cv22329422/
 ---
 
 # 作者：Sw_Zap https://www.bilibili.com/read/cv22329422/  出处：bilibili
@@ -25,9 +18,12 @@ message: 此文章转载请与作者处观看https://www.bilibili.com/read/cv223
 
 在.md文件的适当位置写入：
 
+```html
 <div>
   <iframe src="/pdfjs/web/viewer.html?file=/（PDF位于的文件夹）/（PDF文件名）.pdf" width="100%" height="500px" frameborder="0"></iframe>
 </div>
+```
+
 4. 最后在“_config.yml”文件中的skip_render下要包括:
 
 skip_render:

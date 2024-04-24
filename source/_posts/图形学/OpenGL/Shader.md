@@ -1,12 +1,7 @@
 ---
 title: Shader
-categories:
-  - 图形学
-  - OpenGL
 date: 2024-03-23 15:06
 tags:
-  - OpenGL
-series:
   - OpenGL
 ---
 

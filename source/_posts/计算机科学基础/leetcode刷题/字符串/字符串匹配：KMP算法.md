@@ -1,15 +1,9 @@
 ---
 title: 字符串匹配：KMP算法
-categories:
-  - 计算机科学基础
-  - leetcode刷题
-  - 字符串
 date: 2023-11-03
 tags:
   - leetcode刷题
   - kmp算法
-series:
-  - leetcode刷题
 ---
 
 # 转载自[代码随想录 (programmercarl.com)](https://programmercarl.com/0028.%E5%AE%9E%E7%8E%B0strStr.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE) 获得更好观看体验请去往代码随想录处

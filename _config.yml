@@ -103,3 +103,5 @@ theme: Wikitten
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+#PDF

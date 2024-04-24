@@ -1,12 +1,7 @@
 ---
 title: Hello Window
-categories:
-  - 图形学
-  - OpenGL
 date: 2024-03-14 14:11
 tags:
-  - OpenGL
-series:
   - OpenGL
 ---
 ## 什么是GLFW和GLEW

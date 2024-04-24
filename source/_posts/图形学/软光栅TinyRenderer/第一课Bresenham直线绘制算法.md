@@ -1,12 +1,7 @@
 ---
 title: 第一课Bresenham直线绘制算法
-categories:
-  - 图形学
-  - 软光栅TinyRenderer
 date: 2024-03-04 18:33
 tags:
-  - 软光栅TinyRenderer
-series:
   - 软光栅TinyRenderer
 ---
 ## Reference

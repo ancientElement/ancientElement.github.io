@@ -32,7 +32,7 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 **可行性分析**
 
-
+可行，因为
 
 
 

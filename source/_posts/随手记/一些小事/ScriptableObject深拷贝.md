@@ -52,7 +52,9 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 解决方案，使用嵌套的`ScriptableObject`
 
-```cs
+```csharp
+AssetDatabase.AddObjectToAsset(clip, asset);  
+Save(asset, path);
 ```
 
 ![](images/posts/Pasted%20image%2020240426011648.png)

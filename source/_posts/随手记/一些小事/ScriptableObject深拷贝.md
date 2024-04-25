@@ -34,7 +34,7 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 可行，因为使用工厂模式，所有的`clip track`，的创建都是在工厂中进行，修改起来方便
 
-后期如果使用`ScriptableObject`
+后期如果使用`ScriptableObject`嵌套有问题修改起来也方便
 
 ### 方案二
 

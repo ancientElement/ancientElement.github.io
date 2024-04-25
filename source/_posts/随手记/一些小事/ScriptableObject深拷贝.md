@@ -6,5 +6,9 @@ tags:
 ---
 深拷贝ScriptableObject可以使用Object.Instantiate
 
+```csharp
+var tempAsset = Object.Instantiate(asset);  
+newClip = tempAsset.Tracks[trackIndex].Clips[clipIndex];
 ```
-```
+
+不知道这样会不会造成内存泄漏

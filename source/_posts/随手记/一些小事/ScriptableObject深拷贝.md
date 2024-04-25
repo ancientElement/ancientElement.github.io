@@ -36,6 +36,9 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 后期如果使用`ScriptableObject`嵌套有问题修改起来也方便
 
+**引出问题**
+
+
 ### 方案二
 
 自定义深拷贝函数

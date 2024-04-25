@@ -48,7 +48,10 @@ title: 每日委托
 ```cpp
 //这里我们暂时定step永远为正数 0-360度
 void rotate(int target,int current,int step) {
-	if(target+step<current) 
+	if(current+step<target)current+=step;
+	else if(current>target) {
+		if(cuuretn)
+	} 
 }
 ```
 

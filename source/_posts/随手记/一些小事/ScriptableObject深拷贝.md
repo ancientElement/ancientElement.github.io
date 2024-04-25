@@ -22,9 +22,11 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 要解决这个问题，可以在提取 `newClip` 对象时将其完全分离。
 
+比如将`newClip`深拷贝。
+
 ### 方案一
 
 `StandardClip`并不是继承自`Object`的对象不能使用`Object.Instantiate(StandardClip)`。
 
-**方案**
+那我们可以将他定义为ScriptableObject
 

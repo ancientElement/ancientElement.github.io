@@ -28,5 +28,11 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 `StandardClip`并不是继承自`Object`的对象不能使用`Object.Instantiate(StandardClip)`。
 
-那我们可以将他定义为ScriptableObject
+那我们可以将他定义为ScriptableObject。
+
+**可行性分析**
+
+
+
+
 

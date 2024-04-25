@@ -40,9 +40,10 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 ![](images/posts/Pasted%20image%2020240426005653.png)
 
-无法展开`Clip`，意味着无法修改数据后ji'shi保存。
+无法展开`Clip`，意味着无法修改数据后**即时保存**。
 
-但是如果能够找到他的父亲ScriptableObject也不是无法解决
+但是如果能够找到他的**父亲ScriptableObject**也不是无法解决
+
 ### 方案二
 
 自定义深拷贝函数

@@ -38,7 +38,9 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 **引出问题**
 
+![](images/posts/Pasted%20image%2020240426005653.png)
 
+无法展开`Clip`，意味着无法修改数据后即使保存。
 ### 方案二
 
 自定义深拷贝函数

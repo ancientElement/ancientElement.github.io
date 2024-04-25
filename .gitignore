@@ -7,4 +7,4 @@ public/
 .deploy*/
 _multiconfig.yml
 source/.obsidian/*
-source/.template/*
+source/template/*

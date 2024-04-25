@@ -57,6 +57,10 @@ AssetDatabase.AddObjectToAsset(clip, asset);
 Save(asset, path);
 ```
 
+删除时，要对应的
+
+···
+
 ![](images/posts/Pasted%20image%2020240426011648.png)
 
 ### 方案二

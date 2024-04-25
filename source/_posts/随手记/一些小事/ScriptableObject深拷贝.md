@@ -46,6 +46,8 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 暂时先放弃即时保存。
 
+
+
 ### 方案二
 
 自定义深拷贝函数

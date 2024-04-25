@@ -42,7 +42,9 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 无法展开`Clip`，意味着无法修改数据后**即时保存**。
 
-但是如果能够找到他的**父亲ScriptableObject**也不是无法解决
+但是如果能够找到他的**父亲ScriptableObject**也不是无法解决。
+
+暂时先放弃即时保存。
 
 ### 方案二
 

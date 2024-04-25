@@ -32,7 +32,9 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 **可行性分析**
 
-可行，因为
+可行，因为使用工厂模式，所有的`clip track`，的创建都是在工厂中进行，修改起来方便
+
+
 
 
 

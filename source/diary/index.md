@@ -46,9 +46,9 @@ title: 每日委托
 配置博客评论系统:　暂且定为GitTalk
 
 ```cpp
-//这里我们暂时定step永远为正数 0-正180 和 0-负180
+//这里我们暂时定step永远为正数 0-360度
 void rotate(int target,int current,int step) {
-	if(target)
+	if(target+step<current) 
 }
 ```
 

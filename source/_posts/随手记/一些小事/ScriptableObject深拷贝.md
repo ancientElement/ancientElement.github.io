@@ -59,7 +59,11 @@ Save(asset, path);
 
 删除时，要对应的
 
-···
+```csharp
+AssetDatabase.RemoveObjectFromAsset(asset.Tracks[trackIndex].Clips[clipIndex]);  
+asset.Tracks[trackIndex].Clips.RemoveAt(clipIndex);  
+Save(asset, path);
+```
 
 ![](images/posts/Pasted%20image%2020240426011648.png)
 

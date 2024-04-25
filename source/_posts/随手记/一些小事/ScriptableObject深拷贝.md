@@ -48,6 +48,10 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 **引出问题**
 
+在整个资产中Clip加载为，雷系：
+
+![](images/posts/Pasted%20image%2020240426011648.png)
+
 其中
 
 ### 方案二

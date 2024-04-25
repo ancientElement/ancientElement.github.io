@@ -48,7 +48,8 @@ public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int c
 
 **引出问题**
 
-在整个资产中`Clip`加载为，类型丢失：
+在整个资产中`Clip`加载为，类型丢失，并且在再次打开项目后资源丢失
+
 
 ![](images/posts/Pasted%20image%2020240426011648.png)
 

@@ -46,7 +46,10 @@ title: 每日委托
 配置博客评论系统:　暂且定为GitTalk
 
 ```cpp
-void rotate()
+//这里我们暂时定step永远为正数 0-1
+void rotate(int target,int current,int step) {
+	if(target)
+}
 ```
 
 ---

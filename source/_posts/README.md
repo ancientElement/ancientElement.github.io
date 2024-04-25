@@ -1,5 +1,6 @@
 ---
 title: 你好
+date: 3000-01-01
 ---
 ## 欢迎来到AE的知识库
 [GitHub](https://github.com/ancientElement) [BiliBili](https://space.bilibili.com/266967608)

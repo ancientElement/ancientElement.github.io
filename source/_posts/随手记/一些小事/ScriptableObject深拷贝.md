@@ -67,6 +67,7 @@ Save(asset, path);
 
 ![](images/posts/Pasted%20image%2020240426011648.png)
 
+欸，这下恰好可以解决即时保存的问题了，只要保存子Clip
 ### 方案二
 
 自定义深拷贝函数

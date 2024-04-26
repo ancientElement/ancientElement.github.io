@@ -1,7 +1,7 @@
 ---
 tags: ["AB包","热更新","Unity"]
 date: 2023-07-07
-title: AB包 /images/wallhaven-d6d6kg.jpg
+title: AB包
 ---
 ## 加载AB包
 

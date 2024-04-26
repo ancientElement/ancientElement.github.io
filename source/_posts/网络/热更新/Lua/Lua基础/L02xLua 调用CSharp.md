@@ -1,7 +1,7 @@
 ---
 tags: ["Lua基础","Lua","热更新","Unity"]
 date: 2023-07-08
-title: L02 xLua 调用CSharp /images/wallhaven-d6d6kg.jpg
+title: L02 xLua 调用CSharp
 ---
 ### **1.Lua调用C#静态类 **
 
@@ -271,7 +271,7 @@ CS.TestDelegate.Static = CS.TestDelegate.StaticFunc
 CS.TestDelegate.Static()
 -- Lua中如果添加了函数到静态委托变量中后，再委托不再使用后，记得释放添加的委托函数
 CS.TestDelegate.Static = nil
- /images/wallhaven-d6d6kg.jpg
+
 ----------------------------------------------------
 
 local func = function()
@@ -287,7 +287,7 @@ CS.TestDelegate.Static = CS.TestDelegate.Static - func
 CS.TestDelegate.Static()
 
 CS.TestDelegate.Static = nil
- /images/wallhaven-d6d6kg.jpg
+
 -----------------------------------------------------------
 
 -- 调用前判定
@@ -303,7 +303,7 @@ CS.TestDelegate.Static = nil
 --	else
 --		CS.TestDelegate.Static = CS.TestDelegate.Static + func
 --	end
- /images/wallhaven-d6d6kg.jpg
+
 -----------------------------------------------------------
 
 local obj = CS.TestDelegate()

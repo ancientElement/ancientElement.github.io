@@ -1,7 +1,7 @@
 ---
 tags: ["Lua基础","Lua","热更新","Unity"]
 date: 2023-07-08
-title: L03 CSharp 调用 xLua /images/wallhaven-d6d6kg.jpg
+title: L03 CSharp 调用 xLua
 ---
 ### **1.C#调用Lua变量 **
 

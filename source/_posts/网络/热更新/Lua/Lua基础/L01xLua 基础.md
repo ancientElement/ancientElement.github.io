@@ -1,7 +1,7 @@
 ---
 tags: ["Lua基础","Lua","热更新","Unity"]
 date: 2023-07-07
-title: L01 xLua 基础 /images/wallhaven-d6d6kg.jpg
+title: L01 xLua 基础
 ---
 ### **1.c# 调用 lua**
 

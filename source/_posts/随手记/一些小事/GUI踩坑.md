@@ -17,3 +17,9 @@ GUI.Box(rect,"");
 GUI.backgroundColor = Color.gray;  
 GUI.Box(rect,"","Button");
 ```
+
+或者你想要画一个色块,可以使用
+
+```csharp
+EditorGUI.DrwaRect(rect,Color);
+```

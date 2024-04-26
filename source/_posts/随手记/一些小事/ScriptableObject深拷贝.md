@@ -10,9 +10,9 @@ tags:
 public static StandardClip CopyClip(AETimelineAsset asset, int trackIndex, int clipIndex)  
 {  
     StandardClip clip, newClip;  
-        var tempAsset = Object.Instantiate(asset);  
-        newClip = tempAsset.Tracks[trackIndex].Clips[clipIndex];  
-    }    return newClip;  
+	var tempAsset = Object.Instantiate(asset);  
+	newClip = tempAsset.Tracks[trackIndex].Clips[clipIndex];  
+    return newClip;  
 }
 ```
 

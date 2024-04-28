@@ -25,9 +25,9 @@ private void Update()
 
 我们可以使用编辑器下的协程：`EditorCoroutineUtility`，和`DateTime`来配合获取一个准确的时间。
 
-如下：在协程开始的时候记录开始时间和开始帧，在循环中计算当前时间于开始时间的时间差值。
+如下：在协程开始的时候记录**开始时间**和**开始帧**，在循环中计算当前时间与开始时间的**时间差**值。
 
-再通过帧率计算出
+再通过帧率计算出当前帧：帧数 = 时间 * 帧率
 
 ```csharp
 private IEnumerator PlayCoroutine()  

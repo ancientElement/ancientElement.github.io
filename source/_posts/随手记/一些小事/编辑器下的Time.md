@@ -25,3 +25,25 @@ private void Update()
 
 我们可以使用编辑器下的协程：EditorCoroutineUtility，和DateTime来配合获取一个准确的时间。
 
+如下：zai
+
+```csharp
+private IEnumerator PlayCoroutine()  
+{  
+    startTime = DateTime.Now;  
+    startFrameIndex = CurrentFrameID;  
+    while (IsPlaying)  
+    {        
+	    //时间差  
+        float differ = (float)DateTime.Now.Subtract(startTime).TotalSeconds;  
+        //计算当前帧  
+        //TODO:速度  
+        CurrentFrameID = (int)(differ * FPS * 1) + startFrameIndex;  
+        if (CurrentFrameID >= Asset.Duration)  
+        {            IsPlaying = false;  
+        }  
+        yield return null;  
+    }  
+    yield break;  
+}
+```

@@ -8,6 +8,20 @@ tags:
 ---
 在编辑器下如果你要使用时间相关的操作，当你使用在`EditorWindow`的`Update`中使用`Time.delta`，会发现好像非常的不准确，时快时慢的。
 
-```csharp
+就像下面：
 
+```csharp
+private void Update()  
+{
+	//...
+	OneFrameTimer -= Time.deltaTime;  
+	// Debug.Log(Time.deltaTime);  
+	if (OneFrameTimer <= 0)  
+	{  
+	    OneFrameTimer = 1f / FPS;  
+	    // Debug.Log(OneFrameTimer);  
+	    // Tick(CurrentFrameID);  
+	    CurrentFrameID += 1;  
+	}
+}
 ```

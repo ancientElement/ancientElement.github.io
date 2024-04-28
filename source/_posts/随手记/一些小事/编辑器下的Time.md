@@ -6,4 +6,4 @@ tags:
   - 协程
   - 编辑器开发
 ---
-在编辑器下ru
+在编辑器下如果你要使用时间相关的操作，当你使用在EditorWindow的Update中使用Time.delta

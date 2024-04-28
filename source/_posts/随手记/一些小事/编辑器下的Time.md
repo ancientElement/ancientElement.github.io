@@ -15,13 +15,12 @@ private void Update()
 {
 	//...
 	OneFrameTimer -= Time.deltaTime;  
-	// Debug.Log(Time.deltaTime);  
 	if (OneFrameTimer <= 0)  
 	{  
 	    OneFrameTimer = 1f / FPS;  
-	    // Debug.Log(OneFrameTimer);  
-	    // Tick(CurrentFrameID);  
 	    CurrentFrameID += 1;  
 	}
 }
 ```
+
+我们可以使用编辑器下的协程：EditorCoroutineUtility，和Data

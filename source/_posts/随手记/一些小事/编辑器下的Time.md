@@ -23,4 +23,5 @@ private void Update()
 }
 ```
 
-我们可以使用编辑器下的协程：EditorCoroutineUtility，和Data
+我们可以使用编辑器下的协程：EditorCoroutineUtility，和DateTime来配合获取一个准确的时间。
+

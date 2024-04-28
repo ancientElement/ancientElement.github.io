@@ -23,9 +23,9 @@ private void Update()
 }
 ```
 
-我们可以使用编辑器下的协程：EditorCoroutineUtility，和DateTime来配合获取一个准确的时间。
+我们可以使用编辑器下的协程：`EditorCoroutineUtility`，和`DateTime`来配合获取一个准确的时间。
 
-如下：zai
+如下：在协程开始的时候记录开始时间和开始帧，在循环中计算当前s
 
 ```csharp
 private IEnumerator PlayCoroutine()  

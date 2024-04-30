@@ -5,7 +5,7 @@ date: 2077-01-01
 ## 欢迎来到AE的知识库
 [GitHub](https://github.com/ancientElement) [BiliBili](https://space.bilibili.com/266967608)
 
-你好,我是**AE**,你也可以叫我**dough(达夫)**
+你好,我是**AE**,你也可以叫我**dough(面团)**
 
 我的小站很简洁,只有我学习到的(总结的)知识
 

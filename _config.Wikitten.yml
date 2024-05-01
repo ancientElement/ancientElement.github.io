@@ -66,8 +66,9 @@ history_control: # make you wiki has history version control in page
     branch: main
 
 # Comment
+# 评论
 comment:
-    disqus: # enter disqus shortname here
+    disqus: aeblog-1
     duoshuo: # enter duoshuo shortname here
     youyan: # enter youyan uid here
 
@@ -92,3 +93,4 @@ miscellaneous:
         twitter_id:
         google_plus:
     links:
+

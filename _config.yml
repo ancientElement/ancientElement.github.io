@@ -109,8 +109,3 @@ deploy:
   type: ''
 
 #PDF
-
-# 评论
-comment:
-    type: disqus
-    shortname: aeblog-1

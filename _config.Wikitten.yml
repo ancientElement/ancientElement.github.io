@@ -92,3 +92,10 @@ miscellaneous:
         twitter_id:
         google_plus:
     links:
+
+
+# 评论
+comment:
+    type: changyan
+    app_id: 'cyxh0dCyz'
+    conf: prod_xxxxxxxxxxxxxxxxxxxxxxx

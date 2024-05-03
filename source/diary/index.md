@@ -26,8 +26,9 @@ title: 每日委托
 
 1.动作系统
 2.技能编辑器
+3.重构Playable 或者 使用Animacer
 
-wang'cheng
+完成上面差不多就可以把Demo做出来了
 
 3.比赛
 4.找老师求点名放过

@@ -19,6 +19,7 @@ title: 每日委托
 | **熟悉Animacer** |        |        |            |        |     |
 
 确定资源是最重要的一步,目前只使用FightingAnimsetPro这一套资源
+[Unity - Manual: Input Manager (unity3d.com)](https://docs.unity3d.com/Manual/class-InputManager.html)
 
 ---
 ## 2024-05-03

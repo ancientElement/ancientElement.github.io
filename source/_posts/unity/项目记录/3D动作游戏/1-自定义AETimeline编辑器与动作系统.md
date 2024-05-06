@@ -9,3 +9,5 @@ tags:
 
 适配动画播放。
 
+将ActionConfig的部分属性放置到轨道中
+

@@ -7,5 +7,5 @@ tags:
 
 自定义动画Clip，继承AEAnimationClip、AEAnimationTrack实现支持State的动画切换。
 
-
+适配动画播放。
 

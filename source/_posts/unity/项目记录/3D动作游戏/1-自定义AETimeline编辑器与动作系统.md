@@ -11,5 +11,5 @@ tags:
 
 将ActionConfig的部分属性放置到轨道中。
 
-只有0-1帧Tick不了
+只有0-1帧Tick不了。所以我们规定最小Duration为2帧。
 

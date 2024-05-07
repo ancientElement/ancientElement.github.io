@@ -5,7 +5,7 @@ tags:
 ---
 继承AETimelineAsset资产，自定义ActionConfig，实现动作系统。
 
-自定义动画Clip，继承AEAnimationClip、AEAnimationTrack实现支持State的动画切换。定义适配动画播放。
+自定义动画Clip，继承AEAnimationClip、AEAnimationTrack实现支持State的动画切换。定义AEActionAnimRuntimeBehaviour适配动画播放。
 
 将ActionConfig的部分属性放置到轨道中。
 

@@ -8,3 +8,7 @@ tags:
 自定义动画Clip，继承AEAnimationClip、AEAnimationTrack实现支持State的动画切换。定义AEActionAnimRuntimeBehaviour适配动画播放。
 
 只有0-1帧Tick不了。所以我们规定最小Duration为2帧。
+
+![](images/posts/Pasted%20image%2020240507160003.png)
+
+![](images/posts/Pasted%20image%2020240507155951.png)

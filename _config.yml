@@ -31,7 +31,6 @@ i18n_dir: :lang
 skip_render:
   #取消渲染草稿箱
   - draft/**
-  - diary/**
   - pdfjs/**
 
 # Writing

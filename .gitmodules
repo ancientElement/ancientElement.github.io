@@ -1,3 +1,6 @@
 [submodule "Wikitten"]
     path = themes/Wikitten
     url = git@github.com:ancientElement/hexo-theme-Wikitten.git
+[submodule "diary"]
+    path = source/diary
+    url = git@github.com:ancientElement/m_diary.git

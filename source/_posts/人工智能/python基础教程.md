@@ -50,3 +50,5 @@ Python 中共有三种数值类型：
 - `int`
 - `float`
 - `complex` 虚数类型
+
+## 字符串

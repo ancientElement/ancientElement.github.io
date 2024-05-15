@@ -39,3 +39,5 @@ Global variables can be used by everyone, both inside of functions and outside.
 
 To create a global variable inside a function, you can use the `global` keyword.
 要在函数内创建全局变量，可以使用 `global` 关键字。
+
+![](images/posts/Pasted%20image%2020240515104845.png)

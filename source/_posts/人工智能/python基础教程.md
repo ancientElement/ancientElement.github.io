@@ -44,11 +44,9 @@ To create a global variable inside a function, you can use the `global` keywor
 
 ## Number
 
-## Python NumbersPython 数字
-
 There are three numeric types in Python:
 Python 中共有三种数值类型：
 
 - `int`
 - `float`
-- `complex`
+- `complex` 虚数类型

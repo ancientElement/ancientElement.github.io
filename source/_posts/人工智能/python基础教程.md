@@ -58,3 +58,14 @@ python 中的字符串由**单引号或双引号**引起来。
 
 **'hello'** is the same as **"hello"**.
 **'hello'** 与 **“hello”** 相同。
+
+You can assign a multiline string to a variable by using three quotes:
+您可以使用**三个引号**将多行字符串分配给变量：
+
+```python
+a = """Lorem ipsum dolor sit amet,  
+consectetur adipiscing elit,  
+sed do eiusmod tempor incididunt  
+ut labore et dolore magna aliqua."""  
+print(a)
+```

@@ -41,3 +41,14 @@ To create a global variable inside a function, you can use the `global` keywor
 要在函数内创建全局变量，可以使用 `global` 关键字。
 
 ![](images/posts/Pasted%20image%2020240515104845.png)
+
+## Number
+
+## Python NumbersPython 数字
+
+There are three numeric types in Python:
+Python 中共有三种数值类型：
+
+- `int`
+- `float`
+- `complex`

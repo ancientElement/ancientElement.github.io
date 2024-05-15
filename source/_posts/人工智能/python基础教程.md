@@ -23,7 +23,10 @@ String variables can be declared either by using single or double quotes:
 字符串变量可以使用**单引号或双引号**声明：
 
 Variables that are created outside of a function (as in all of the examples above) are known as global variables.
-在函数外部创建的变量（如所有示例中所示） 上面）被称为全局变量。
+在**函数外部**创建的变量（如所有示例中所示） 上面）被称为**全局变量**。
 
 Global variables can be used by everyone, both inside of functions and outside.
-全局变量可以被任何人使用，无论是在 功能和外部。
+全局变量可以**被任何人使用**，无论是在 功能和外部。
+
+If you create a variable with the same name inside a function, this variable will be local, and can only be used inside the function. The global variable with the same name will remain as it was, global and with the original value.
+如果在函数内创建同名变量，则该变量 将是本地的，并且只能在函数内部使用。全局变量 具有相同的名称将保持原样、全局且具有原始值。

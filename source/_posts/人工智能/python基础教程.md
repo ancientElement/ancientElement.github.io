@@ -52,3 +52,9 @@ Python 中共有三种数值类型：
 - `complex` 虚数类型
 
 ## 字符串
+
+Strings in python are surrounded by either single quotation marks, or double quotation marks.
+python 中的字符串由**单引号或双引号**引起来。
+
+**'hello'** is the same as **"hello"**.
+**'hello'** 与 **“hello”** 相同。

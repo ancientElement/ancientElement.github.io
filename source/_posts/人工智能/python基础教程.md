@@ -29,4 +29,4 @@ Global variables can be used by everyone, both inside of functions and outside.
 全局变量可以**被任何人使用**，无论是在 功能和外部。
 
 If you create a variable with the same name inside a function, this variable will be local, and can only be used inside the function. The global variable with the same name will remain as it was, global and with the original value.
-如果在函数内创建同名变量，则该变量 将是本地的，并且只能在函数内部使用。全局变量 具有相同的名称将保持原样、全局且具有原始值。
+如果在**函数内**创建同名变量，则该变量 将是本地的，并且只能在函数内部使用。全局变量 具有相同的名称将保持原样、全局且具有原始值。

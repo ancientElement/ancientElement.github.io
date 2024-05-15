@@ -35,4 +35,7 @@ Variables that are created outside of a function (as in all of the examples abov
 在函数外部创建的变量（如所有示例中所示） 上面）被称为**全局变量**。
 
 Global variables can be used by everyone, both inside of functions and outside.
-全局变量可以被任何人使用，无论是在 功能和外部。
+全局变量可以**被任何人使用**，无论是在 功能和外部。
+
+To create a global variable inside a function, you can use the `global` keyword.
+`global`要在函数内创建全局变量，可以使用 关键字。

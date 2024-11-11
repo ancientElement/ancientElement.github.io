@@ -4,6 +4,7 @@ date: 2024-03-04 18:33
 tags:
   - 软光栅TinyRenderer
 ---
+
 ## Reference
 
 [Lesson 1: Bresenham’s Line Drawing Algorithm · ssloy/tinyrenderer Wiki (github.com)](https://github.com/ssloy/tinyrenderer/wiki/Lesson-1:-Bresenham%E2%80%99s-Line-Drawing-Algorithm)
